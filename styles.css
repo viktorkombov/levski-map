@@ -1,0 +1,161 @@
+/* width */
+.leaflet-popup-scrolled::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+.leaflet-popup-scrolled::-webkit-scrollbar-track {
+    margin: 15px;
+    background: #f1f1f1;
+}
+
+/* Handle */
+.leaflet-popup-scrolled::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+.leaflet-popup-scrolled::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    margin: 0 auto;
+    width: 80%;
+}
+
+#map {
+    margin: 0 auto;
+    max-width: 1000px;
+    width: 95%;
+    height: 90%;
+}
+
+.marker {
+    background: tomato;
+}
+
+@keyframes fade-in-region {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.2;
+    }
+}
+
+.region {
+    animation: fade-in-region 0.8s;
+    cursor: default;
+}
+
+@keyframes fade-in-tooltip {
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.stop-divicon {
+    background: rgba(255, 0, 0, 0.4);
+    border: 3.2px solid rgb(255, 0, 0);
+    color: blue;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 30px;
+}
+
+.stop-divicon:hover {
+    border: 3.2px solid rgb(180, 51, 51);
+    background: chocolate;
+    opacity: 1;
+}
+
+.tooltip {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    color: white;
+    font-size: 16px;
+    /* font-weight: 900; */
+    -webkit-text-stroke: 0.1px black;
+    text-align: center;
+    /* text-shadow: 0px 0px 10px rgba(255, 255, 255, 0,5); */
+}
+
+.tooltip::before {
+    display: none;
+}
+
+.leaflet-popup-scrolled {
+    border: none;
+    padding-right: 5px;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+    padding: 6px 6px 0 0;
+}
+
+.leaflet-container {
+    cursor: default;
+}
+
+.pop-up {
+}
+
+.popup-heading {
+    margin: 5px 0;
+    line-height: 23px;
+}
+
+p.popup-content {
+    margin-top: 0px;
+}
+
+.popup-img {
+    width: 100%;
+}
+
+/* .leaflet-popup-content-wrapper {
+      box-sizing: border-box;
+      height: 200px;
+      border-radius: 0;
+      display: flex;
+      align-content: center;
+    }
+
+    .leaflet-popup-content {
+      height: 100%;
+      width: 100%;
+      overflow: auto; 
+    } */
+
+/* @media screen and (max-width: 600px) {
+      .pop-up {
+        max-width: 300px;
+        max-height: 200px !important;
+      }
+    } */
+
+.progress-indicator-wrapper {
+    margin-right: 5px;
+    height: 300px;
+    width: 191.4px;
+    background-color: #555;
+    visibility: visible;
+    opacity: 0.2;
+    transition: opacity .5s linear;
+}
+

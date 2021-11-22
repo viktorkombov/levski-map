@@ -1,0 +1,352 @@
+<html>
+
+<head>
+
+  <title>Layers Control Tutorial - Leaflet</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="">
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+  <link rel="stylesheet" href="./styles.css">
+
+
+</head>
+
+<body>
+  <div id="map"
+    class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
+    tabindex="0" style="position: relative; outline: none;">
+  </div>
+
+  <div class="container">
+
+    <div id="karta"></div>
+    <h1>Карта</h1>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam feugiat varius purus at imperdiet. Donec faucibus
+    cursus fermentum. Duis vel blandit nulla. Aenean auctor nisl fringilla justo iaculis accumsan. Maecenas commodo quam
+    dictum, pretium dolor vel, posuere ipsum. In rhoncus est et eros semper, sed placerat sem pellentesque. Vestibulum
+    at dictum lectus, sodales rhoncus lectus. Aliquam fringilla efficitur ultrices. Nulla tortor massa, feugiat a tempus
+    porttitor, euismod eget tellus. Ut et rutrum lacus. Praesent aliquet dui quis posuere sollicitudin.
+
+    Cras id enim ac libero faucibus molestie eu eget magna. Nullam egestas turpis non est auctor molestie et vel velit.
+    Etiam accumsan, nisl a sagittis congue, ipsum justo placerat sapien, a sodales nibh lorem non diam. Aenean aliquam
+    dolor id tristique egestas. Nulla maximus turpis rhoncus ipsum eleifend, in sagittis turpis porta. Ut aliquam
+    fermentum orci, a dapibus metus fermentum eu. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer
+    consectetur sagittis nisl sit amet auctor. Proin nec nisl a ligula aliquam sagittis. Curabitur dictum est tellus,
+    non ornare lorem vulputate at. Vestibulum dignissim bibendum venenatis. Vestibulum ut malesuada dolor.
+
+    Aliquam imperdiet, dolor at sagittis dapibus, lorem odio sollicitudin augue, vel faucibus lectus lorem eu nunc. Cras
+    lacinia risus metus, id maximus mi pretium sit amet. In quis ipsum eu lectus rutrum scelerisque ac in turpis. Etiam
+    ullamcorper dolor aliquam lobortis tristique. Suspendisse sollicitudin, enim quis euismod rutrum, augue nibh
+    hendrerit tortor, sit amet dictum justo quam at nulla. Mauris varius finibus velit in tempor. Ut at tempor orci, sed
+    rutrum dui. Suspendisse potenti. Nam non aliquam lectus, et luctus diam. Vestibulum ante ipsum primis in faucibus
+    orci luctus et ultrices posuere cubilia curae; Quisque sed tortor vel est tristique fringilla. Etiam eu ex vitae
+    orci consequat efficitur. Donec fermentum commodo venenatis. Sed scelerisque tincidunt accumsan. Vestibulum in nisi
+    sed mi efficitur convallis.
+    <h1 id="vidin">Видин</h1>
+    Quisque eleifend mauris eget odio imperdiet, non vestibulum tellus eleifend. Aliquam egestas interdum ex, sit amet
+    volutpat neque fringilla sit amet. Etiam lobortis pretium orci, sit amet aliquet urna ultrices eget. Duis est
+    lectus, posuere volutpat purus sit amet, tincidunt euismod dui. Nunc varius est vel nisl euismod malesuada. Integer
+    auctor, mi nec condimentum ultrices, velit sapien varius erat, a varius diam elit in erat. Maecenas vulputate
+    placerat sollicitudin. Integer hendrerit nunc tellus. Fusce odio velit, mattis nec odio ut, sollicitudin placerat
+    arcu. Maecenas enim justo, finibus non arcu eu, dictum elementum lacus. Quisque porttitor tempor nunc. Phasellus non
+    nisl dolor. Nulla nec nulla quis turpis fringilla maximus sed eu neque. Sed in est ac turpis porta ornare a a massa.
+    Aliquam convallis pharetra viverra.
+
+    Maecenas ut purus diam. In gravida ligula a sollicitudin pellentesque. Aenean sodales ipsum vel lobortis aliquam.
+    Cras molestie massa vel nulla eleifend mollis. Pellentesque posuere orci ipsum, a fringilla eros auctor quis.
+    Praesent vestibulum eros sit amet mollis convallis. Ut feugiat sem egestas ultricies vehicula. Fusce vitae augue
+    tortor. Vivamus vestibulum orci eget mauris consequat, a aliquam mi malesuada. Suspendisse pulvinar malesuada
+    auctor.
+    <a href="#map">Карта</a>
+
+    Край
+  </div>
+  <script>
+    var regions1 = [
+      { name: 'Кюстендил', pathName: 'kustendil', coordinates: [42.21224516288584, 22.939453125] },
+      { name: 'София', pathName: 'sofia', coordinates: [42.70665956351041, 23.620605468750004] },
+      { name: 'Перник', pathName: 'pernik', coordinates: [42.593532625649935, 22.884521484375004] },
+      { name: 'Благоевград', pathName: 'blagoevgrad', coordinates: [41.705728515237524, 23.433837890625] },
+      { name: 'Пазарджик', pathName: 'pazardzhik', coordinates: [42.13082130188811, 24.180908203125] },
+      { name: 'Пловдив', pathName: 'plovdiv', coordinates: [42.29781144879032, 24.80679670630957] },
+      { name: 'Смолян', pathName: 'smolian', coordinates: [41.575555594338894, 24.701848983240783] },
+      { name: 'Кърджали', pathName: 'kardzhali', coordinates: [41.429282970993015, 25.52410826664268] },
+      { name: 'Хасково', pathName: 'haskovo', coordinates: [41.89409955811395, 25.949707031250004] },
+      // {name: '', pathName: 'stara_zagora', coordinates: [42.42345651793833, 25.521240234375004] },
+      { name: 'Сливен', pathName: 'sliven', coordinates: [42.68243539838623, 26.19140625] },
+      { name: 'Ямбол', pathName: 'yambol', coordinates: [42.30169032824452, 26.652832031250004] },
+      { name: 'Бургас', pathName: 'burgas', coordinates: [42.553080288955826, 27.202148437500004] },
+      { name: 'Варна', pathName: 'varna', coordinates: [43.14909399920127, 27.608642578125004] },
+      { name: 'Добрич', pathName: 'dobrich', coordinates: [43.620170616189924, 27.905273437500004] },
+      { name: 'Силистра', pathName: 'silistra', coordinates: [43.866218006556394, 27.070312500000004] },
+      { name: 'Стара Загора', pathName: 'stara_zagora', coordinates: [42.459130214547905, 25.516846105456356] },
+      { name: 'Шумен', pathName: 'shumen', coordinates: [43.32166431135426, 26.996988003860004] },
+      { name: 'Разград', pathName: 'razgrad', coordinates: [43.564588401321025, 26.623985992486816] },
+      { name: 'Търговище', pathName: 'targovishte', coordinates: [43.15710884095329, 26.3232421875] },
+      { name: 'Русе', pathName: 'ruse', coordinates: [43.67531448230814, 26.040572590082522] },
+      { name: 'Велико Търново', pathName: 'veliko_tarnovo', coordinates: [43.27296245194755, 25.667570578709327] },
+      { name: 'Габрово', pathName: 'gabrovo', coordinates: [42.90816007196054, 25.2685546875] },
+      { name: 'Плевен', pathName: 'pleven', coordinates: [43.43977784402131, 24.77810424389625] },
+      { name: 'Ловеч', pathName: 'lovech', coordinates: [42.986925558300115, 24.548564544589667] },
+      { name: 'Враца', pathName: 'vratsa', coordinates: [43.32166431135426, 23.764303905292145] },
+      { name: 'Монтана', pathName: 'montana', coordinates: [43.50221537592194, 23.22871127357673] },
+      { name: 'Видин', pathName: 'vidin', coordinates: [43.84102121845514, 22.673990333585795] }
+    ]
+
+
+  </script>
+  <script>
+    var content = {
+      sofia: `В най-северозападната област на днешна България Васил
+    Левски не изгражда комитетска мрежа. Няма категорични данни по време на своите обиколки той да е посещавал този регион
+    с организационна мисия.
+    Васил Левски минава през Видинския край и посещава някои
+    селища, което оставя спомени в жителите им, през 1868 г. През
+    май Левски напуска Белград и заминава за Влашко. През юни се
+    завръща в Сърбия, арестуван е и прекарва известно време в затвора в Зайчар. След освобождаването му от там той се отправя
+    отново към Румъния и вероятно отново минава през Видинско.
+    В този район през 30-50-те години на XIX в. населението се
+    вдига многократно на бунтове, потушавани жестоко от османските власти, които поддържат там и агентурен
+    апарат. Вероятно това
+    дава своето отражение
+    върху жителите на селищата, а също и на преценката на В. Левски за организационната му работа
+    там лично. Признанието
+    и паметта на хората към
+    Апостола е изразено чрез
+    няколко паметни знака –
+    във Видин, Оряхово, Брегово, Кула, Белоградчик.
+    Паметникът на Апостола във Видин (Снимка  1), 1938 г., скулптор
+    Димитър Бучински, ул.
+    „Васил Левски“ № 2.`
+    }
+  </script>
+  <script>
+    // var region;
+    var cities = L.layerGroup();
+
+    var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+      'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+
+    var grayscale = L.tileLayer(mbUrl, { id: 'mapbox/light-v9', tileSize: 512, zoomOffset: -1, attribution: mbAttr }),
+      streets = L.tileLayer(mbUrl, { id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mbAttr });
+    var USGS_USImagery = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 20,
+      attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
+    });
+
+    var map = L.map('map', {
+      center: [42.748126776142875, 25.327709216730058],
+      zoom: 6.2,
+      layers: [USGS_USImagery],
+      zoomSnap: 0.5,
+      zoomDelta: 0.5,
+      wheelPxPerZoomLevel: 150,
+      zoomControl: false,
+      maxZoom: 8.5
+    });
+
+    // sets the zoom control to be positioned in the bottom left corner
+    L.control.zoom({
+      position: 'bottomleft'
+    }).addTo(map);
+
+
+    // sets a custom map of Bulgaria
+    var imageUrl = 'http://vlevskimuseum-bg.org/wp-content/uploads/2021/11/bulgaria.png',
+      imageBounds = [[45.25444353681564, 19.844982149279534], [40.16525805505217, 31.921737689954174]];
+    L.imageOverlay(imageUrl, imageBounds).addTo(map);
+
+    // references for the regions
+    var regionsRefs = [];
+
+    var oblasti = [];
+
+    regions1.forEach((val) => {
+      // sets marker for the region
+      var regionMarker = L.marker(val.coordinates, {
+        icon: L.divIcon({
+          className: `stop-divicon`,
+          iconSize: [15, 15],
+          popupAnchor: [0, -3],
+          tooltipAnchor: [-2, 2],
+          iconAnchor: [11, 10]
+        })
+      });
+
+      // sets overlay for highlighting the region when its marker is clicked
+      var path = 'http://vlevskimuseum-bg.org/wp-content/uploads/2021/11/' + val.pathName + '.png',
+        image = [[45.25444353681564, 19.844982149279534], [40.16525805505217, 31.921737689954174]],
+        options = { interactive: true, opacity: 0.2, className: 'region' }
+      var regionOverlay = L.imageOverlay(path, image, options);
+
+      // sets the region's name as tooltip which stands over the marker
+      var TooltipClass = {
+        offset: [0, 0],
+        permanent: true,
+        direction: 'top',
+        className: 'tooltip'
+      }
+      regionMarker.bindTooltip(val.name, TooltipClass).openTooltip();
+
+      // sets a popup which is occured when the marker is clicked and gives information about the region
+      const popupCircleProgress = `
+      <div class="progress-indicator-wrapper">
+        <div>
+        </div>
+      </div
+      `;
+      const currContent = content[val.pathName] ? content[val.pathName] : 'Васил Левски е идвал и в ' + val.name;
+      var popup = L.popup({ maxHeight: 300, maxWidth: 200, className: 'pop-up' });
+      popup.setContent(`<h1 class="popup-heading">${val.name}</h1>${popupCircleProgress}`);
+      regionMarker.bindPopup(popup);
+
+      // fixes the 'autoPan' issue when a popup is opened right after the map is rendered
+      if (val.pathName === 'stara_zagora') {
+        requestAnimationFrame(() => {
+          regionMarker.openPopup();
+          regionMarker.closePopup();
+        });
+      }
+      regionsRefs.push([regionMarker, regionOverlay, popup, val.pathName, val.name]);
+    });
+
+
+    regionsRefs.forEach((regions) => {
+      var reg = regions[1];
+      var marker = regions[0];
+
+      marker.addTo(map);
+      marker.on('popupopen', function (e) {
+
+      })
+      marker.on('click', function (e) {
+        onClick();
+        // marker.closePopup();
+        reg.addTo(map);
+        fetch("https://products-6c9f0-default-rtdb.firebaseio.com/provinces/" + regions[3] + ".json")
+          .then(r => r.json())
+          .then(function (data) {
+            console.log(data);
+            console.log(regions[2])
+            regions[2].setContent(`<h1 class="popup-heading">${regions[4]}</h1><p class="popup-content">${data}</p>`);
+            marker.openPopup();
+            // addOrangeviToHiddenLayer(data)
+          });
+        marker.closeTooltip();
+      });
+      marker.on('mouseover', function () {
+        if (marker.isPopupOpen()) {
+          marker.closeTooltip();
+        };
+      });
+    })
+
+
+    function showAllRegions() {
+
+    }
+
+    // albMaker.on('mouseout', function () {
+    //   map.removeLayer(regionAlb);
+    // })
+    // regionsRefs.forEach(reg => {
+    //   map.addLayer(reg);
+    // });
+
+    // setTimeout(() => {
+    //   regionsRefs.forEach(reg => {
+    //       map.removeLayer(reg);
+    // })
+    // }, 200);
+
+
+    function onClick() {
+      regionsRefs.forEach(reg => {
+        map.removeLayer(reg[1]);
+        reg[0].openTooltip();
+      })
+    }
+
+    // sofia.addTo(map);
+
+    // for (let i = 0; i < regions.length; i++) {
+    //   var regionName = regions[i][0];
+    //   var regionPolygonGeoJson = regions[i][1];
+
+    //   var path = './images/' + regionName + '.png';
+    //   var image = [[45.25444353681564, 19.844982149279534], [40.16525805505217, 31.921737689954174]];
+    //   var options = { interactive: true, opacity: 0.3 };
+    //   var region = L.imageOverlay(path, image, options);
+    //   console.log(region)
+
+    //   var regionPolygon = L.geoJson(regionPolygonGeoJson, {
+    //     style: function () {
+    //       return { color: '#00000000' };
+    //     }
+    //   });
+
+    //   regionsRefs.push([region, regionPolygon]);
+    // }
+
+    // for (let i = 0; i < regionsRefs.length; i++) {
+    //   regionsRefs[i][0].addTo(map);
+    //   regionsRefs[i][0].bringToBack();
+
+    //   regionsRefs[i][1].addTo(map);
+    //   regionsRefs[i][1].bindPopup('Hi There!');
+
+    //   regionsRefs[i][1].on('mouseover', function () {
+    //     regionsRefs[i][0].bringToFront();
+    //   });
+    //   regionsRefs[i][1].on('mouseout', function () {
+    //     regionsRefs[i][0].bringToBack();
+    //   });
+    // }
+
+    //   function onLocationFound(e) {
+    // 	var radius = e.accuracy / 2;
+
+    // 	L.marker(e.latlng).addTo(map)
+    // 		.bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+    // 	L.circle(e.latlng, radius).addTo(map);
+    // }
+
+    // function onLocationError(e) {
+    // 	alert(e.message);
+    // }
+
+    // map.on('locationfound', onLocationFound);
+    // map.on('locationerror', onLocationError);
+
+    map.on('click', function (e) {
+      onClick();
+      console.log(`[${e.latlng.lat}, ${e.latlng.lng}]`);
+      console.log(map.getZoom());
+      // map.locate({setView: true, maxZoom: 16});
+    })
+    map.on('zoomend zoomlevelschange', function (e) {
+      if (this.getZoom() === 7) {
+
+      }
+    });
+
+  </script>
+
+
+
+
+
+</body>
+
+</html>
