@@ -189,15 +189,6 @@
         onClick();
         // marker.closePopup();
         reg.addTo(map);
-        fetch("https://products-6c9f0-default-rtdb.firebaseio.com/provinces/" + regions[3] + ".json")
-          .then(r => r.json())
-          .then(function (data) {
-            console.log(data);
-            console.log(regions[2])
-            regions[2].setContent(`<h1 class="popup-heading">${regions[4]}</h1><p class="popup-content">${data}</p>`);
-            marker.openPopup();
-            // addOrangeviToHiddenLayer(data)
-          });
         marker.closeTooltip();
       });
       marker.on('mouseover', function () {
