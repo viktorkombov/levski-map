@@ -62,7 +62,7 @@
   </script>
   <script>
     var content = {
-      sofia: `В най-северозападната област на днешна България Васил
+      vidin: `В най-северозападната област на днешна България Васил
     Левски не изгражда комитетска мрежа. Няма категорични данни по време на своите обиколки той да е посещавал този регион
     с организационна мисия.
     Васил Левски минава през Видинския край и посещава някои
@@ -161,9 +161,9 @@
         </div>
       </div
       `;
-      const currContent = content[val.pathName] ? content[val.pathName] : 'Васил Левски е идвал и в ' + val.name;
+      const currContent = content[val.pathName] ? content[val.pathName] : 'Повече информация за Левски в област ' + val.name + ' ще бъде налична скоро!';
       var popup = L.popup({ maxHeight: 300, maxWidth: 200, className: 'pop-up' });
-      popup.setContent(`<h1 class="popup-heading">${val.name}</h1>${popupCircleProgress}`);
+      popup.setContent(`<h1 class="popup-heading">${val.name}</h1>${currContent}`);
       regionMarker.bindPopup(popup);
 
       // fixes the 'autoPan' issue when a popup is opened right after the map is rendered
