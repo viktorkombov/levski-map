@@ -27,7 +27,7 @@
   </div>
 
   <script>
-    var regions1 = [
+    var provincesData = [
       { name: 'Кюстендил', pathName: 'kustendil', coordinates: [42.21224516288584, 22.939453125] },
       { name: 'София', pathName: 'sofia', coordinates: [42.70665956351041, 23.620605468750004] },
       { name: 'Перник', pathName: 'pernik', coordinates: [42.593532625649935, 22.884521484375004] },
@@ -37,7 +37,6 @@
       { name: 'Смолян', pathName: 'smolian', coordinates: [41.575555594338894, 24.701848983240783] },
       { name: 'Кърджали', pathName: 'kardzhali', coordinates: [41.429282970993015, 25.52410826664268] },
       { name: 'Хасково', pathName: 'haskovo', coordinates: [41.89409955811395, 25.949707031250004] },
-      // {name: '', pathName: 'stara_zagora', coordinates: [42.42345651793833, 25.521240234375004] },
       { name: 'Сливен', pathName: 'sliven', coordinates: [42.68243539838623, 26.19140625] },
       { name: 'Ямбол', pathName: 'yambol', coordinates: [42.30169032824452, 26.652832031250004] },
       { name: 'Бургас', pathName: 'burgas', coordinates: [42.553080288955826, 27.202148437500004] },
@@ -101,15 +100,28 @@
     });
 
     var map = L.map('map', {
-      center: [42.748126776142875, 25.327709216730058],
-      zoom: 6.2,
-      layers: [USGS_USImagery],
+      center: [	42.641321, 24.805939],
+      zoom: 15,
+      layers: [grayscale, streets],
       zoomSnap: 0.5,
       zoomDelta: 0.5,
       wheelPxPerZoomLevel: 150,
       zoomControl: false,
-      maxZoom: 7
+      maxZoom: 15
     });
+
+    var karlovoMarker = L.marker([42.64269818211635, 24.803005737405574], {
+        icon: L.divIcon({
+          className: `stop-divicon`,
+          iconSize: [15, 15],
+          popupAnchor: [0, -3],
+          tooltipAnchor: [-2, 2],
+          iconAnchor: [11, 10]
+        })
+    });
+
+    karlovoMarker.bindPopup('Музеят на Левски').openPopup();
+    karlovoMarker.addTo(map);
 
     // sets the zoom control to be positioned in the bottom left corner
     L.control.zoom({
@@ -118,16 +130,16 @@
 
 
     // sets a custom map of Bulgaria
-    var imageUrl = 'http://vlevskimuseum-bg.org/wp-content/uploads/2021/11/bulgaria.png',
-      imageBounds = [[45.25444353681564, 19.844982149279534], [40.16525805505217, 31.921737689954174]];
-    L.imageOverlay(imageUrl, imageBounds).addTo(map);
+    // var imageUrl = 'http://vlevskimuseum-bg.org/wp-content/uploads/2021/11/bulgaria.png',
+    //   imageBounds = [[45.25444353681564, 19.844982149279534], [40.16525805505217, 31.921737689954174]];
+    // L.imageOverlay(imageUrl, imageBounds).addTo(map);
 
     // references for the regions
     var regionsRefs = [];
 
     var oblasti = [];
 
-    regions1.forEach((val) => {
+    provincesData.forEach((val) => {
       // sets marker for the region
       var regionMarker = L.marker(val.coordinates, {
         icon: L.divIcon({
@@ -167,12 +179,12 @@
       regionMarker.bindPopup(popup);
 
       // fixes the 'autoPan' issue when a popup is opened right after the map is rendered
-      if (val.pathName === 'stara_zagora') {
-        requestAnimationFrame(() => {
-          regionMarker.openPopup();
-          regionMarker.closePopup();
-        });
-      }
+      // if (val.pathName === 'stara_zagora') {
+      //   requestAnimationFrame(() => {
+      //     regionMarker.openPopup();
+      //     regionMarker.closePopup();
+      //   });
+      // }
       regionsRefs.push([regionMarker, regionOverlay, popup, val.pathName, val.name]);
     });
 
