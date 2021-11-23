@@ -57,31 +57,38 @@
       { name: 'Видин', pathName: 'vidin', coordinates: [43.84102121845514, 22.673990333585795] }
     ]
 
+    var sofiaProvince = [
+      { name: "Бюст паметник на В. Левски", pathName: 'bust_borisova', coordinates: [42.68866145237896, 23.338298751528214] },
+      { name: "Национален военно-исторически музей", pathName: 'nvim', coordinates: [42.6886873, 23.3484573] },
+      { name: 'Паметник на Васил Левски', pathName: 'pametnik_sofia', coordinates: [42.70515374982598, 23.332964943905598] },
+      { name: "Бюст паметник на В. Левски", pathName: 'bust_vakademia', coordinates: [42.691312635156734, 23.3461269178951] },
+      { name: 'Паметна плоча пред сградата на бившия дворец', pathName: 'plocha_nhg', coordinates: [42.69623595596119, 23.327542279194095] },
+      { name: 'Драгалевски манастир', pathName: 'dragalevski_manastir', coordinates: [42.6189156, 23.3016634] },
+      { name: 'Къщата на Веле Митрев', pathName: 'vele_mitrev', coordinates: [42.7359281, 23.344142] },
+      { name: 'Паметник и плоча на мястото на Вълчовия хан', pathName: 'valchov_han', coordinates: [42.7129807, 23.4198747] },
+      { name: 'Национален исторически музей', pathname: 'nim', coordinates: [42.6549798, 23.2686879] },
+      { name: 'Ботевград', pathName: 'botevgrad', coordinates: [42.9062797, 23.7790554] },
+      { name: 'Etropole', pathname: 'etropole', coordinates: [42.8306248, 23.9729555] },
+      { name: 'с. Лопян', pathname: 'lopian', coordinates: [42.8792862, 24.0649437] },
+      { name: 'Правец', pathname: 'pravets', coordinates: [42.8911168, 23.9127302] },
+      { name: 'с.Видраре', pathname: 'vidrare', coordinates: [42.9931673, 24.0063032] },
+      { name: 'Самоков', pathname: 'samokov', coordinates: [42.3309303, 23.5394252] },
+      { name: 'с. Буново', pathname: 'bunovo', coordinates: [42.7156248, 23.9290969] },
+      { name: 'Копривщица', pathname: 'koprivshtitsa', coordinates: [42.6364111, 24.3521631] },
+      { name: 'Златица', pathname: 'zlatitsa', coordinates: [42.7152413, 24.1289132] }
+    ]
 
   </script>
   <script>
     var content = {
-      vidin: `В най-северозападната област на днешна България Васил
-    Левски не изгражда комитетска мрежа. Няма категорични данни по време на своите обиколки той да е посещавал този регион
-    с организационна мисия.
-    Васил Левски минава през Видинския край и посещава някои
-    селища, което оставя спомени в жителите им, през 1868 г. През
-    май Левски напуска Белград и заминава за Влашко. През юни се
-    завръща в Сърбия, арестуван е и прекарва известно време в затвора в Зайчар. След освобождаването му от там той се отправя
-    отново към Румъния и вероятно отново минава през Видинско.
-    В този район през 30-50-те години на XIX в. населението се
-    вдига многократно на бунтове, потушавани жестоко от османските власти, които поддържат там и агентурен
-    апарат. Вероятно това
-    дава своето отражение
-    върху жителите на селищата, а също и на преценката на В. Левски за организационната му работа
-    там лично. Признанието
-    и паметта на хората към
-    Апостола е изразено чрез
-    няколко паметни знака –
-    във Видин, Оряхово, Брегово, Кула, Белоградчик.
-    Паметникът на Апостола във Видин (Снимка  1), 1938 г., скулптор
-    Димитър Бучински, ул.
-    „Васил Левски“ № 2.`
+      sofia: `За първи път забързаните стъпки на Дякона преминават
+през Софийско в началото на март 1862 г. на път за Белград за
+постъпване в легията на Раковски. От есента на 1871 г. създава
+частни революционни комитети в София и в селата Биримирци,
+Горубляне, Герман, Враждебна, Панчарево, Слатина, Бистрица,
+Подуене, както и в почти всички селища в Ботевградско и Етрополско /една от най-гъстите и многобройни комитетски мрежи/,
+а също и на юг от Стара планина – в Златишко-Пирдопския край,
+Копривщица и др.`
     }
   </script>
   <script>
@@ -95,19 +102,19 @@
     var grayscale = L.tileLayer(mbUrl, { id: 'mapbox/light-v9', tileSize: 512, zoomOffset: -1, attribution: mbAttr }),
       streets = L.tileLayer(mbUrl, { id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mbAttr });
     var USGS_USImagery = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}', {
-      maxZoom: 20,
+      maxZoom: 13,
       attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
     });
 
     var map = L.map('map', {
       center: [42.748126776142875, 25.327709216730058],
       zoom: 6.2,
-      layers: [USGS_USImagery],
+      layers: [grayscale, USGS_USImagery],
       zoomSnap: 0.5,
       zoomDelta: 0.5,
       wheelPxPerZoomLevel: 150,
       zoomControl: false,
-      maxZoom: 7
+      maxZoom: 15
     });
 
     // sets the zoom control to be positioned in the bottom left corner
@@ -119,7 +126,7 @@
     // sets a custom map of Bulgaria
     var imageUrl = 'http://vlevskimuseum-bg.org/wp-content/uploads/2021/11/bulgaria.png',
       imageBounds = [[45.25444353681564, 19.844982149279534], [40.16525805505217, 31.921737689954174]];
-    L.imageOverlay(imageUrl, imageBounds).addTo(map);
+    var bulgariaMap = L.imageOverlay(imageUrl, imageBounds).addTo(map);
 
     // references for the regions
     var regionsRefs = [];
@@ -160,7 +167,7 @@
         </div>
       </div
       `;
-      const currContent = content[val.pathName] ? content[val.pathName] : 'Повече информация за Левски в област ' + val.name + ' ще бъде налична скоро!';
+      const currContent = content[val.pathName] ? content[val.pathName] + '<button class="province-button">Виж отблизо областта</button>' : 'Повече информация за Левски в област ' + val.name + ' ще бъде налична скоро!';
       var popup = L.popup({ maxHeight: 300, maxWidth: 200, className: 'pop-up' });
       popup.setContent(`<h1 class="popup-heading">${val.name}</h1>${currContent}`);
       regionMarker.bindPopup(popup);
@@ -181,9 +188,7 @@
       var marker = regions[0];
 
       marker.addTo(map);
-      marker.on('popupopen', function (e) {
 
-      })
       marker.on('click', function (e) {
         onClick();
         // marker.closePopup();
@@ -196,6 +201,16 @@
         };
       });
     })
+
+    map.on('popupopen', function (e) {
+      var button = document.getElementsByClassName('province-button')[0];
+      if (button) {
+        button.addEventListener('click', function (event) {
+          map.setView([42.67031977251908, 23.683776855468754], 9)
+        })
+      }
+    })
+
 
 
     function showAllRegions() {
@@ -281,11 +296,67 @@
       console.log(map.getZoom());
       // map.locate({setView: true, maxZoom: 16});
     })
-    map.on('zoomend zoomlevelschange', function (e) {
-      if (this.getZoom() === 7) {
+    map.on('zoomend zoomlevelschange', zoomHandler);
 
+    map.on('zoomstart zoomlevelschange', zoomHandler);
+
+    var sofias = [];
+
+    function zoomHandler(e) {
+      console.log(e);
+      if (map.getZoom() >= 8 && e.type === 'zoomend') {
+        map.removeLayer(bulgariaMap);
+        map.removeLayer(USGS_USImagery);
+        regionsRefs.forEach(mark => map.removeLayer(mark[0]));
+        sofiaProvince.forEach((place) => {
+          var mark = L.marker(place.coordinates, {
+            icon: L.divIcon({
+              className: `stop-divicon-cities`,
+              iconSize: [15, 15],
+              popupAnchor: [0, -3],
+              tooltipAnchor: [-2, 2],
+              iconAnchor: [11, 10]
+            })
+          });
+          // sets the region's name as tooltip which stands over the marker
+
+          const currContent = content[place.pathName] ? content[place.pathName] : 'Повече информация за Левски в област ' + place.name + ' ще бъде налична скоро!';
+          var popup = L.popup({ maxHeight: 300, maxWidth: 200, className: 'pop-up' });
+          popup.setContent(`<h1 class="popup-heading">${place.name}</h1>${currContent}`);
+          mark.bindPopup(popup);
+          mark.addTo(map);
+          sofias.push(mark);
+        })
+      } else if (map.getZoom() < 8 && e.type === 'zoomend') {
+        bulgariaMap.addTo(map);
+        USGS_USImagery.addTo(map);
+        sofias.forEach((m) => {
+          map.removeLayer(m);
+        })
+        regionsRefs.forEach((regions) => {
+          var reg = regions[1];
+          var marker = regions[0];
+
+          marker.addTo(map);
+          marker.on('popupopen', function (e) {
+
+          })
+          marker.on('click', function (e) {
+            onClick();
+            // marker.closePopup();
+            reg.addTo(map);
+            marker.closeTooltip();
+          });
+          marker.on('mouseover', function () {
+            if (marker.isPopupOpen()) {
+              marker.closeTooltip();
+            };
+          });
+        })
       }
-    });
+    }
+
+
 
   </script>
 
