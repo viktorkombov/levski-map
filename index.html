@@ -303,7 +303,6 @@
     var sofias = [];
 
     function zoomHandler(e) {
-      console.log(e);
       if (map.getZoom() >= 8 && e.type === 'zoomend') {
         map.removeLayer(bulgariaMap);
         map.removeLayer(USGS_USImagery);
@@ -332,7 +331,8 @@
         USGS_USImagery.addTo(map);
         sofias.forEach((m) => {
           map.removeLayer(m);
-        })
+        });
+        sofias = [];
         regionsRefs.forEach((regions) => {
           var reg = regions[1];
           var marker = regions[0];
