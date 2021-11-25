@@ -25,6 +25,33 @@
     class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
     tabindex="0" style="position: relative; outline: none;">
   </div>
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" id="closebtn" onclick="closeNav()">&times;</a>
+
+    <button class="accordion">Легенда</button>
+    <div class="panel">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat.</p>
+    </div>
+
+    <button class="accordion">Маршрути</button>
+    <div class="panel">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat.</p>
+    </div>
+
+    <button class="accordion">Обиколките на Левски</button>
+    <div class="panel">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat.</p>
+    </div>
+  </div>
+  <span id="openbtn"
+    style="font-size:30px;cursor:pointer;z-index: 500000; position: absolute; top: 0; right: 0; margin: 5px 10px; color: white;"
+    onclick="openNav()">&#9776;</span>
 
   <script>
     var provincesData = [
@@ -80,15 +107,37 @@
 
   </script>
   <script>
-    var content = {
-      sofia: `За първи път забързаните стъпки на Дякона преминават
-през Софийско в началото на март 1862 г. на път за Белград за
-постъпване в легията на Раковски. От есента на 1871 г. създава
-частни революционни комитети в София и в селата Биримирци,
-Горубляне, Герман, Враждебна, Панчарево, Слатина, Бистрица,
-Подуене, както и в почти всички селища в Ботевградско и Етрополско /една от най-гъстите и многобройни комитетски мрежи/,
-а също и на юг от Стара планина – в Златишко-Пирдопския край,
-Копривщица и др.`
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    }
+
+    function openNav() {
+      document.getElementById('mySidenav').style.width = '200px';
+      document.getElementById('openbtn').style.display = 'none'
+    }
+
+    function closeNav() {
+      document.getElementById('mySidenav').style.width = '0';
+      setTimeout(() => {
+        document.getElementById('openbtn').style.display = 'block'
+      }, 400);
+
+      Array.from(document.getElementsByClassName('panel')).forEach((panel) => {
+        console.log(panel)
+        panel.style.display = "none";
+      });
+
     }
   </script>
   <script>
@@ -106,10 +155,15 @@
       attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
     });
 
+    // sets a custom map of Bulgaria
+    var imageUrl = 'http://vlevskimuseum-bg.org/wp-content/uploads/2021/11/bulgaria.png',
+      imageBounds = [[45.25444353681564, 19.844982149279534], [40.16525805505217, 31.921737689954174]];
+    var bulgariaMap = L.imageOverlay(imageUrl, imageBounds);
+
     var map = L.map('map', {
       center: [42.748126776142875, 25.327709216730058],
       zoom: 6.2,
-      layers: [grayscale, USGS_USImagery],
+      layers: [grayscale, USGS_USImagery, bulgariaMap],
       zoomSnap: 0,
       zoomDelta: 0.5,
       wheelPxPerZoomLevel: 150,
@@ -123,10 +177,7 @@
     }).addTo(map);
 
 
-    // sets a custom map of Bulgaria
-    var imageUrl = 'http://vlevskimuseum-bg.org/wp-content/uploads/2021/11/bulgaria.png',
-      imageBounds = [[45.25444353681564, 19.844982149279534], [40.16525805505217, 31.921737689954174]];
-    var bulgariaMap = L.imageOverlay(imageUrl, imageBounds).addTo(map);
+
 
     // // references for the regions
     // var regionsRefs = [];
@@ -167,7 +218,7 @@
     //     </div>
     //   </div
     //   `;
-    //   const currContent = content[val.pathName] ? content[val.pathName] + '<button class="province-button">Виж отблизо областта</button>' : 'Повече информация за Левски в област ' + val.name + ' ще бъде налична скоро!';
+    //   const currContent = content[val.pathName] ? content[val.pathName] + '<button class="map-button">Виж отблизо областта</button>' : 'Повече информация за Левски в област ' + val.name + ' ще бъде налична скоро!';
     //   var popup = L.popup({ maxHeight: 300, maxWidth: 200, className: 'popup-lf' });
     //   popup.setContent(`<h1 class="popup-heading">${val.name}</h1>${currContent}`);
     //   regionMarker.bindPopup(popup);
@@ -203,8 +254,8 @@
     // })
 
     map.on('popupopen', function (e) {
-      var currButtonIndex = document.getElementsByClassName('province-button').length - 1;
-      var button = document.getElementsByClassName('province-button')[currButtonIndex];
+      var currButtonIndex = document.getElementsByClassName('map-button').length - 1;
+      var button = document.getElementsByClassName('map-button')[currButtonIndex];
       if (button) {
         button.addEventListener('click', function (event) {
           map.setView(e.popup.options.coordinates, 9)
@@ -257,9 +308,9 @@
           className: 'tooltip-' + record.type
         }
         marker.bindTooltip(record.name, tooltipOptions).openTooltip();
-        // var popupContent = record.type === 'province' ? record.content + '<button class="province-button">Виж отблизо областта</button>' : 'Повече информация за Левски в област ' + record.name + ' ще бъде налична скоро!';
+        // var popupContent = record.type === 'province' ? record.content + '<button class="map-button">Виж отблизо областта</button>' : 'Повече информация за Левски в област ' + record.name + ' ще бъде налична скоро!';
 
-        var popupContent = record.type === 'province' ? record.content: 'Повече информация за Левски в област ' + record.name + ' ще бъде налична скоро!';
+        var popupContent = record.type === 'province' ? '<p>' + record.content + '</p>' + '<button class="map-button">Виж отблизо областта</button>' : 'Повече информация за Левски в област ' + record.name + ' ще бъде налична скоро!';
         var popup = L.popup({ maxHeight: 300, maxWidth: 200, className: 'popup-lf', coordinates: record.coordinates });
         popup.setContent(`<h1 class="popup-heading">${record.name}</h1>${popupContent}`);
         marker.bindPopup(popup);

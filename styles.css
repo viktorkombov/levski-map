@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+.leaflet-popup-content p {
+    font-size: 12.5px;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
 /* width */
 .leaflet-popup-scrolled::-webkit-scrollbar {
     width: 10px;
@@ -177,6 +187,103 @@ body {
 .popup-lf {
 }
 
+/* side-nav */
+
+
+.sidenav {
+    overflow: auto;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    background-color: rgb(255, 255, 255);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    box-shadow: 0 0 10px black;
+  }
+  
+  .sidenav a, .sidenav button {
+    /* padding: 8px 8px 8px 32px; */
+    text-decoration: none;
+    /* font-size: 25px; */
+    color: #000000;
+    display: block;
+    transition: 0.3s;
+    white-space: nowrap;
+  }
+  
+  .sidenav a:hover {
+    color: #616060;
+  }
+  
+  .sidenav #closebtn {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 36px;
+    margin-left: 50px;
+    padding-top: 4px;
+    padding-right: 4px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+  /* accordion */
+  .accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+  }
+  
+  .active, .accordion:hover {
+    background-color: #ccc; 
+  }
+  
+  .panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+    overflow: hidden;
+    transition: 0.6s;
+  
+  }
+
+.map-button {
+    margin: 10px 0;
+    display: block;
+    padding: 8px 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+
+    color: white;
+    border: none;
+    background-color: #0b4c35dc;
+    box-shadow: 0 0 1px black;
+    transition: all .1s;
+}
+
+.map-button:hover {
+    background-color: #0b4c35c9;
+    cursor: pointer;
+    box-shadow: 0 0 2px black;
+}
+
 .popup-heading {
     margin: 5px 0;
     line-height: 23px;
@@ -218,6 +325,5 @@ p.popup-content {
     background-color: #555;
     visibility: visible;
     opacity: 0.2;
-    transition: opacity .5s linear;
+    transition: opacity 0.5s linear;
 }
-
