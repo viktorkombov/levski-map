@@ -28,33 +28,33 @@
 
   <script>
     var provincesData = [
-      { name: 'Кюстендил', pathName: 'kustendil', coordinates: [42.21224516288584, 22.939453125] },
-      { name: 'София', pathName: 'sofia', coordinates: [42.70665956351041, 23.620605468750004] },
-      { name: 'Перник', pathName: 'pernik', coordinates: [42.593532625649935, 22.884521484375004] },
-      { name: 'Благоевград', pathName: 'blagoevgrad', coordinates: [41.705728515237524, 23.433837890625] },
-      { name: 'Пазарджик', pathName: 'pazardzhik', coordinates: [42.13082130188811, 24.180908203125] },
-      { name: 'Пловдив', pathName: 'plovdiv', coordinates: [42.29781144879032, 24.80679670630957] },
-      { name: 'Смолян', pathName: 'smolian', coordinates: [41.575555594338894, 24.701848983240783] },
-      { name: 'Кърджали', pathName: 'kardzhali', coordinates: [41.429282970993015, 25.52410826664268] },
-      { name: 'Хасково', pathName: 'haskovo', coordinates: [41.89409955811395, 25.949707031250004] },
-      { name: 'Сливен', pathName: 'sliven', coordinates: [42.68243539838623, 26.19140625] },
-      { name: 'Ямбол', pathName: 'yambol', coordinates: [42.30169032824452, 26.652832031250004] },
-      { name: 'Бургас', pathName: 'burgas', coordinates: [42.553080288955826, 27.202148437500004] },
-      { name: 'Варна', pathName: 'varna', coordinates: [43.14909399920127, 27.608642578125004] },
-      { name: 'Добрич', pathName: 'dobrich', coordinates: [43.620170616189924, 27.905273437500004] },
-      { name: 'Силистра', pathName: 'silistra', coordinates: [43.866218006556394, 27.070312500000004] },
-      { name: 'Стара Загора', pathName: 'stara_zagora', coordinates: [42.459130214547905, 25.516846105456356] },
-      { name: 'Шумен', pathName: 'shumen', coordinates: [43.32166431135426, 26.996988003860004] },
-      { name: 'Разград', pathName: 'razgrad', coordinates: [43.564588401321025, 26.623985992486816] },
-      { name: 'Търговище', pathName: 'targovishte', coordinates: [43.15710884095329, 26.3232421875] },
-      { name: 'Русе', pathName: 'ruse', coordinates: [43.67531448230814, 26.040572590082522] },
-      { name: 'Велико Търново', pathName: 'veliko_tarnovo', coordinates: [43.27296245194755, 25.667570578709327] },
-      { name: 'Габрово', pathName: 'gabrovo', coordinates: [42.90816007196054, 25.2685546875] },
-      { name: 'Плевен', pathName: 'pleven', coordinates: [43.43977784402131, 24.77810424389625] },
-      { name: 'Ловеч', pathName: 'lovech', coordinates: [42.986925558300115, 24.548564544589667] },
-      { name: 'Враца', pathName: 'vratsa', coordinates: [43.32166431135426, 23.764303905292145] },
-      { name: 'Монтана', pathName: 'montana', coordinates: [43.50221537592194, 23.22871127357673] },
-      { name: 'Видин', pathName: 'vidin', coordinates: [43.84102121845514, 22.673990333585795] }
+      { name: 'Кюстендил', pathName: 'kustendil', coordinates: [42.21224516288584, 22.939453125], type: 'province', content: 'Само в спомени, предания и народни песни съществуват раз- кази за пребиваване на Левски в областта – спомени на Гаврил Попсимеонов от с. Вирче, песен за Апостола в с. Брестово – об- щина Симитли. Според спомени- те за Апостола на Гаврил Попси- меонов самият той го съпровожда при идването му в Кюстендил през 1872 г. и в манастира „Св. Йоаким Осоговски“. Доказано е, че в този край мисия за изграждане на комитет- ска мрежа осъществява според даденото му от Левски пълно- мощно учителят от Етрополе Тодор Пеев.' },
+      { name: 'София', pathName: 'sofia', coordinates: [42.70665956351041, 23.620605468750004], type: 'province', content: 'За първи път забързаните стъпки на Дякона преминават през Софийско в началото на март 1862 г. на път за Белград за постъпване в легията на Раковски. От есента на 1871 г. създава частни революционни комитети в София и в селата Биримирци, Горубляне, Герман, Враждебна, Панчарево, Слатина, Бистрица, Подуене, както и в почти всички селища в Ботевградско и Етро- полско /една от най-гъстите и многобройни комитетски мрежи/, а също и на юг от Стара планина – в Златишко-Пирдопския край, Копривщица и др.' },
+      { name: 'Перник', pathName: 'pernik', coordinates: [42.593532625649935, 22.884521484375004], type: 'province', content: 'Няма сигурни данни Вътреш ната революционна организация, изградена от Апостола на свободата, да има дейност в този най-западен край на днешна България. Определени са Тодор Пеев и поп Георги Тутмаников да работят по тези места. Населението отдава своя поклон чрез издигането на паметници в Перник и Радомир.' },
+      { name: 'Благоевград', pathName: 'blagoevgrad', coordinates: [41.705728515237524, 23.433837890625], type: 'province', content: 'Левски се стреми да разпростре революционната организация по всички български земи. В писмо до Райчо Попхристов в Плоещ от 20.06.1871 г. Левски подчертава, че изграждането на революционни комитети „...наредено е да се извърши и там в Мехомия“. Хр. Г. Данов му препоръчва Михаил Костенцев и ги запознава. Апостола му предава 12 прокламации за Кюстендил, Крива Паланка, Щип, Струмица, Сер, Мелник, Тиквещ, Прилеп, Охрид и Струма. Според спомени на местни дейци Апостола е посещавал и селищата по р. Струма – Горна Джумая (дн. Благоевград), Дуп- ница, с. Рила, с. Белица, с. Покровник, Рилския манастир, Елеш- нишкият манастир (сега с. Йорданкино).' },
+      { name: 'Пазарджик', pathName: 'pazardzhik', coordinates: [42.13082130188811, 24.180908203125], type: 'province', content: 'Васил Левски отрежда достойно място в изгражданата от него революционна организация на Пазарджишкия край. Той е важен стратегически център на комитетите на юг от Балкана. Пазарджик е вторият окръжен център във Вътрешната револю- ционна организация.' },
+      { name: 'Пловдив', pathName: 'plovdiv', coordinates: [42.29781144879032, 24.80679670630957], type: 'province', content: 'Разположена в сърцето на българските земи, областта зае- ма важно място в изградената от Васил Левски комитетска мре- жа. Тук, в своя роден край, той знае най-добре на кого може да довери опасното дело, да бъде препоръчан и да му бъдат препоръчани надеждни хора. Конспиративният характер на дейността му не позволява да остави навсякъде веществени следи за нея. Село Маджере (сега Бегунци), споменато в личния бележник на Апостола, както и съседното село Богаза (сега Про- лом), са изпепелени до основи по време на „Страшното“ – от юли до декември 1877 г. в Карловско безчинства редовна турска войска и башибозук. Споменът за посещенията на Апостола в тези села е запазила само народната памет. Тя свидетелства и за присъствието му в Асеновград и манастира „Света Петка“ (Мулдавска), както и на други места.' },
+      { name: 'Смолян', pathName: 'smolian', coordinates: [41.575555594338894, 24.701848983240783], type: 'province', content: 'Няма документални свиде- телства Апостола да е стигнал в организационните си оби- колки до днешната Смолянска област. Само в спомени се раз- казва, че към 1870 г. Стойо Бо- ботанов приема Левски в дома си в Райково или за посещения в други родопски села.' },
+      { name: 'Кърджали', pathName: 'kardzhali', coordinates: [41.429282970993015, 25.52410826664268], type: 'province', content: 'И в тази област, въпреки че Апостола не е посещавал места в нея, жителите ѝ про- явяват отношението си към Апостола на свободата с изграждане на паметници и паметни знаци. Училища, чи- талища и други организации носят неговото име.' },
+      { name: 'Хасково', pathName: 'haskovo', coordinates: [41.89409955811395, 25.949707031250004], type: 'province', content: 'Няколко пъти Апостола посещава Хасковския край. На път за Цариград около 10 август 1871 г., в края на октомври – на- чалото на ноември 1872 г. Комитети са изградени и в немалко селища в този край – Свиленград, Ябълково, Странско, Горски извор и др. Въпреки риска, Апостола посещава и Узунджово за закупуване на оръжие от големия панаир там.' },
+      { name: 'Сливен', pathName: 'sliven', coordinates: [42.68243539838623, 26.19140625], type: 'province', content: 'Като знаменосец на четата на Панайот Хитов през 1867 г. Васил Левски преминава през Сливенския дял на Стара плани- на. Пътят му минава по тези места в началото и през лятото на 1869 г., през есента на 1871 г. Създадени са комитети в Сли- вен, Нова Загора, Любенова махала, Дядово, Богданово, Радево, Млекарево, Сокол, Любенец, Пет могили. На 9 ноември 1872 г. Апостола обявява писмено Сливенския комитет за окръжен център. Йордан Стоянов от Котел – син на сестрата на Г. Раков- ски – Неша, получава пълномощно от Апостола да отговаря за районите на Котленско, Ескиджумайско (дн. Търговишко), Ос- манпазарско (дн. Омуртагско), Провадийско, Хаджиолупазар- джишко (дн. Добричко), до Тулчанско.' },
+      { name: 'Ямбол', pathName: 'yambol', coordinates: [42.30169032824452, 26.652832031250004], type: 'province', content: 'Няма данни за рево- люционна дейност на Ва- сил Левски в района. Не е изключено пътят му да е минавал през някои сели- ща в Ямболско при пътува- нията си през Тракия.' },
+      { name: 'Бургас', pathName: 'burgas', coordinates: [42.553080288955826, 27.202148437500004], type: 'province', content: 'Надеждни писмени източници липсват, но народната памет е съхранила свидетелства за преминаванията на Апостола през Бургаско и Странджа в периода 1868 – 1872 г. Според тях Левски е доведен от с. Звездец в с. Бръшлян от Желю Недков и Никола Сармуков. Среща се с поп Петър Киприлов и нощува в чорбаджи Петко. На другия ден с Киприлов се отправят за с. Чеглаик и Ло- зенград, където и сега се разказват предания за тях. Mрез есента на 1872 г. Апостола минава през Сливен, Котел, Карнобат.' },
+      { name: 'Варна', pathName: 'varna', coordinates: [43.14909399920127, 27.608642578125004], type: 'province', content: 'Няма запазени автентични документи за дейност на Васил Левски във Варненско. Смята се, че по време на двете си оби- колки от Търну Мъгуреле през Русе към Цариград Левски ми- нава и през Варна, от където се качва на кораб за османската столица. До основаване на революционни комитети в региона не се стига. Много е вероятно Левски да е минал през Варненско и по пътя си към селата Конгас и Еникьой, където учителства за крат- ко, след като напуска с. Войнягово през 1866 г.' },
+      { name: 'Добрич', pathName: 'dobrich', coordinates: [43.620170616189924, 27.905273437500004], type: 'province', content: 'Няма данни за създава- нето на комитетска мрежа от Левски в Добричка об- ласт. Не е изключено все пак Апостола да е минавал от там след като напуска с. Войнягово и продължава своята учителска дейност в българските села Конгас и Еникьой в Северна Добру- джа. Въпреки това, доку- менти за срещи с дейци от този район не са установе- ни.' },
+      { name: 'Силистра', pathName: 'silistra', coordinates: [43.866218006556394, 27.070312500000004], type: 'province', content: 'Известно е, че четата на Панайот Хитов минава през Силистренския ра- йон. Точното място, къде- то тя стъпва на българския бряг не е изяснено, но се смята, че това става из- точно от Тутракан около с. Пожарево.' },
+      { name: 'Стара Загора', pathName: 'stara_zagora', coordinates: [42.459130214547905, 25.516846105456356], type: 'province', content: 'Апостола познава добре Старозагорския край още от пре- биваването си в града и обиколките в близките селища през 1855 – 1858 г. На 6 ноември 1872 г. той провъзгласява местния ЧРК за окръжен, към който спадат Чирпан, Нова Загора, Казан- лък и околните им села. В края на януари 1873 г. съратници от Чирпан, Стара Загора и други южнобългарски комитети замис- лят план за освобождаването на В. Левски, като организират чета, която да спре влака към Цариград.' },
+      { name: 'Шумен', pathName: 'shumen', coordinates: [43.32166431135426, 26.996988003860004], type: 'province', content: 'Апостола е минал през Шуменския регион по време на своите пътувания с влак по линията Русе-Варна на път за Цариград, за да осъществи двете си обиколки. До основаване на комитети тук не се стига. Това може да се обясни с наличието на голям брой турски войски и укрепления, но е факт, че през 1873-1875 г., след установяването на Панайот Волов в града, Шумен- ският комитет е един от най-активните в ця- лата страна.' },
+      { name: 'Разград', pathName: 'razgrad', coordinates: [43.564588401321025, 26.623985992486816], type: 'province', content: 'Известно е, че четата на Панайот Хитов, в която Васил Лев- ски е знаменосец, минава през разградските села Побит Камък и Благоево. Няма документални данни във времето на апостол- ската си дейност Левски да е посещавал Разградския регион, но сред местните жители се разказва за негови посещения. В този край с пълномощно от Апостола работи Ангел Кънчев. Той трябва да организира и състави частни комитети.' },
+      { name: 'Търговище', pathName: 'targovishte', coordinates: [43.15710884095329, 26.3232421875], type: 'province', content: 'Посещението на Левски в района на Търговище датира от времето, когато той е знаменосец на войводата Панайот Хитов. Вероятно четата минава източно от град Попово по пътя си към Балкана като маршрутът ѝ продължава към с. Пролаз и на юг между Омуртаг и с. Камбурово към селата Горско село и Зелена морава. От там четата се отправя към Котлен- ския балкан. Други данни за активна комитетска дейност в района не са установени.' },
+      { name: 'Русе', pathName: 'ruse', coordinates: [43.67531448230814, 26.040572590082522], type: 'province', content: 'Комитетската мрежа в района не е силно развита, но през Русе е един от сигурните пътища за преминаване от Влашко към българските земи. От тук минава и каналът за кореспонденция и връзка на Левски и Вътрешната организация с БРЦК и емиграци- ята Букурещ – Гюргево – Русе – Търново.' },
+      { name: 'Велико Търново', pathName: 'veliko_tarnovo', coordinates: [43.27296245194755, 25.667570578709327], type: 'province', content: 'Първите контакти на Апостола със старата столица вероят- но датират още от Първата му обиколка по българските земи, но основите на комитетската организация се полагат по-късно. От 1871 г. като главен се налага тайният пощенски канал на Вътреш- ната организация Гюргево – Русе – Горна Оряховица – Търново към Южна България. Тръгвайки по стъпките на Левски в Търновския край се оф- ормят впечатляващи „маршрути на паметта“. В редица случаи историята и митологията се преплитат. Създадените духовни и културни пространства в отделните селища като музеи, памет- ници, манастирски обители и др., пазят жива паметта за делото Апостола.' },
+      { name: 'Габрово', pathName: 'gabrovo', coordinates: [42.90816007196054, 25.2685546875], type: 'province', content: 'През 1870 г., изпълняващ своята апостолска мисия, заедно с Матей Преображенски, Левски минава през Габровския регион. По-късно през 1871 г. той отново посещава Габровско заедно с помощниците си Ангел Кънчев и Димитър Общи. Апостола намира верни съмишленици в много от селищата в Габровския край, в някои от които създава комитети.' },
+      { name: 'Плевен', pathName: 'pleven', coordinates: [43.43977784402131, 24.77810424389625], type: 'province', content: 'За първи път Апостола минава през Плевенския регион на връщане от първата си обиколка в началото на 1869 г. по пътя от Ловеч към Никопол. От там е неговият маршрут Турну Мъгуреле – Никопол – Ловеч – Троян към Южна България и обратно и той многократно посещава този край. През 1871 г. Левски обикаля Плевенско заедно със своя верен помощник Ангел Кънчев. Известно е, че в края на 1871 г. Апостола е в Червен бряг и Телиш, като след това остава за една седмица в Плевен.' },
+      { name: 'Ловеч', pathName: 'lovech', coordinates: [42.986925558300115, 24.548564544589667], type: 'province', content: 'Ловешкият край е един от районите най-плътно покрити с местни комитетски структури. Вероятно Апостола посеща- ва Ловеч още по време на Първата си обиколка в началото на 1869 г. През целия период на организационната си работа Левски често минава през Ловешкия регион. От там преминава и един от неговите тайни маршрути, идвайки от Никопол и Плевен, към Троян и от там към Южна България. От Ловеч е и неговата от- правна точка на изток към Търновско, а също и към селищата в Предбалкана – Голям Извор, Гложене и Тетевен, както и към Ботевградския район. Много от местата, свързани с дейността на Левски в Ловеш- ка област, са запазени и до наши дни или са възстановени.' },
+      { name: 'Враца', pathName: 'vratsa', coordinates: [43.32166431135426, 23.764303905292145], type: 'province', content: 'В тази област Васил Левски посещава Оряхово, Враца, Мез- дра и някои околни села. За част от посещенията му и основава- нето на революционни комитети в отделни селища информация дават само късни спомени на местни дейци. Обичайният път за Влашко е през Плевен – Никопол – Търну Мъгуреле, но поради съображения за сигурност, той и неговият спътник Марин п. Лу- канов, тръгвайки за Общото събрание в Букурещ през 1872 г., решават да преминат Дунава при Оряхово. За това пише Левски в тефтерчето си с дата 6 април.' },
+      { name: 'Монтана', pathName: 'montana', coordinates: [43.50221537592194, 23.22871127357673], type: 'province', content: 'Селищата от Монтанския край остават встрани от обикол- ките на Васил Левски и пътищата, познали стъпките му. Оскъдни са сведенията за дейността на Апостола в този район. С нея е свързан гр. Лом. В спомени на негови съвременници се разказва и за посещение на Левски в Берковица, но не са запазени доку- ментални свидетелства. Със сигурност се знае, че Левски минава през Берковския балкан през 1867 г. с четата на Панайот Хитов.' },
+      { name: 'Видин', pathName: 'vidin', coordinates: [43.84102121845514, 22.673990333585795], type: 'province', content: 'В най-северозападната област на днешна България Васил Левски не изгражда комитетска мрежа. Няма категорични данни по време на своите обиколки той да е посещавал този регион с организационна мисия. Васил Левски минава през Видинския край и посещава някои селища, което оставя спомени в жителите им, през 1868 г. През май Левски напуска Белград и заминава за Влашко. През юни се завръща в Сърбия, арестуван е и прекарва известно време в затвора в Зайчар. След освобождаването му от там той се отправя отново към Румъния и вероятно отново минава през Видинско. В този район през 30-50-те години на XIX в. населението се вдига многократно на бунтове, потушавани жестоко от османските власти, които поддържат там и агентурен апарат. Вероятно това дава своето отражение върху жителите на селищата, а също и на преценката на В. Левски за организационната му работа там лично. Признанието и паметта на хората към Апостола е изразено чрез няколко паметни знака – във Видин, Оряхово, Брегово, Кула, Белоградчик.' }
     ]
 
     var sofiaProvince = [
@@ -110,7 +110,7 @@
       center: [42.748126776142875, 25.327709216730058],
       zoom: 6.2,
       layers: [grayscale, USGS_USImagery],
-      zoomSnap: 0.5,
+      zoomSnap: 0,
       zoomDelta: 0.5,
       wheelPxPerZoomLevel: 150,
       zoomControl: false,
@@ -128,177 +128,165 @@
       imageBounds = [[45.25444353681564, 19.844982149279534], [40.16525805505217, 31.921737689954174]];
     var bulgariaMap = L.imageOverlay(imageUrl, imageBounds).addTo(map);
 
-    // references for the regions
-    var regionsRefs = [];
+    // // references for the regions
+    // var regionsRefs = [];
 
-    var oblasti = [];
+    // var oblasti = [];
 
-    provincesData.forEach((val) => {
-      // sets marker for the region
-      var regionMarker = L.marker(val.coordinates, {
-        icon: L.divIcon({
-          className: `stop-divicon`,
-          iconSize: [15, 15],
-          popupAnchor: [0, -3],
-          tooltipAnchor: [-2, 2],
-          iconAnchor: [11, 10]
-        })
-      });
+    // provincesData.forEach((val) => {
+    //   // sets marker for the region
+    //   var regionMarker = L.marker(val.coordinates, {
+    //     icon: L.divIcon({
+    //       className: `location-divicon`,
+    //       iconSize: [15, 15],
+    //       popupAnchor: [0, -3],
+    //       tooltipAnchor: [-2, 2],
+    //       iconAnchor: [11, 10]
+    //     })
+    //   });
 
-      // sets overlay for highlighting the region when its marker is clicked
-      var path = 'http://vlevskimuseum-bg.org/wp-content/uploads/2021/11/' + val.pathName + '.png',
-        image = [[45.25444353681564, 19.844982149279534], [40.16525805505217, 31.921737689954174]],
-        options = { interactive: true, opacity: 0.2, className: 'region' }
-      var regionOverlay = L.imageOverlay(path, image, options);
+    //   // sets overlay for highlighting the region when its marker is clicked
+    //   var path = 'http://vlevskimuseum-bg.org/wp-content/uploads/2021/11/' + val.pathName + '.png',
+    //     image = [[45.25444353681564, 19.844982149279534], [40.16525805505217, 31.921737689954174]],
+    //     options = { interactive: true, opacity: 0.2, className: 'region' }
+    //   var regionOverlay = L.imageOverlay(path, image, options);
 
-      // sets the region's name as tooltip which stands over the marker
-      var TooltipClass = {
-        offset: [0, 0],
-        permanent: true,
-        direction: 'top',
-        className: 'tooltip'
-      }
-      regionMarker.bindTooltip(val.name, TooltipClass).openTooltip();
+    //   // sets the region's name as tooltip which stands over the marker
+    //   var TooltipClass = {
+    //     offset: [0, 0],
+    //     permanent: true,
+    //     direction: 'top',
+    //     className: 'tooltip'
+    //   }
+    //   regionMarker.bindTooltip(val.name, TooltipClass).openTooltip();
 
-      // sets a popup which is occured when the marker is clicked and gives information about the region
-      const popupCircleProgress = `
-      <div class="progress-indicator-wrapper">
-        <div>
-        </div>
-      </div
-      `;
-      const currContent = content[val.pathName] ? content[val.pathName] + '<button class="province-button">Виж отблизо областта</button>' : 'Повече информация за Левски в област ' + val.name + ' ще бъде налична скоро!';
-      var popup = L.popup({ maxHeight: 300, maxWidth: 200, className: 'pop-up' });
-      popup.setContent(`<h1 class="popup-heading">${val.name}</h1>${currContent}`);
-      regionMarker.bindPopup(popup);
+    //   // sets a popup which is occured when the marker is clicked and gives information about the region
+    //   const popupCircleProgress = `
+    //   <div class="progress-indicator-wrapper">
+    //     <div>
+    //     </div>
+    //   </div
+    //   `;
+    //   const currContent = content[val.pathName] ? content[val.pathName] + '<button class="province-button">Виж отблизо областта</button>' : 'Повече информация за Левски в област ' + val.name + ' ще бъде налична скоро!';
+    //   var popup = L.popup({ maxHeight: 300, maxWidth: 200, className: 'popup-lf' });
+    //   popup.setContent(`<h1 class="popup-heading">${val.name}</h1>${currContent}`);
+    //   regionMarker.bindPopup(popup);
 
-      // fixes the 'autoPan' issue when a popup is opened right after the map is rendered
-      if (val.pathName === 'stara_zagora') {
-        requestAnimationFrame(() => {
-          regionMarker.openPopup();
-          regionMarker.closePopup();
-        });
-      }
-      regionsRefs.push([regionMarker, regionOverlay, popup, val.pathName, val.name]);
-    });
-
-
-    regionsRefs.forEach((regions) => {
-      var reg = regions[1];
-      var marker = regions[0];
-
-      marker.addTo(map);
-
-      marker.on('click', function (e) {
-        onClick();
-        // marker.closePopup();
-        reg.addTo(map);
-        marker.closeTooltip();
-      });
-      marker.on('mouseover', function () {
-        if (marker.isPopupOpen()) {
-          marker.closeTooltip();
-        };
-      });
-    })
-
-    map.on('popupopen', function (e) {
-      var button = document.getElementsByClassName('province-button')[0];
-      if (button) {
-        button.addEventListener('click', function (event) {
-          map.setView([42.67031977251908, 23.683776855468754], 9)
-        })
-      }
-    })
-
-
-
-    function showAllRegions() {
-
-    }
-
-    // albMaker.on('mouseout', function () {
-    //   map.removeLayer(regionAlb);
-    // })
-    // regionsRefs.forEach(reg => {
-    //   map.addLayer(reg);
+    //   // fixes the 'autoPan' issue when a popup is opened right after the map is rendered
+    //   if (val.pathName === 'stara_zagora') {
+    //     requestAnimationFrame(() => {
+    //       regionMarker.openPopup();
+    //       regionMarker.closePopup();
+    //     });
+    //   }
+    //   regionsRefs.push([regionMarker, regionOverlay, popup, val.pathName, val.name]);
     // });
 
-    // setTimeout(() => {
-    //   regionsRefs.forEach(reg => {
-    //       map.removeLayer(reg);
+
+    // regionsRefs.forEach((regions) => {
+    //   var reg = regions[1];
+    //   var marker = regions[0];
+
+    //   marker.addTo(map);
+
+    //   marker.on('click', function (e) {
+    //     onClick();
+    //     // marker.closePopup();
+    //     reg.addTo(map);
+    //     marker.closeTooltip();
+    //   });
+    //   marker.on('mouseover', function () {
+    //     if (marker.isPopupOpen()) {
+    //       marker.closeTooltip();
+    //     };
+    //   });
     // })
-    // }, 200);
+
+    map.on('popupopen', function (e) {
+      var currButtonIndex = document.getElementsByClassName('province-button').length - 1;
+      var button = document.getElementsByClassName('province-button')[currButtonIndex];
+      if (button) {
+        button.addEventListener('click', function (event) {
+          map.setView(e.popup.options.coordinates, 9)
+        })
+      }
+    })
+
+    L.marker([42.748126776142875, 25.327709216730057]).addTo(map);
+
+    var provincesMarkers = generateMarkers(provincesData);
+    L.layerGroup(provincesMarkers).addTo(map);
+    addHandlersToMarkers(provincesMarkers);
 
 
-    function onClick() {
-      regionsRefs.forEach(reg => {
-        map.removeLayer(reg[1]);
-        reg[0].openTooltip();
-      })
+    function addHandlersToMarkers(markers) {
+      markers.forEach((marker) => {
+        marker.on('click', function (e) {
+          marker.closeTooltip();
+        });
+        marker.on('mouseover', function () {
+          if (marker.isPopupOpen()) {
+            marker.closeTooltip();
+          };
+        });
+        marker.on('popupclose', function () {
+          marker.openTooltip();
+        });
+      });
     }
 
-    // sofia.addTo(map);
+    function generateMarkers(dataRecords, tooltipPermanent = true) {
+      var result = [];
 
-    // for (let i = 0; i < regions.length; i++) {
-    //   var regionName = regions[i][0];
-    //   var regionPolygonGeoJson = regions[i][1];
+      for (var i = 0; i < dataRecords.length; i++) {
+        var record = dataRecords[i];
 
-    //   var path = './images/' + regionName + '.png';
-    //   var image = [[45.25444353681564, 19.844982149279534], [40.16525805505217, 31.921737689954174]];
-    //   var options = { interactive: true, opacity: 0.3 };
-    //   var region = L.imageOverlay(path, image, options);
-    //   console.log(region)
+        var marker = L.marker(record.coordinates, {
+          icon: L.divIcon({
+            className: 'location-divicon-' + record.type,
+            iconSize: [15, 15],
+            popupAnchor: [0, -3],
+            tooltipAnchor: [-2, 2],
+            iconAnchor: [11, 10]
+          })
+        });
 
-    //   var regionPolygon = L.geoJson(regionPolygonGeoJson, {
-    //     style: function () {
-    //       return { color: '#00000000' };
-    //     }
-    //   });
+        var tooltipOptions = {
+          offset: [0, 0],
+          permanent: tooltipPermanent,
+          direction: 'top',
+          className: 'tooltip-' + record.type
+        }
+        marker.bindTooltip(record.name, tooltipOptions).openTooltip();
+        // var popupContent = record.type === 'province' ? record.content + '<button class="province-button">Виж отблизо областта</button>' : 'Повече информация за Левски в област ' + record.name + ' ще бъде налична скоро!';
 
-    //   regionsRefs.push([region, regionPolygon]);
+        var popupContent = record.type === 'province' ? record.content: 'Повече информация за Левски в област ' + record.name + ' ще бъде налична скоро!';
+        var popup = L.popup({ maxHeight: 300, maxWidth: 200, className: 'popup-lf', coordinates: record.coordinates });
+        popup.setContent(`<h1 class="popup-heading">${record.name}</h1>${popupContent}`);
+        marker.bindPopup(popup);
+
+        result.push(marker);
+      }
+
+      return result;
+    }
+
+
+    // function onClick() {
+    //   regionsRefs.forEach(reg => {
+    //     map.removeLayer(reg[1]);
+    //     reg[0].openTooltip();
+    //   })
     // }
-
-    // for (let i = 0; i < regionsRefs.length; i++) {
-    //   regionsRefs[i][0].addTo(map);
-    //   regionsRefs[i][0].bringToBack();
-
-    //   regionsRefs[i][1].addTo(map);
-    //   regionsRefs[i][1].bindPopup('Hi There!');
-
-    //   regionsRefs[i][1].on('mouseover', function () {
-    //     regionsRefs[i][0].bringToFront();
-    //   });
-    //   regionsRefs[i][1].on('mouseout', function () {
-    //     regionsRefs[i][0].bringToBack();
-    //   });
-    // }
-
-    //   function onLocationFound(e) {
-    // 	var radius = e.accuracy / 2;
-
-    // 	L.marker(e.latlng).addTo(map)
-    // 		.bindPopup("You are within " + radius + " meters from this point").openPopup();
-
-    // 	L.circle(e.latlng, radius).addTo(map);
-    // }
-
-    // function onLocationError(e) {
-    // 	alert(e.message);
-    // }
-
-    // map.on('locationfound', onLocationFound);
-    // map.on('locationerror', onLocationError);
 
     map.on('click', function (e) {
-      onClick();
       console.log(`[${e.latlng.lat}, ${e.latlng.lng}]`);
       console.log(map.getZoom());
       // map.locate({setView: true, maxZoom: 16});
     })
-    map.on('zoomend zoomlevelschange', zoomHandler);
+    // map.on('zoomend zoomlevelschange', zoomHandler);
 
-    map.on('zoomstart zoomlevelschange', zoomHandler);
+    // map.on('zoomstart zoomlevelschange', zoomHandler);
 
     var sofias = [];
 
@@ -310,7 +298,7 @@
         sofiaProvince.forEach((place) => {
           var mark = L.marker(place.coordinates, {
             icon: L.divIcon({
-              className: `stop-divicon-cities`,
+              className: `location-divicon-cities`,
               iconSize: [15, 15],
               popupAnchor: [0, -3],
               tooltipAnchor: [-2, 2],
@@ -320,7 +308,7 @@
           // sets the region's name as tooltip which stands over the marker
 
           const currContent = content[place.pathName] ? content[place.pathName] : 'Повече информация за Левски в област ' + place.name + ' ще бъде налична скоро!';
-          var popup = L.popup({ maxHeight: 300, maxWidth: 200, className: 'pop-up' });
+          var popup = L.popup({ maxHeight: 300, maxWidth: 200, className: 'popup-lf' });
           popup.setContent(`<h1 class="popup-heading">${place.name}</h1>${currContent}`);
           mark.bindPopup(popup);
           mark.addTo(map);

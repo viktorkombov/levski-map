@@ -65,7 +65,7 @@ body {
     }
 }
 
-.stop-divicon-cities {
+.location-divicon-cities {
     background: rgba(89, 0, 255, 0.4);
     border: 3.2px solid rgb(4, 0, 255);
     color: blue;
@@ -75,13 +75,13 @@ body {
     line-height: 30px;
 }
 
-.stop-divicon-cities:hover {
+.location-divicon-cities:hover {
     border: 3.2px solid rgb(51, 60, 180);
     background: rgb(99, 26, 182);
     opacity: 1;
 }
 
-.stop-divicon {
+.location-divicon {
     background: rgba(255, 0, 0, 0.4);
     border: 3.2px solid rgb(255, 0, 0);
     color: blue;
@@ -91,7 +91,23 @@ body {
     line-height: 30px;
 }
 
-.stop-divicon:hover {
+.location-divicon:hover {
+    border: 3.2px solid rgb(180, 51, 51);
+    background: chocolate;
+    opacity: 1;
+}
+
+.location-divicon-province {
+    background: rgba(255, 0, 0, 0.4);
+    border: 3.2px solid rgb(255, 0, 0);
+    color: blue;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 30px;
+}
+
+.location-divicon-province:hover {
     border: 3.2px solid rgb(180, 51, 51);
     background: chocolate;
     opacity: 1;
@@ -110,6 +126,22 @@ body {
 }
 
 .tooltip::before {
+    display: none;
+}
+
+.tooltip-province {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    color: white;
+    font-size: 16px;
+    /* font-weight: 900; */
+    -webkit-text-stroke: 0.1px black;
+    text-align: center;
+    /* text-shadow: 0px 0px 10px rgba(255, 255, 255, 0,5); */
+}
+
+.tooltip-province::before {
     display: none;
 }
 
@@ -142,7 +174,7 @@ body {
     cursor: default;
 }
 
-.pop-up {
+.popup-lf {
 }
 
 .popup-heading {
@@ -173,7 +205,7 @@ p.popup-content {
     } */
 
 /* @media screen and (max-width: 600px) {
-      .pop-up {
+      .popup-lf {
         max-width: 300px;
         max-height: 200px !important;
       }
