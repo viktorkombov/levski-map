@@ -25,7 +25,7 @@
     class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
     tabindex="0" style="position: relative; outline: none;">
   </div>
-  <div id="mySidenav" class="sidenav">
+  <!-- <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" id="closebtn" onclick="closeNav()">&times;</a>
 
     <button class="accordion">Легенда</button>
@@ -51,7 +51,7 @@
   </div>
   <span id="openbtn"
     style="font-size:30px;cursor:pointer;z-index: 500000; position: absolute; top: 0; right: 0; margin: 5px 10px; color: white;"
-    onclick="openNav()">&#9776;</span>
+    onclick="openNav()">&#9776;</span> -->
 
   <script>
     var provincesData = [
@@ -308,9 +308,9 @@
           className: 'tooltip-' + record.type
         }
         marker.bindTooltip(record.name, tooltipOptions).openTooltip();
-        // var popupContent = record.type === 'province' ? record.content + '<button class="map-button">Виж отблизо областта</button>' : 'Повече информация за Левски в област ' + record.name + ' ще бъде налична скоро!';
+        // var popupContent = record.type === 'province' ? '<p>' + record.content + '</p>' + '<button class="map-button">Виж отблизо областта</button>' : 'Повече информация за Левски в област ' + record.name + ' ще бъде налична скоро!';
 
-        var popupContent = record.type === 'province' ? '<p>' + record.content + '</p>' + '<button class="map-button">Виж отблизо областта</button>' : 'Повече информация за Левски в област ' + record.name + ' ще бъде налична скоро!';
+        var popupContent = record.type === 'province' ? '<p>' + record.content + '</p>' : 'Повече информация за Левски в област ' + record.name + ' ще бъде налична скоро!';
         var popup = L.popup({ maxHeight: 300, maxWidth: 200, className: 'popup-lf', coordinates: record.coordinates });
         popup.setContent(`<h1 class="popup-heading">${record.name}</h1>${popupContent}`);
         marker.bindPopup(popup);
