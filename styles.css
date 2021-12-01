@@ -1,18 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
 * {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
 }
-
-.map-container {
-    position: relative;
-    width: 80%;
-    height: 80%;
-    margin: 0 auto;
-    margin-top: 50px;
-    box-sizing: content-box !important;
-}
-
 .leaflet-popup-content p {
     font-size: 12.5px;
     margin-top: 10px;
@@ -23,38 +12,31 @@ html,
 body {
     height: 100%;
     margin: 0;
-    overflow: hidden;
 }
 
 #map {
     height: 100%;
     width: 100%;
-    overflow: hidden;
 }
 
 /* width */
-.leaflet-popup-scrolled::-webkit-scrollbar,
-.sidenav::-webkit-scrollbar {
-    position: absolute;
-    width: 5px;
+.leaflet-popup-scrolled::-webkit-scrollbar {
+    width: 10px;
 }
 
 /* Track */
-.leaflet-popup-scrolled::-webkit-scrollbar-track,
-.sidenav::-webkit-scrollbar-track {
+.leaflet-popup-scrolled::-webkit-scrollbar-track {
     margin: 15px;
     background: #f1f1f1;
 }
 
 /* Handle */
-.leaflet-popup-scrolled::-webkit-scrollbar-thumb,
-.sidenav::-webkit-scrollbar-thumb {
+.leaflet-popup-scrolled::-webkit-scrollbar-thumb {
     background: #888;
 }
 
 /* Handle on hover */
-.leaflet-popup-scrolled::-webkit-scrollbar-thumb:hover,
-.sidenav::-webkit-scrollbar-thumb:hover {
+.leaflet-popup-scrolled::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
 
@@ -92,43 +74,6 @@ body {
     text-align: center;
     border-radius: 50%;
     line-height: 30px;
-}
-
-.location-divicon-country {
-    display: none;
-}
-
-@keyframes pulse-black {
-    0% {
-        box-shadow: 0 0 0 0 rgba(182, 0, 91, 0.9);
-    }
-
-    70% {
-        box-shadow: 0 0 0 6px rgba(182, 0, 91, 0);
-    }
-
-    100% {
-        box-shadow: 0 0 0 0 rgba(182, 0, 91, 0);
-    }
-}
-
-.location-divicon-point {
-    background: rgba(182, 0, 91, 0.4);
-    border: 3.2px solid rgb(182, 0, 91);
-    color: blue;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 50%;
-    line-height: 30px;
-    box-shadow: 0 0 0 0 rgb(182, 0, 91);
-    animation: pulse-black 2s infinite;
-}
-
-.location-divicon-point:hover {
-    border: 3.2px solid rgb(182, 0, 91);
-    background: rgba(182, 0, 91, 0.8);
-    opacity: 1;
-    animation: none;
 }
 
 .location-divicon-cities:hover {
@@ -169,27 +114,6 @@ body {
     display: none;
 }
 
-.tooltip-country {
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
-    color: white;
-    font-size: 20px;
-    /* font-weight: 900; */
-    -webkit-text-stroke: 0.1px black;
-    text-align: center;
-    line-height: 20px;
-    /* text-shadow: 0px 0px 10px rgba(255, 255, 255, 0,5); */
-}
-
-.tooltip-country::before {
-    display: none;
-}
-
-.tooltip-point {
-    display: none;
-}
-
 .tooltip-cities {
     background-color: transparent;
     border: none;
@@ -221,29 +145,33 @@ body {
 
 /* side-nav */
 .sidenav {
+    overflow: auto;
     height: 100%;
     width: 0;
-    position: absolute;
+    position: fixed;
     z-index: 999;
     top: 0;
-    left: 0;
-    background-color: #f4f4f4;
+    right: 0;
+    background-color: #01583E;
     overflow-x: hidden;
     transition: 0.5s;
+    padding-top: 60px;
     box-shadow: 0 0 10px black;
 }
 
 .sidenav a,
 .sidenav button {
+    /* padding: 8px 8px 8px 32px; */
     text-decoration: none;
-    color: black;
+    /* font-size: 25px; */
+    color: white;
     display: block;
-    margin: 0 5px;
+    transition: 0.3s;
     white-space: nowrap;
 }
 
 .sidenav a:hover {
-    color: #222121;
+    color: #eee0e0;
 }
 
 .sidenav #closebtn {
@@ -267,35 +195,21 @@ body {
 
 /* accordion  */
 .accordion {
-    background-color: #f4f4f4;
-    position: relative;
+    background-color: #01583E;
     color: white;
     cursor: pointer;
-    padding: 11px;
-    padding-left: 11px;
-    width: 90%;
+    padding: 18px;
+    width: 100%;
     border: none;
     text-align: left;
     outline: none;
     font-size: 15px;
     transition: 0.4s;
-    border-radius: 5px;
-    margin-top: 5px;
 }
 
 .active,
 .accordion:hover {
-    background-color: #e2e2e2;
-}
-
-.accordion-wrapper {
-    display: flex;
-    padding-top: 30px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    flex: 1 1 auto;
-    min-height: 0px;
+    background-color: #004631;
 }
 
 .panel {
@@ -303,55 +217,7 @@ body {
     display: none;
     background-color: white;
     overflow: hidden;
-}
-
-#openbtn {
-    background-color: #f4f4f4;
-    padding: 0 6px;
-    padding-bottom: 2px;
-    font-size: 22px;
-    cursor: pointer;
-    z-index: 500000;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 15px 15px;
-    color: black;
-}
-
-#search-map {
-    position: absolute;
-    z-index: 500000;
-    top: 0;
-    right: 0;
-    margin: 15px 15px;
-    display: flex;
-}
-
-#search-map input {
-    position: relative;
-    width: 0;
-    visibility: hidden;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border: none;
-    font-size: 15px;
-}
-
-#search-map input:focus {
-    outline: none;
-    padding: 0 10px;
-}
-
-.svg-icon.search-icon {
-    background-color: #f4f4f4;
-    padding: 0 8px;
-    width: 35px;
-    height: 35px;
-}
-
-.svg-icon.search-icon:hover {
-    cursor: pointer;
+    transition: 0.6s;
 }
 
 .map-button {
@@ -389,59 +255,3 @@ p.popup-content {
 .popup-img {
     width: 100%;
 }
-
-
-.autocomplete {
-    position: relative;
-    display: inline-block;
-  }
-  
-  input {
-    border: 1px solid transparent;
-    background-color: #f1f1f1;
-  }
-  
-  input[type=text] {
-    background-color: #f1f1f1;
-    width: 100%;
-    padding: 0 10px;
-  }
-  
-  input[type=submit] {
-    background-color: DodgerBlue;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .autocomplete-items {
-    position: absolute;
-    border: 1px solid #d4d4d4;
-    border-bottom: none;
-    border-top: none;
-    z-index: 99;
-    /*position the autocomplete items to be the same width as the container:*/
-    top: 100%;
-    left: 0;
-    right: 0;
-    max-height: 200px;
-    overflow: auto;
-  }
-
-
-.autocomplete-items div {
-    padding: 10px;
-    cursor: pointer;
-    background-color: #fff; 
-    border-bottom: 1px solid #d4d4d4; 
-  }
-  
-  /*when hovering an item:*/
-  .autocomplete-items div:hover {
-    background-color: #e9e9e9; 
-  }
-  
-  /*when navigating through the items using the arrow keys:*/
-  .autocomplete-active {
-    background-color: DodgerBlue !important; 
-    color: #ffffff; 
-  }
