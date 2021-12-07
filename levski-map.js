@@ -11,7 +11,7 @@ var balkansBoundaries = L.geoJSON(balkans, {
     style: function () {
         return { weight: 1.5, color: 'gray' }
     }
-}); 
+});
 
 var USGS_USImagery = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}', {
     maxZoom: 13,
@@ -38,6 +38,8 @@ var map = L.map('map', {
     zoomControl: false,
     maxZoom: 17
 });
+
+
 
 // sets the zoom control to be positioned in the bottom left corner
 L.control.zoom({
@@ -100,7 +102,7 @@ var geojsonsText = L.geoJSON(gojsons, {
 console.log('a')
 
 
-var geojsonCities = L.geoJSON(sofiaprovinces, {
+var geojsonCities = L.geoJSON(monumentsGeoJSON, {
     pointToLayer: generateLayer
 })
 
@@ -113,7 +115,7 @@ geojsons.bindPopup(function (layer) {
 
 geojsonCities.bindPopup(function (layer) {
     let featureData = sofiaProvince[layer.feature.properties.pathName];
-    var popupContent = '<p>' + featureData.content + '</p>';
+    var popupContent = '<p class="popup-content">' + featureData.content + '</p>' + '<div class="popup-divider"></div>' + '<img class="popup-img" src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/' + featureData.pathName + '.png"/>';
     return `<h1 class="popup-heading">${featureData.name}</h1>${popupContent}`;
 }, { maxHeight: 300, maxWidth: 200, });
 
