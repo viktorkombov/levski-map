@@ -4,6 +4,8 @@ var appMap = {
     currPopup: null
 }
 
+var route = L.control();
+
 // function refreshPopup()
 var cities = L.layerGroup();
 
@@ -46,15 +48,16 @@ L.control.zoom({
     position: 'bottomright'
 }).addTo(map);
 
-map.on('popupopen', function (e) {
-    var currButtonIndex = document.getElementsByClassName('map-button').length - 1;
-    var button = document.getElementsByClassName('map-button')[currButtonIndex];
-    if (button) {
-        button.addEventListener('click', function (event) {
-            map.setView(e.popup.options.coordinates, 9)
-        })
-    }
-})
+// map.on('popupopen', function (e) {
+//     var currButtonIndex = document.getElementsByClassName('map-button').length - 1;
+//     var button = document.getElementsByClassName('map-button')[currButtonIndex];
+//     console.log(e)
+//     if (button) {
+//         button.addEventListener('click', function (event) {
+//             map.setView(e.popup.options.coordinates, 9)
+//         })
+//     }
+// })
 
 
 var geojsons = L.geoJSON(gojsons, {
@@ -116,8 +119,34 @@ geojsons.bindPopup(function (layer) {
 geojsonCities.bindPopup(function (layer) {
     let featureData = sofiaProvince[layer.feature.properties.pathName];
     var popupContent = '<p class="popup-content">' + featureData.content + '</p>' + '<div class="popup-divider"></div>' + '<img class="popup-img" src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/' + featureData.pathName + '.png"/>';
-    return `<h1 class="popup-heading">${featureData.name}</h1>${popupContent}`;
+    return `<h1 class="popup-heading">${featureData.name}</h1>${popupContent}<button class="map-button" onclick="onRouteToClicked([${featureData.coordinates}])">Маршрут</button`;
 }, { maxHeight: 300, maxWidth: 200, });
+
+geojsonCities.bindTooltip(function (layer) {
+    let featureData = sofiaProvince[layer.feature.properties.pathName];
+    return featureData.name;
+});
+
+function onRouteToClicked(coordinates) {
+    debugger;
+    if (route._map) {
+        map.removeControl(route);
+        map.stopLocate();
+        route = L.control();
+    }
+    map.locate();
+    map.on('locationfound', function (e) {
+        console.log(e);
+        route = L.Routing.control({
+            waypoints: [
+                L.latLng(e.latitude, e.longitude),
+                L.latLng(coordinates[1], coordinates[0])
+            ],
+            show: false
+        }).addTo(map);
+    })
+
+}
 
 map.on('click', function (e) {
     console.log(`${e.latlng.lng}, ${e.latlng.lat}`);

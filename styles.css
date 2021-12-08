@@ -229,7 +229,7 @@
     }
 
     .leaflet-container a.leaflet-popup-close-button {
-      padding: 6px 6px 0 0;
+      padding: 6px 20px 0 0;
     }
 
     .leaflet-container {
@@ -372,6 +372,10 @@
       cursor: pointer;
     }
 
+    .leaflet-routing-container.leaflet-bar.leaflet-routing-container-hide.leaflet-control {
+        display: none;
+    }
+
     .map-button {
       margin: 10px 0;
       display: block;
@@ -381,6 +385,7 @@
       text-transform: uppercase;
       font-size: 12px;
       font-weight: 500;
+      width: 100%;
 
       color: white;
       border: none;
