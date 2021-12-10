@@ -146,11 +146,11 @@
       animation: none;
     }
 
-    .location-divicon-city:hover {
+    /* .location-divicon-city:hover {
       border: 3.2px solid rgb(51, 60, 180);
       background: rgb(99, 26, 182);
       opacity: 1;
-    }
+    } */
 
     .location-divicon-province {
       background: rgba(255, 0, 0, 0.4);

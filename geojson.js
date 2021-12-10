@@ -210,8 +210,171 @@ console.log(JSON.stringify(monuments));
 
 var monumentsGeoJSON = {
   "type": "FeatureCollection",
-  "features": [{"type":"Feature","properties":{"pathName":"pametnik_levski_karlovo","type":"obelisk","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.806077480316162,42.63744662710757]}},{"type":"Feature","properties":{"pathName":"nm_vasil_levski","type":"museum","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.803035151197577,42.642454572161384]}},{"type":"Feature","properties":{"pathName":"im_karlovo","type":"museum","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.806248738383413,42.63667558281461]}},{"type":"Feature","properties":{"pathName":"sv_bogoroditsa_karlovo","type":"church","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.805068328784827,42.638586649832284]}},{"type":"Feature","properties":{"pathName":"house_of_raino","type":"house","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.805863390020118,42.639284055951265]}},{"type":"Feature","properties":{"pathName":"altan_chair","type":"obelisk","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.802386102365254,42.63819428697074]}},{"type":"Feature","properties":{"pathName":"karaivanov_han","type":"obelisk","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.803105171108683,42.64304282279323]}},{"type":"Feature","properties":{"pathName":"buhalov_han","type":"house","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.8058204605429,42.638889214322546]}},{"type":"Feature","properties":{"pathName":"house_tachevi","type":"house","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.802815397137472,42.63982103654546]}},{"type":"Feature","properties":{"pathName":"house_grozev","type":"house","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.80549848946374,42.63768888038569]}},{"type":"Feature","properties":{"pathName":"znak_madzharetsa","type":"obelisk","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.8110149272866,42.636291093923646]}},{"type":"Feature","properties":{"pathName":"mlatishumka","type":"obelisk","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.81046815590431,42.61908562207287]}}]
+  "features": 
+  [{"type":"Feature","properties":{"pathName":"pametnik_levski_karlovo","type":"obelisk","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.806077480316162,42.63744662710757]}},{"type":"Feature","properties":{"pathName":"nm_vasil_levski","type":"museum","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.803035151197577,42.642454572161384]}},{"type":"Feature","properties":{"pathName":"im_karlovo","type":"museum","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.806248738383413,42.63667558281461]}},{"type":"Feature","properties":{"pathName":"sv_bogoroditsa_karlovo","type":"church","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.805068328784827,42.638586649832284]}},{"type":"Feature","properties":{"pathName":"house_of_raino","type":"house","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.805863390020118,42.639284055951265]}},{"type":"Feature","properties":{"pathName":"altan_chair","type":"obelisk","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.802386102365254,42.63819428697074]}},{"type":"Feature","properties":{"pathName":"karaivanov_han","type":"obelisk","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.803105171108683,42.64304282279323]}},{"type":"Feature","properties":{"pathName":"buhalov_han","type":"house","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.8058204605429,42.638889214322546]}},{"type":"Feature","properties":{"pathName":"house_tachevi","type":"house","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.802815397137472,42.63982103654546]}},{"type":"Feature","properties":{"pathName":"house_grozev","type":"house","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.80549848946374,42.63768888038569]}},{"type":"Feature","properties":{"pathName":"znak_madzharetsa","type":"obelisk","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.8110149272866,42.636291093923646]}},{"type":"Feature","properties":{"pathName":"mlatishumka","type":"obelisk","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.81046815590431,42.61908562207287]}},{"type":"Feature","properties":{"pathName":"pametnik_sofia","type":"obelisk","iconUrl":true},"geometry":{"type":"Point","coordinates":[23.33527151485843,42.696661931833205]}},{"type":"Feature","properties":{"pathName":"НВИМ","type":"museum","iconUrl":true},"geometry":{"type":"Point","coordinates":[23.35067706716023,42.6887519617554]}},{"type":"Feature","properties":{"pathName":"nim","type":"museum","iconUrl":true},"geometry":{"type":"Point","coordinates":[23.270878,42.655197]}},{"type":"Feature","properties":{"pathName":"bust_sofia_borisova","type":"obelisk","iconUrl":true},"geometry":{"type":"Point","coordinates":[23.3375467,42.6865671]}},{"type":"Feature","properties":{"pathName":"pametnik_sofia_voenna_akademia","type":"obelisk","iconUrl":true},"geometry":{"type":"Point","coordinates":[23.344998,42.6913517]}},{"type":"Feature","properties":{"pathName":"pametnik_sofia_nsa","type":"obelisk","iconUrl":true},"geometry":{"type":"Point","coordinates":[23.3496827,42.6457365]}},{"type":"Feature","properties":{"pathName":"pametnik_sofia_gerena","type":"obelisk","iconUrl":true},"geometry":{"type":"Point","coordinates":[23.361932,42.703775]}},{"type":"Feature","properties":{"pathName":"sofia_konak","type":"obelisk","iconUrl":true},"geometry":{"type":"Point","coordinates":[23.3270927,42.6961776]}},{"type":"Feature","properties":{"pathName":"bust_vrazhdebna","type":"obelisk","iconUrl":true},"geometry":{"type":"Point","coordinates":[23.410692,42.711444]}},{"type":"Feature","properties":{"pathName":"sofia_vele_mitrev","type":"house","iconUrl":true},"geometry":{"type":"Point","coordinates":[23.3444223,42.7357784]}},{"type":"Feature","properties":{"pathName":"bust_sofia_gorubliane","type":"obelisk","iconUrl":true},"geometry":{"type":"Point","coordinates":[23.410142,42.635412]}},{"type":"Feature","properties":{"pathName":"dragalevski_manastir","type":"church","iconUrl":true},"geometry":{"type":"Point","coordinates":[23.2968004,42.6189767]}},{"type":"Feature","properties":{"pathName":"sopotski_manastir","type":"church","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.74992773631152,42.66420506904837]}},{"type":"Feature","properties":{"pathName":"sopot_pametnik","type":"obelisk","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.757486581802368,42.65485629896077]}},{"type":"Feature","properties":{"pathName":"sopot_metoh","type":"church","iconUrl":true},"geometry":{"type":"Point","coordinates":[24.758419990539554,42.65529816586473]}}]
 };
+
+
+var citiesGeoJson = {
+  "type": "FeatureCollection",
+  "features": 
+[{"type":"Feature","properties":{"pathName":"karlovo","type":"city"},"geometry":{"type":"Point","coordinates":[24.807732123184927,42.64112416948103]}},{"type":"Feature","properties":{"pathName":"sofia_city","type":"city"},"geometry":{"type":"Point","coordinates":[23.320896462195094,42.697900418429484]}},{"type":"Feature","properties":{"pathName":"botevgrad","type":"city"},"geometry":{"type":"Point","coordinates":[23.785085,42.9064052]}},{"type":"Feature","properties":{"pathName":"etropole","type":"city"},"geometry":{"type":"Point","coordinates":[23.9729984,42.8305933]}},{"type":"Feature","properties":{"pathName":"lopyan","type":"city"},"geometry":{"type":"Point","coordinates":[24.071796,42.88075]}},{"type":"Feature","properties":{"pathName":"pravets","type":"city"},"geometry":{"type":"Point","coordinates":[23.915959332804075,42.89104579977614]}},{"type":"Feature","properties":{"pathName":"vidrare","type":"city"},"geometry":{"type":"Point","coordinates":[24.010409007373713,42.99298006233437]}},{"type":"Feature","properties":{"pathName":"samokov","type":"city"},"geometry":{"type":"Point","coordinates":[23.55788299212071,42.33656109036554]}},{"type":"Feature","properties":{"pathName":"bunovo","type":"city"},"geometry":{"type":"Point","coordinates":[23.930876313621805,42.715973406746144]}},{"type":"Feature","properties":{"pathName":"koprivshtitsa","type":"city"},"geometry":{"type":"Point","coordinates":[24.360337246072348,42.633031969784426]}},{"type":"Feature","properties":{"pathName":"zlatitsa","type":"city"},"geometry":{"type":"Point","coordinates":[24.139157162696808,42.71400235033569]}},{"type":"Feature","properties":{"pathName":"pernik","type":"city"},"geometry":{"type":"Point","coordinates":[23.037063515996905,42.60862191333985]}},{"type":"Feature","properties":{"pathName":"kustendil","type":"city"},"geometry":{"type":"Point","coordinates":[22.68748845642841,42.285398676995555]}},{"type":"Feature","properties":{"pathName":"blaogevgrad","type":"city"},"geometry":{"type":"Point","coordinates":[23.092391698253074,42.016208707297885]}},{"type":"Feature","properties":{"pathName":"razlog","type":"city"},"geometry":{"type":"Point","coordinates":[23.460149102139212,41.886884437523804]}},{"type":"Feature","properties":{"pathName":"pazardzhik","type":"city"},"geometry":{"type":"Point","coordinates":[24.334747755853627,42.19281638997164]}},{"type":"Feature","properties":{"pathName":"strelcha","type":"city"},"geometry":{"type":"Point","coordinates":[24.32331713063627,42.50098617395968]}},{"type":"Feature","properties":{"pathName":"panagiurishte","type":"city"},"geometry":{"type":"Point","coordinates":[24.188790144533755,42.49869778681207]}},{"type":"Feature","properties":{"pathName":"perushtica","type":"city"},"geometry":{"type":"Point","coordinates":[24.54835972944378,42.05979694085897]}},{"type":"Feature","properties":{"pathName":"plovdiv","type":"city"},"geometry":{"type":"Point","coordinates":[24.75199802369057,42.14963165313221]}},{"type":"Feature","properties":{"pathName":"voinyagovo","type":"city"},"geometry":{"type":"Point","coordinates":[24.753654152408895,42.57571429435819]}},{"type":"Feature","properties":{"pathName":"dabene","type":"city"},"geometry":{"type":"Point","coordinates":[24.766377497193325,42.59978513894402]}},{"type":"Feature","properties":{"pathName":"vasil_levski_selo","type":"city"},"geometry":{"type":"Point","coordinates":[24.89444187948834,42.606045463125]}},{"type":"Feature","properties":{"pathName":"sopot","type":"city"},"geometry":{"type":"Point","coordinates":[24.756212175212834,42.658216744748415]}},{"type":"Feature","properties":{"pathName":"klisura","type":"city"},"geometry":{"type":"Point","coordinates":[24.45037745844117,42.6955434821658]}},{"type":"Feature","properties":{"pathName":"pesnopoi","type":"city"},"geometry":{"type":"Point","coordinates":[24.80961785743959,42.48781563105458]}},{"type":"Feature","properties":{"pathName":"hisarya","type":"city"},"geometry":{"type":"Point","coordinates":[24.705696457299293,42.50610810636877]}},{"type":"Feature","properties":{"pathName":"svezhen","type":"city"},"geometry":{"type":"Point","coordinates":[25.0262569868311,42.50726282959483]}},{"type":"Feature","properties":{"pathName":"brezovo","type":"city"},"geometry":{"type":"Point","coordinates":[25.079384157470106,42.34197411504555]}},{"type":"Feature","properties":{"pathName":"rozovets","type":"city"},"geometry":{"type":"Point","coordinates":[25.114331032844515,42.4641589278704]}},{"type":"Feature","properties":{"pathName":"trud","type":"city"},"geometry":{"type":"Point","coordinates":[24.73016591480432,42.23471466024352]}},{"type":"Feature","properties":{"pathName":"tsaratsovo","type":"city"},"geometry":{"type":"Point","coordinates":[24.689003194904135,42.2033273124095]}},{"type":"Feature","properties":{"pathName":"asenovgrad","type":"city"},"geometry":{"type":"Point","coordinates":[24.8762973036257,42.01182594169023]}},{"type":"Feature","properties":{"pathName":"stara_zagora","type":"city"},"geometry":{"type":"Point","coordinates":[25.63106973000186,42.42881268875445]}},{"type":"Feature","properties":{"pathName":"chirpan","type":"city"},"geometry":{"type":"Point","coordinates":[25.32619375257336,42.20461967380969]}},{"type":"Feature","properties":{"pathName":"gabarevo","type":"city"},"geometry":{"type":"Point","coordinates":[25.16330023999005,42.62308474319362]}},{"type":"Feature","properties":{"pathName":"kazanlak","type":"city"},"geometry":{"type":"Point","coordinates":[25.392068483026893,42.62538877010873]}},{"type":"Feature","properties":{"pathName":"haskovo","type":"city"},"geometry":{"type":"Point","coordinates":[25.555629871480686,41.93631136175561]}},{"type":"Feature","properties":{"pathName":"harmanli","type":"city"},"geometry":{"type":"Point","coordinates":[25.9067549344124,41.92736179504563]}},{"type":"Feature","properties":{"pathName":"svilengrad","type":"city"},"geometry":{"type":"Point","coordinates":[26.204256417191687,41.76418847031844]}},{"type":"Feature","properties":{"pathName":"yabalkovo","type":"city"},"geometry":{"type":"Point","coordinates":[25.44168696359829,42.07069760869128]}},{"type":"Feature","properties":{"pathName":"smolian","type":"city"},"geometry":{"type":"Point","coordinates":[24.70319709397015,41.58047102356115]}},{"type":"Feature","properties":{"pathName":"kardzhali","type":"city"},"geometry":{"type":"Point","coordinates":[25.3684109401988,41.647298173638724]}},{"type":"Feature","properties":{"pathName":"sliven","type":"city"},"geometry":{"type":"Point","coordinates":[26.316481308348845,42.68448488322496]}},{"type":"Feature","properties":{"pathName":"nova_zagora","type":"city"},"geometry":{"type":"Point","coordinates":[26.006868264806965,42.492118866016476]}},{"type":"Feature","properties":{"pathName":"kotel","type":"city"},"geometry":{"type":"Point","coordinates":[26.444925750697198,42.8905731606028]}},{"type":"Feature","properties":{"pathName":"yambol","type":"city"},"geometry":{"type":"Point","coordinates":[26.510289727950525,42.48570169410405]}},{"type":"Feature","properties":{"pathName":"burgas","type":"city"},"geometry":{"type":"Point","coordinates":[27.465749886875795,42.50838441239622]}},{"type":"Feature","properties":{"pathName":"aitos","type":"city"},"geometry":{"type":"Point","coordinates":[27.25327242774489,42.70451857342273]}},{"type":"Feature","properties":{"pathName":"karnobat","type":"city"},"geometry":{"type":"Point","coordinates":[26.978479641069505,42.64655404071055]}},{"type":"Feature","properties":{"pathName":"vidin","type":"city"},"geometry":{"type":"Point","coordinates":[22.868759452050664,43.99308965447122]}},{"type":"Feature","properties":{"pathName":"bregovo","type":"city"},"geometry":{"type":"Point","coordinates":[22.640720280256843,44.147459579689276]}},{"type":"Feature","properties":{"pathName":"montana","type":"city"},"geometry":{"type":"Point","coordinates":[23.228328218588242,43.41723773920099]}},{"type":"Feature","properties":{"pathName":"lom","type":"city"},"geometry":{"type":"Point","coordinates":[23.233575441744424,43.83144880836402]}},{"type":"Feature","properties":{"pathName":"vratsa","type":"city"},"geometry":{"type":"Point","coordinates":[23.550881608870117, 43.21410447885322]}},{"type":"Feature","properties":{"pathName":"mezdra","type":"city"},"geometry":{"type":"Point","coordinates":[23.714527035805876,43.145845694594]}},{"type":"Feature","properties":{"pathName":"oriahovo","type":"city"},"geometry":{"type":"Point","coordinates":[23.960633489948634,43.73956829863645]}},{"type":"Feature","properties":{"pathName":"pleven","type":"city"},"geometry":{"type":"Point","coordinates":[24.614562123522912,43.42048901106939]}},{"type":"Feature","properties":{"pathName":"nikopol","type":"city"},"geometry":{"type":"Point","coordinates":[24.89730330696426,43.70141204419245]}},{"type":"Feature","properties":{"pathName":"levski_grad","type":"city"},"geometry":{"type":"Point","coordinates":[25.14338338718789,43.35917717902048]}},{"type":"Feature","properties":{"pathName":"lovech","type":"city"},"geometry":{"type":"Point","coordinates":[24.71185647713839,43.13938709718972]}},{"type":"Feature","properties":{"pathName":"kakrinskoto_hanche","type":"city"},"geometry":{"type":"Point","coordinates":[24.884451738720625,43.12478669032355]}},{"type":"Feature","properties":{"pathName":"golyam_izvor","type":"city"},"geometry":{"type":"Point","coordinates":[24.105900022011564,42.95760332546152]}},{"type":"Feature","properties":{"pathName":"glozhenski_manastir","type":"city"},"geometry":{"type":"Point","coordinates":[24.16936636072286,42.97553923297822]}},{"type":"Feature","properties":{"pathName":"teteven","type":"city"},"geometry":{"type":"Point","coordinates":[24.260738166187878,42.92101537881177]}},{"type":"Feature","properties":{"pathName":"troyan","type":"city"},"geometry":{"type":"Point","coordinates":[24.71072501323302,42.8849152625211]}},{"type":"Feature","properties":{"pathName":"troyanski_manastir","type":"city"},"geometry":{"type":"Point","coordinates":[24.780769191217555,42.86192812981986]}},{"type":"Feature","properties":{"pathName":"lukovit","type":"city"},"geometry":{"type":"Point","coordinates":[24.161055723483962,43.20940804581709]}},{"type":"Feature","properties":{"pathName":"gabrovo","type":"city"},"geometry":{"type":"Point","coordinates":[25.31794614037152,42.87819896550251]}},{"type":"Feature","properties":{"pathName":"sevlievo","type":"city"},"geometry":{"type":"Point","coordinates":[25.099901051589942,43.02437557046705]}},{"type":"Feature","properties":{"pathName":"drianovo","type":"city"},"geometry":{"type":"Point","coordinates":[25.471909770168764,42.9718312337947]}},{"type":"Feature","properties":{"pathName":"triavna","type":"city"},"geometry":{"type":"Point","coordinates":[25.492675687528788,42.86580419167972]}},{"type":"Feature","properties":{"pathName":"sokolski_manastir","type":"city"},"geometry":{"type":"Point","coordinates":[25.338546000684115,42.79713418718773]}},{"type":"Feature","properties":{"pathName":"veliko_tarnovo","type":"city"},"geometry":{"type":"Point","coordinates":[25.626761546161074,43.076185710178166]}},{"type":"Feature","properties":{"pathName":"veliko_tarnovo","type":"city"},"geometry":{"type":"Point","coordinates":[25.62272751926818,43.07100673437433]}},{"type":"Feature","properties":{"pathName":"preobrazhenski_manastir","type":"city"},"geometry":{"type":"Point","coordinates":[25.606805002155625,43.116484000312845]}},{"type":"Feature","properties":{"pathName":"gorna_oriahovitsa","type":"city"},"geometry":{"type":"Point","coordinates":[25.68899252071824,43.12454292001919]}},{"type":"Feature","properties":{"pathName":"samovodene","type":"city"},"geometry":{"type":"Point","coordinates":[25.60364382964567,43.13900139820535]}},{"type":"Feature","properties":{"pathName":"liaskovets","type":"city"},"geometry":{"type":"Point","coordinates":[25.714368766995698,43.10259938655458]}},{"type":"Feature","properties":{"pathName":"petropavlovski_manastir","type":"city"},"geometry":{"type":"Point","coordinates":[25.70764811384514,43.09520403003208]}},{"type":"Feature","properties":{"pathName":"svishtov","type":"city"},"geometry":{"type":"Point","coordinates":[25.347594825485935,43.6178542455433]}},{"type":"Feature","properties":{"pathName":"elena","type":"city"},"geometry":{"type":"Point","coordinates":[25.87644264217661,42.93048470552029]}},{"type":"Feature","properties":{"pathName":"biala_cherkva","type":"city"},"geometry":{"type":"Point","coordinates":[25.307583380625612,43.20627054968923]}},{"type":"Feature","properties":{"pathName":"ruse","type":"city"},"geometry":{"type":"Point","coordinates":[25.949181853740686,43.84300547215593]}},{"type":"Feature","properties":{"pathName":"razgrad","type":"city"},"geometry":{"type":"Point","coordinates":[26.522827755030654,43.52907320815625]}},{"type":"Feature","properties":{"pathName":"targovishte","type":"city"},"geometry":{"type":"Point","coordinates":[26.571132447183313,43.24550116688758]}},{"type":"Feature","properties":{"pathName":"shumen","type":"city"},"geometry":{"type":"Point","coordinates":[26.921280539843185,43.27624266021006]}},{"type":"Feature","properties":{"pathName":"silistra","type":"city"},"geometry":{"type":"Point","coordinates":[27.258111211590094,44.113544879394006]}},{"type":"Feature","properties":{"pathName":"dobrich","type":"city"},"geometry":{"type":"Point","coordinates":[27.829157208367103,43.57695426240757]}},{"type":"Feature","properties":{"pathName":"varna","type":"city"},"geometry":{"type":"Point","coordinates":[27.92224803314126,43.21684042543136]}}]
+}
+
+var karlovoRoute = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            24.80310559272766,
+            42.642904975746696
+          ],
+          [
+            24.80358839035034,
+            42.64288919169535
+          ],
+          [
+            24.803706407546997,
+            42.6428615695959
+          ],
+          [
+            24.804028272628784,
+            42.64274318903072
+          ],
+          [
+            24.80460226535797,
+            42.642541941553
+          ],
+          [
+            24.805015325546265,
+            42.64236436970852
+          ],
+          [
+            24.805508852005005,
+            42.6421946894725
+          ],
+          [
+            24.80560004711151,
+            42.64215917494591
+          ],
+          [
+            24.806211590766903,
+            42.64204473911128
+          ],
+          [
+            24.806383252143856,
+            42.64202106270542
+          ],
+          [
+            24.807026982307434,
+            42.64198160200897
+          ],
+          [
+            24.807520508766174,
+            42.641953979506575
+          ],
+          [
+            24.80762243270874,
+            42.641953979506575
+          ],
+          [
+            24.80758488178253,
+            42.64189084231216
+          ],
+          [
+            24.80740785598755,
+            42.64162645461465
+          ],
+          [
+            24.807177186012268,
+            42.641275251308954
+          ],
+          [
+            24.806941151618958,
+            42.640892476909016
+          ],
+          [
+            24.806737303733826,
+            42.64060440802417
+          ],
+          [
+            24.806571006774902,
+            42.64042288448018
+          ],
+          [
+            24.8063725233078,
+            42.64022557567958
+          ],
+          [
+            24.806318879127502,
+            42.640174275288935
+          ],
+          [
+            24.806222319602966,
+            42.6400401048365
+          ],
+          [
+            24.80616331100464,
+            42.63991777270125
+          ],
+          [
+            24.806018471717834,
+            42.639704677439646
+          ],
+          [
+            24.805750250816345,
+            42.639266645998916
+          ],
+          [
+            24.805707335472107,
+            42.63916798984356
+          ],
+          [
+            24.80562150478363,
+            42.63890359057586
+          ],
+          [
+            24.805573225021362,
+            42.638769417383386
+          ],
+          [
+            24.80555176734924,
+            42.6385799959133
+          ],
+          [
+            24.805535674095154,
+            42.63836689607019
+          ],
+          [
+            24.80555713176727,
+            42.638280077406364
+          ],
+          [
+            24.805696606636047,
+            42.637810465261424
+          ],
+          [
+            24.805744886398315,
+            42.63766050433409
+          ],
+          [
+            24.805755615234375,
+            42.63756579198329
+          ],
+          [
+            24.805712699890137,
+            42.63741188410577
+          ]
+        ]
+      }
+    }
+  ]
+}
 
   var balkans = {
     "type": "GeometryCollection", "geometries": [

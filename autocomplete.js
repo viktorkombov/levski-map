@@ -18,9 +18,10 @@ function autocomplete(inp, arr) {
 
 
                 b.addEventListener("click", function (event) {
-                    console.log(sofiaProvince[event.target.children[1].value].coordinates);
+                    console.log(sofiaProvince)
+                    console.log(sofiaProvince[event.target.children[1].value]);
                     inp.value = this.getElementsByTagName("input")[0].value;
-                    map.flyTo(sofiaProvince[event.target.children[1].value].coordinates, 15, {
+                    map.flyTo(cities[event.target.children[1].value].coordinates, 15, {
                         animate: true,
                         duration: 1.5
                     })
@@ -76,4 +77,4 @@ function autocomplete(inp, arr) {
     });
 }
 
-var countries = [["Карлово", 'karlovo']];
+var countries = [["Карлово", 'karlovo'], ['Сопот', "sopot"], ['София', 'sofia_city']];
