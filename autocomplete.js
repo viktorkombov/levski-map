@@ -35,7 +35,7 @@ function autocomplete(inp, towns) {
                     setTimeout(() => {
                         console.log(currLayer)
                         geojsonCities.openPopup(currLayer[0], coordinates.slice().reverse());
-                    }, 1400);
+                    }, 1700);
                     closeAllLists();
                     closeSearchInput();
                 });
