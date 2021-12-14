@@ -91,7 +91,10 @@ var geojsonsText = L.geoJSON(gojsons, {
     }
 }).addTo(map);
 
-console.log('a')
+map.on('popupopen', function() {
+    closeNav();
+    closeSearchInput();
+})
 
 
 var geojsonMonuments = L.geoJSON(monumentsGeoJSON, {
@@ -129,13 +132,12 @@ geojsonMonuments.on('popupclose', function(e) {
 });
 
 geojsonCities.bindTooltip(function (layer) {
-    let featureData = cities[layer.feature.properties.pathName];
-    
+    let featureData = layer.feature.properties;
     return featureData.name;
 });
 
 geojsonCities.bindPopup(function (layer) {
-    let featureData = cities[layer.feature.properties.pathName];
+    let featureData = layer.feature.properties;
     var popupContent = '<p class="popup-content">' + featureData.content + '</p>' + '<div class="popup-divider"></div>'; // '<img class="popup-img" src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/' + featureData.pathName + '.png"/>';
     return `<h1 class="popup-heading">${featureData.name}</h1>${popupContent}`;
 }, { maxHeight: 300, maxWidth: 200, });
@@ -148,8 +150,34 @@ geojsonCities.on('popupclose', function(e) {
     e.target.getTooltip().setOpacity(0.9);
 });
 
+// let towns = citiesGeoJson.features.slice().map((rec) => {
+//     if (rec.properties.name.includes('с.')) {
+//         rec.properties.name = rec.properties.name.slice(3);
+//         console.log(rec.properties.name)
+//         rec.properties.type = 'village'
+//     }
+//     return rec;
+// });
 
-L.geoJSON(karlovoRoute).addTo(map);
+// console.log(JSON.stringify(towns))
+let towns = citiesGeoJson.features.slice().filter((rec) => {
+    // if (rec.properties.name.includes('манастир')) {
+    //     rec.properties.name = rec.properties.name.slice(3);
+    //     console.log(rec.properties.name)
+    //     rec.properties.type = 'church'
+    //     Object.assign(rec.properties, {iconUrl: true})
+    //     return rec;
+    // }
+
+    if (!rec.properties.name.includes('манастир')) {
+        return rec;
+    }
+    
+});
+
+console.log(JSON.stringify(towns))
+
+// L.geoJSON(karlovoRoute).addTo(map);
 
 map.on('click', function (e) {
     console.log(`${e.latlng.lng}, ${e.latlng.lat}`);
