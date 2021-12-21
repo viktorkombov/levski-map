@@ -102,7 +102,6 @@ function autocomplete(inp, towns) {
     }
 
     document.addEventListener("click", function (e) {
-        console.log(e)
         closeAllLists(e.target);
     });
 

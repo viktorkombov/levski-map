@@ -12,11 +12,11 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin="">
-    
+
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
-    <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
@@ -25,10 +25,56 @@
       class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
       tabindex="0" style="position: relative; outline: none;">
     </div>
-    <div id="mySidenav" class="sidenav" dir="rtl">
+    <div id="mySidenav" class="sidenav">
       <div class="accordion-wrapper">
-        <button class="accordion" dir="ltr">Легенда</button>
-        <div class="panel" dir="ltr">
+        <button class="accordion">Легенда</button>
+        <div class="panel">
+          <article class="map-legend-wrapper">
+            <div class="location-divicon-province" style="width: 20px; height: 20px;"></div>
+            <p>- oбласт</p>
+          </article>
+          <article class="map-legend-wrapper">
+            <div class="location-divicon-city" style="width: 20px; height: 20px;"></div>
+            <p>- град</p>
+          </article>
+          <article class="map-legend-wrapper">
+            <div class="location-divicon-village" style="width: 20px; height: 20px;"></div>
+            <p>- село</p>
+          </article>
+          <article class="map-legend-wrapper">
+            <img src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/museum4.png" alt="м"
+              style="width: 25px; height: 25px;">
+            <p>- музей</p>
+          </article>
+          <article class="map-legend-wrapper">
+            <img src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/obelisk4.png" alt="м"
+              style="width: 25px; height: 25px;">
+            <p>- паметник</p>
+          </article>
+          <article class="map-legend-wrapper">
+            <img src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/church4.png" alt="м"
+              style="width: 25px; height: 25px;">
+            <p>- църква/манастир</p>
+          </article>
+          <article class="map-legend-wrapper">
+            <img src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/house4.png" alt="м"
+              style="width: 25px; height: 25px;">
+            <p>- паметно място</p>
+          </article>
+          <article class="map-legend-wrapper">
+            <img src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/hut4.png" alt="м"
+              style="width: 25px; height: 25px;">
+            <p>- хижа</p>
+          </article>
+          <article class="map-legend-wrapper">
+            <img src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/mountain4.png" alt="м"
+              style="width: 25px; height: 25px;">
+            <p>- връх</p>
+          </article>
+        </div>
+
+        <button class="accordion">Маршрути</button>
+        <div class="panel">
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
             labore et
             dolore
@@ -38,19 +84,8 @@
             consequat.</p>
         </div>
 
-        <button class="accordion" dir="ltr">Маршрути</button>
-        <div class="panel" dir="ltr">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-            labore et
-            dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-            ex ea
-            commodo
-            consequat.</p>
-        </div>
-
-        <button class="accordion" dir="ltr">Обиколките на Левски</button>
-        <div class="panel" dir="ltr">
+        <button class="accordion">Обиколките на Левски</button>
+        <div class="panel">
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
             labore et
             dolore
@@ -75,12 +110,23 @@
         </g>
       </svg>
     </form>
+    <div id="map-overlay" onclick="closeOverlayImg()">
+      <div id="map-overlay-wrapper">
+        <img id="map-overlay-img" style="position: relative; max-width: 100%; height: auto;"
+          src="http://vlevskimuseum-bg.org/wp-content/themes/wp-simple/assets/images/logo-01.png"
+          alt="Снимка на обекта">
+      </div>
+    </div>
+
   </div>
+
+
   <script src="./data.js"></script>
   <script src="./autocomplete.js"></script>
   <script src="./geojson.js"></script>
   <script src="./sidebar.js"></script>
   <script src="./levski-map.js"></script>
+  <script src="./overlay.js"></script>
 
 
 
