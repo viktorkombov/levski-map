@@ -2,9 +2,28 @@
 
 var appMap = {
     currProvinceImageOverlay: null,
-    currPopup: null
+    currPopup: null,
+    currCoordinates: null
 }
 
+var zoomToCertainPlaceTemplate = '<button class="map-zoom-to-button" onclick="zoomToCertainPlace()">Виж отблизо</button>';
+function zoomToCertainPlace() {
+    const coordinates = appMap.currPopup.layer.feature.geometry.coordinates.slice().reverse();
+    let zoomLevel = 7.5;
+    let duration = 0.5;
+    const typeOfLayer = appMap.currPopup.layer.feature.properties.type;
+
+    switch (typeOfLayer) {
+        case 'province': zoomLevel = 10; duration = 1; break;
+        case 'point bulgaria': zoomLevel = 7.5; break;
+        case 'point': zoomLevel = 8; duration = 0.6; break;
+    }
+
+    map.flyTo(coordinates, zoomLevel, {
+        animate: true,
+        duration: duration
+    })
+}
 var route = L.control();
 
 // function refreshPopup()
@@ -96,11 +115,23 @@ var geojsonBulgaria = L.geoJSON(bulgariaPointGeoJson, {
     pointToLayer: generateLayer
 }).addTo(map);
 
+geojsonBulgaria.on('popupopen', onPopupOpen);
+geojsonBulgaria.on('popupclose', onPopupClose);
+
+
+function onPopupOpen(popup) {
+    appMap.currPopup = popup;
+}
+
+function onPopupClose() {
+    appMap.currPopup = null;
+}
 
 geojsonBulgaria.bindPopup(function (layer) {
     let featureData = layer.feature.properties;
+    let ltlng = layer.feature.geometry.coordinates;
     var popupContent = '<p class="popup-content">' + featureData.content + '</p>' + '<div class="popup-divider"></div>'; // '<img class="popup-img" src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/' + featureData.pathName + '.png"/>';
-    return `<h1 class="popup-heading">${featureData.name}</h1>${popupContent}`;
+    return `<h1 class="popup-heading">${featureData.name}</h1>${popupContent}${zoomToCertainPlaceTemplate}`;
 }, { maxHeight: 300, maxWidth: 200, });
 
 
@@ -135,10 +166,11 @@ var geojsonCities = L.geoJSON(citiesGeoJson, {
 geojsons.bindPopup(function (layer) {
     let featureData = provData[layer.feature.properties.pathName];
     var popupContent = featureData.type === 'province' ? '<p>' + featureData.content + '</p>' : 'Повече информация за Левски в област ' + featureData.name + ' ще бъде налична скоро!';
-    return `<h1 class="popup-heading">${featureData.name}</h1>${popupContent}`;
+    return `<h1 class="popup-heading">${featureData.name}</h1>${popupContent}${zoomToCertainPlaceTemplate}`;
 }, { maxHeight: 300, maxWidth: 200, });
 
-
+geojsons.on('popupopen', onPopupOpen);
+geojsons.on('popupclose', onPopupClose);
 
 geojsonMonuments.bindPopup(function (layer) {
     let featureData = sofiaProvince[layer.feature.properties.pathName];
@@ -157,6 +189,7 @@ geojsonMonuments.on('popupopen', function (e) {
 });
 
 geojsonMonuments.on('popupclose', function (e) {
+    appMap.currPopup = null;
     e.target.getTooltip().setOpacity(0.9);
 });
 
@@ -172,10 +205,12 @@ geojsonCities.bindPopup(function (layer) {
 }, { maxHeight: 300, maxWidth: 200, });
 
 geojsonCities.on('popupopen', function (e) {
+    appMap.currPopup = e;
     e.target.getTooltip().setOpacity(0);
 });
 
 geojsonCities.on('popupclose', function (e) {
+    appMap.currPopup = null;
     e.target.getTooltip().setOpacity(0.9);
 });
 
@@ -183,10 +218,13 @@ var geojsonPoints = L.geoJSON(pointsGeoJson, {
     pointToLayer: generateLayer
 }).addTo(map);
 
+geojsonPoints.on('popupopen', onPopupOpen);
+geojsonPoints.on('popupclose', onPopupClose);
+
 geojsonPoints.bindPopup(function (layer) {
     let featureData = layer.feature.properties;
     var popupContent = '<p class="popup-content">' + featureData.content + '</p>' + '<div class="popup-divider"></div>'; // '<img class="popup-img" src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/' + featureData.pathName + '.png"/>';
-    return `<h1 class="popup-heading">${featureData.name}</h1>${popupContent}`;
+    return `<h1 class="popup-heading">${featureData.name}</h1>${popupContent}${zoomToCertainPlaceTemplate}`;
 }, { maxHeight: 300, maxWidth: 200, });
 
 // let towns = citiesGeoJson.features.slice().map((rec) => {

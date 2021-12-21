@@ -42,7 +42,7 @@ var bulgariaGeoJson = {
 
 var bulgariaPointGeoJson =  {
   "type": "FeatureCollection",
-  "features": [{"type":"Feature","properties":{"pathName":" bulgaria","type":"point","content":"Приближете картата, за да опознаете местата, свързани с Васил Левски в България.","name":"България"},"geometry":{"type":"Point","coordinates":[25.270295225747212, 42.63189181330548]}}]};
+  "features": [{"type":"Feature","properties":{"pathName":" bulgaria","type":"point bulgaria","content":"Приближете картата, за да опознаете местата, свързани с Васил Левски в България.","name":"България"},"geometry":{"type":"Point","coordinates":[25.270295225747212, 42.63189181330548]}}]};
 
 var foreignCities = {
   "type": "FeatureCollection",

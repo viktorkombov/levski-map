@@ -235,6 +235,10 @@ body {
   animation: pulse-black 2s infinite;
 }
 
+.legend {
+  animation: none;
+}
+
 .location-divicon-point:hover {
   border: 3.2px solid rgb(182, 0, 91);
   background: rgba(182, 0, 91, 0.8);
@@ -496,7 +500,7 @@ body {
   display: none;
 }
 
-.map-button {
+.map-zoom-to-button {
   margin: 10px 0;
   display: block;
   padding: 8px 10px;
@@ -517,7 +521,7 @@ body {
   transition: all 0.1s;
 }
 
-.map-button:hover {
+.map-zoom-to-button:hover {
   background-color: #0b4c35c9;
   cursor: pointer;
   -webkit-box-shadow: 0 0 2px black;
