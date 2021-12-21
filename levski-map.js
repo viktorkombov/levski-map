@@ -160,19 +160,6 @@ geojsonMonuments.on('popupclose', function (e) {
     e.target.getTooltip().setOpacity(0.9);
 });
 
-geojsons.on('popupopen', function (e) {
-    appMap.currPopup = e;
-    var path = 'http://vlevskimuseum-bg.org/wp-content/uploads/2021/11/' + e.layer.feature.properties.pathName + '.png',
-        image = [[45.25444353681564, 19.844982149279534], [40.16525805505217, 31.921737689954174]],
-        options = { interactive: true, opacity: 0.2, className: 'region' }
-    appMap.currProvinceImageOverlay = L.imageOverlay(path, image, options).addTo(map);
-});
-
-geojsons.on('popupclose', function (e) {
-    map.removeLayer(appMap.currProvinceImageOverlay);
-    appMap.currProvinceImageOverlay = null;
-});
-
 geojsonCities.bindTooltip(function (layer) {
     let featureData = layer.feature.properties;
     return featureData.name;
