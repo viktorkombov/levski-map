@@ -17,6 +17,8 @@ function zoomToCertainPlace() {
         case 'province': zoomLevel = 10; duration = 1; break;
         case 'point bulgaria': zoomLevel = 7.5; break;
         case 'point': zoomLevel = 8; duration = 0.6; break;
+        case 'city': zoomLevel = 16; duration = 1; break;
+        case 'village': zoomLevel = 16; duration = 1; break;
     }
 
     map.flyTo(coordinates, zoomLevel, {
@@ -163,6 +165,8 @@ var geojsonCities = L.geoJSON(citiesGeoJson, {
     pointToLayer: generateLayer
 });
 
+
+
 geojsons.bindPopup(function (layer) {
     let featureData = provData[layer.feature.properties.pathName];
     var popupContent = featureData.type === 'province' ? '<p>' + featureData.content + '</p>' : 'Повече информация за Левски в област ' + featureData.name + ' ще бъде налична скоро!';
@@ -201,7 +205,7 @@ geojsonCities.bindTooltip(function (layer) {
 geojsonCities.bindPopup(function (layer) {
     let featureData = layer.feature.properties;
     var popupContent = '<p class="popup-content">' + featureData.content + '</p>' + '<div class="popup-divider"></div>'; // '<img class="popup-img" src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/' + featureData.pathName + '.png"/>';
-    return `<h1 class="popup-heading">${featureData.name}</h1>${popupContent}`;
+    return `<h1 class="popup-heading">${featureData.name}</h1>${popupContent}${zoomToCertainPlaceTemplate}`;
 }, { maxHeight: 300, maxWidth: 200, });
 
 geojsonCities.on('popupopen', function (e) {
@@ -278,6 +282,10 @@ map.on('click', function (e) {
     closeSearchInput();
 })
 map.on('zoomend zoomlevelschange', zoom);
+
+// map.on('zoomstart zoomlevelschange', function() {
+//     map.closePopup();
+// })
 
 function displayBulgariaTooltip(flag = true) {
     const bulgariaElements = Array.from(document.getElementsByClassName('bulgaria'));
