@@ -47,10 +47,10 @@ var streets = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
     attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
 });
 
-// // sets a custom map of Bulgaria
-// var imageUrl = 'http://vlevskimuseum-bg.org/wp-content/uploads/2021/11/bulgaria.png',
-//     imageBounds = [[45.25444353681564, 19.844982149279534], [40.16525805505217, 31.921737689954174]];
-// var bulgariaMap = L.imageOverlay(imageUrl, imageBounds);
+// sets a custom map of Bulgaria
+var imageUrl = 'http://vlevskimuseum-bg.org/wp-content/uploads/2022/02/bulgaria-leaflet-map.png',
+    imageBounds = [[45.25444353681564, 19.844982149279534], [40.16525805505217, 31.921737689954174]];
+var bulgariaMap = L.imageOverlay(imageUrl, imageBounds);
 
 var bulgar = L.tileLayer('bulgaria-map/{z}/{x}/{y}.png', {
     minZoom: 6,
@@ -61,7 +61,7 @@ var bulgar = L.tileLayer('bulgaria-map/{z}/{x}/{y}.png', {
 var map = L.map('map', {
     center: [42.748126776142875, 25.327709216730058],
     zoom: 6.2,
-    layers: [USGS_USImagery, balkansBoundaries, bulgar],
+    layers: [USGS_USImagery, balkansBoundaries, bulgariaMap],
     zoomSnap: 0,
     zoomDelta: 0.5,
     wheelPxPerZoomLevel: 150,
@@ -303,13 +303,13 @@ function displayBulgariaTooltip(flag = true) {
 function zoom() {
     console.log(map.getZoom())
     if (map.getZoom() >= 7 && map.getZoom() <= 7.49) {
-        displayLayer([geojsons, geojsonsText, USGS_USImagery, bulgar, balkansBoundaries, geojsonPoints, geojsonCountries ]);
+        displayLayer([geojsons, geojsonsText, USGS_USImagery, bulgariaMap, balkansBoundaries, geojsonPoints, geojsonCountries ]);
         displayLayer([streets, geojsonMonuments, geojsontowns, geojsonBulgaria, geojsonBulgariaText, ], false);
     } else if (map.getZoom() > 7.49) {
-        displayLayer([geojsons, geojsonsText, USGS_USImagery, balkansBoundaries, geojsonBulgaria, geojsonBulgariaText, geojsonPoints, geojsonCountries, bulgar], false);
+        displayLayer([geojsons, geojsonsText, USGS_USImagery, balkansBoundaries, geojsonBulgaria, geojsonBulgariaText, geojsonPoints, geojsonCountries, bulgariaMap], false);
         displayLayer([streets, geojsontowns]);
     } else if (map.getZoom() < 7) {
-        displayLayer([ USGS_USImagery, bulgar, balkansBoundaries, geojsonPoints, geojsonBulgaria, geojsonBulgariaText, geojsonPoints, geojsonCountries]);
+        displayLayer([ USGS_USImagery, bulgariaMap, balkansBoundaries, geojsonPoints, geojsonBulgaria, geojsonBulgariaText, geojsonPoints, geojsonCountries]);
         displayLayer([streets, geojsonMonuments, geojsons, geojsonsText, geojsontowns], false);
     }
 
