@@ -303,7 +303,6 @@ function displayBulgariaTooltip(flag = true) {
 function zoom() {
     console.log(map.getZoom())
     if (map.getZoom() >= 7 && map.getZoom() <= 7.49) {
-        debugger;
         displayLayer([geojsons, geojsonsText, USGS_USImagery, bulgar, balkansBoundaries, geojsonPoints, geojsonCountries ]);
         displayLayer([streets, geojsonMonuments, geojsontowns, geojsonBulgaria, geojsonBulgariaText, ], false);
     } else if (map.getZoom() > 7.49) {

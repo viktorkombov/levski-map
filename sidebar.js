@@ -17,7 +17,6 @@ for (i = 0; i < acc.length; i++) {
 function onSearchClick(e) {
     map.closePopup();
     closeNav();
-    debugger;
     const searchWrapper = document.getElementById('map-search');
     const searchInput = document.getElementById('map-search-input');
     const searchIcon = document.getElementById('map-search-icon');
