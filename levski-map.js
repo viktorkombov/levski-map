@@ -50,7 +50,7 @@ var streets = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
 // sets a custom map of Bulgaria
 var imageUrl = 'http://vlevskimuseum-bg.org/wp-content/uploads/2022/02/bulgaria-leaflet-map.png',
     imageBounds = [[45.25444353681564, 19.844982149279534], [40.16525805505217, 31.921737689954174]];
-var bulgariaMap = L.imageOverlay(imageUrl, imageBounds).addTo(map);
+var bulgariaMap = L.imageOverlay(imageUrl, imageBounds);
 
 var bulgar = L.tileLayer('bulgaria-map/{z}/{x}/{y}.png', {
     minZoom: 6,
@@ -61,7 +61,7 @@ var bulgar = L.tileLayer('bulgaria-map/{z}/{x}/{y}.png', {
 var map = L.map('map', {
     center: [42.748126776142875, 25.327709216730058],
     zoom: 6.2,
-    layers: [streets],
+    layers: [streets, bulgariaMap],
     zoomSnap: 0,
     zoomDelta: 0.5,
     wheelPxPerZoomLevel: 150,
@@ -113,7 +113,7 @@ function generateLayer(feature, latlng) {
 
 var geojsonsText = L.geoJSON(gojsons, {
     pointToLayer: generateTextLayer
-}).addTo(map);
+})
 
 var geojsonBulgariaText = L.geoJSON(bulgariaGeoJson, {
     pointToLayer: generateTextLayer
