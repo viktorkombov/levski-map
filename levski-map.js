@@ -50,7 +50,7 @@ var streets = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
 // sets a custom map of Bulgaria
 var imageUrl = 'http://vlevskimuseum-bg.org/wp-content/uploads/2022/02/bulgaria-leaflet-map.png',
     imageBounds = [[45.25444353681564, 19.844982149279534], [40.16525805505217, 31.921737689954174]];
-var bulgariaMap = L.imageOverlay(imageUrl, imageBounds);
+var bulgariaMap = L.imageOverlay(imageUrl, imageBounds).addTo(map);
 
 var bulgar = L.tileLayer('bulgaria-map/{z}/{x}/{y}.png', {
     minZoom: 6,
