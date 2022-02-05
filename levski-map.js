@@ -61,7 +61,7 @@ var bulgar = L.tileLayer('bulgaria-map/{z}/{x}/{y}.png', {
 var map = L.map('map', {
     center: [42.748126776142875, 25.327709216730058],
     zoom: 6.2,
-    layers: [streets, balkansBoundaries, bulgariaMap],
+    layers: [streets, balkansBoundaries, bulgar],
     zoomSnap: 0,
     zoomDelta: 0.5,
     wheelPxPerZoomLevel: 150,
@@ -303,13 +303,13 @@ function displayBulgariaTooltip(flag = true) {
 function zoom() {
     console.log(map.getZoom())
     if (map.getZoom() >= 7 && map.getZoom() <= 7.49) {
-        displayLayer([geojsons, geojsonsText, bulgariaMap, balkansBoundaries, geojsonPoints, geojsonCountries ]);
+        displayLayer([geojsons, geojsonsText, bulgar, balkansBoundaries, geojsonPoints, geojsonCountries ]);
         displayLayer([geojsonMonuments, geojsontowns, geojsonBulgaria, geojsonBulgariaText, ], false);
     } else if (map.getZoom() > 7.49) {
-        displayLayer([geojsons, geojsonsText, balkansBoundaries, geojsonBulgaria, geojsonBulgariaText, geojsonPoints, geojsonCountries, bulgariaMap], false);
+        displayLayer([geojsons, geojsonsText, balkansBoundaries, geojsonBulgaria, geojsonBulgariaText, geojsonPoints, geojsonCountries, bulgar], false);
         displayLayer([geojsontowns]);
     } else if (map.getZoom() < 7) {
-        displayLayer([ bulgariaMap, balkansBoundaries, geojsonPoints, geojsonBulgaria, geojsonBulgariaText, geojsonPoints, geojsonCountries]);
+        displayLayer([ bulgar, balkansBoundaries, geojsonPoints, geojsonBulgaria, geojsonBulgariaText, geojsonPoints, geojsonCountries]);
         displayLayer([geojsonMonuments, geojsons, geojsonsText, geojsontowns], false);
     }
 
