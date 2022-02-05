@@ -113,7 +113,7 @@ function generateLayer(feature, latlng) {
 
 var geojsonsText = L.geoJSON(gojsons, {
     pointToLayer: generateTextLayer
-});
+}).addTo(map);
 
 var geojsonBulgariaText = L.geoJSON(bulgariaGeoJson, {
     pointToLayer: generateTextLayer
