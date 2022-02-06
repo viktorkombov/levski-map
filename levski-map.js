@@ -31,11 +31,11 @@ var route = L.control();
 // function refreshPopup()
 // var towns = L.layerGroup();
 
-var balkansBoundaries = L.geoJSON(balkans, {
-    style: function () {
-        return { weight: 1.5, color: 'gray' }
-    }
-});
+// var balkansBoundaries = L.geoJSON(balkans, {
+//     style: function () {
+//         return { weight: 1.5, color: 'gray' }
+//     }
+// });
 
 var USGS_USImagery = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}', {
     maxZoom: 13,
@@ -55,13 +55,13 @@ var bulgariaMap = L.imageOverlay(imageUrl, imageBounds);
 var bulgar = L.tileLayer('bulgaria-map/{z}/{x}/{y}.png', {
     minZoom: 6,
     maxZoom: 7.5,
-    bounds: [L.latLng(44.36154924249707,22.31375477857506), L.latLng(41.26098447009191, 28.608968191159093)]
+    bounds: [L.latLng(44.36154924249707, 22.31375477857506), L.latLng(41.26098447009191, 28.608968191159093)]
 });
 
 var map = L.map('map', {
     center: [42.748126776142875, 25.327709216730058],
     zoom: 6.2,
-    layers: [USGS_USImagery, bulgariaMap],
+    layers: [streets],
     zoomSnap: 0,
     zoomDelta: 0.5,
     wheelPxPerZoomLevel: 150,
@@ -79,7 +79,10 @@ L.control.zoom({
 
 
 var geojsons = L.geoJSON(gojsons, {
-    pointToLayer: generateLayer
+    pointToLayer: generateLayer,
+    style: function () {
+        return { weight: 1.5, color: 'gray' }
+    }
 }).addTo(map);
 
 function generateLayer(feature, latlng) {
@@ -115,31 +118,38 @@ function generateLayer(feature, latlng) {
 
 
 
-console.log(`
-    [${gojsons.features.map(feat => {
-    // rec.coordinates[0] += 0.2;
-    return `{"type":"Feature","properties":{"type": "${feat.properties.type}Text","name": "${feat.properties.name}"},"geometry":{"type":"Point","coordinates": [${feat.geometry.coordinates.join(', ')}]}}`
-})}
-]
-`);
+// console.log(`
+//     [${gojsons.features.map(feat => {
+//     // rec.coordinates[0] += 0.2;
+//     return `{"type":"Feature","properties":{"type": "${feat.properties.type}Text","name": "${feat.properties.name}"},"geometry":{"type":"Point","coordinates": [${feat.geometry.coordinates.join(', ')}]}}`
+// })}
+// ]
+// `);
 
 // var geojsonsText = L.geoJSON(gojsons, {
 //     pointToLayer: generateTextLayer
 // });
 
-var geojsonBulgariaText = L.geoJSON(bulgariaGeoJson, {
-    pointToLayer: generateTextLayer
+// var geojsonBulgariaText = L.geoJSON(bulgariaGeoJson, {
+//     pointToLayer: generateTextLayer
+// });
+
+// var geojsonBulgaria = L.geoJSON(bulgariaPointGeoJson, {
+//     pointToLayer: generateLayer
+// });
+
+// geojsonBulgaria.on('popupopen', onPopupOpen);
+// geojsonBulgaria.on('popupclose', onPopupClose);
+
+geojsons.on('click', function(){
+    map.closePopup();
 });
-
-var geojsonBulgaria = L.geoJSON(bulgariaPointGeoJson, {
-    pointToLayer: generateLayer
-});
-
-geojsonBulgaria.on('popupopen', onPopupOpen);
-geojsonBulgaria.on('popupclose', onPopupClose);
-
 
 function onPopupOpen(popup) {
+    console.log(popup)
+    if(popup.layer.feature.properties.type !== 'province') {
+        map.closePopup();
+    }
     appMap.currPopup = popup;
 }
 
@@ -147,11 +157,11 @@ function onPopupClose() {
     appMap.currPopup = null;
 }
 
-geojsonBulgaria.bindPopup(function (layer) {
-    let featureData = layer.feature.properties;
-    var popupContent = '<p class="popup-content">' + featureData.content + '</p>' + '<div class="popup-divider"></div>'; // '<img class="popup-img" src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/' + featureData.pathName + '.png"/>';
-    return `<h1 class="popup-heading">${featureData.name}</h1>${popupContent}${zoomToCertainPlaceTemplate}`;
-}, { maxHeight: 300, maxWidth: 200, });
+// geojsonBulgaria.bindPopup(function (layer) {
+//     let featureData = layer.feature.properties;
+//     var popupContent = '<p class="popup-content">' + featureData.content + '</p>' + '<div class="popup-divider"></div>'; // '<img class="popup-img" src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/' + featureData.pathName + '.png"/>';
+//     return `<h1 class="popup-heading">${featureData.name}</h1>${popupContent}${zoomToCertainPlaceTemplate}`;
+// }, { maxHeight: 300, maxWidth: 200, });
 
 
 function generateTextLayer(feature, latlng) {
@@ -164,9 +174,9 @@ function generateTextLayer(feature, latlng) {
     })
 }
 
-var geojsonCountries = L.geoJSON(countriesGeoJson, {
-    pointToLayer: generateTextLayer
-});
+// var geojsonCountries = L.geoJSON(countriesGeoJson, {
+//     pointToLayer: generateTextLayer
+// });
 
 map.on('popupopen', function () {
     closeNav();
@@ -182,9 +192,10 @@ var geojsontowns = L.geoJSON(townsGeoJson, {
     pointToLayer: generateLayer
 });
 
-
-
 geojsons.bindPopup(function (layer) {
+    if (layer.feature.properties.type.includes('Text')) {
+        return '<div></div>'
+    }
     let featureData = provData[layer.feature.properties.pathName];
     var popupContent = featureData.type === 'province' ? '<p>' + featureData.content + '</p>' : 'Повече информация за Левски в област ' + featureData.name + ' ще бъде налична скоро!';
     return `<h1 class="popup-heading">${featureData.name}</h1>${popupContent}${zoomToCertainPlaceTemplate}`;
@@ -315,13 +326,13 @@ function displayBulgariaTooltip(flag = true) {
 function zoom() {
     console.log(map.getZoom())
     if (map.getZoom() >= 7 && map.getZoom() <= 7.49) {
-        displayLayer([geojsons, USGS_USImagery, bulgariaMap, balkansBoundaries, geojsonPoints, geojsonCountries ]);
-        displayLayer([streets, geojsonMonuments, geojsontowns, geojsonBulgaria, geojsonBulgariaText, ], false);
+        displayLayer([geojsons, USGS_USImagery, bulgariaMap, balkansBoundaries, geojsonPoints, geojsonCountries]);
+        displayLayer([streets, geojsonMonuments, geojsontowns, geojsonBulgaria, geojsonBulgariaText,], false);
     } else if (map.getZoom() > 7.49) {
         displayLayer([geojsons, USGS_USImagery, balkansBoundaries, geojsonBulgaria, geojsonBulgariaText, geojsonPoints, geojsonCountries, bulgariaMap], false);
         displayLayer([streets, geojsontowns]);
     } else if (map.getZoom() < 7) {
-        displayLayer([ USGS_USImagery, bulgariaMap, balkansBoundaries, geojsonPoints, geojsonBulgaria, geojsonBulgariaText, geojsonPoints, geojsonCountries]);
+        displayLayer([USGS_USImagery, bulgariaMap, balkansBoundaries, geojsonPoints, geojsonBulgaria, geojsonBulgariaText, geojsonPoints, geojsonCountries]);
         displayLayer([streets, geojsonMonuments, geojsons, geojsontowns], false);
     }
 
