@@ -14,7 +14,7 @@ function zoomToCertainPlace() {
     const typeOfLayer = appMap.currPopup.layer.feature.properties.type;
 
     switch (typeOfLayer) {
-        case 'province': zoomLevel = 10; duration = 1; break;
+        case 'province': zoomLevel = 10; duration = 0.4; break;
         case 'point bulgaria': zoomLevel = 7.49; break;
         case 'point': zoomLevel = 8; duration = 0.6; break;
         case 'town': zoomLevel = 16; duration = 1; break;
@@ -57,14 +57,19 @@ var bulgar = L.tileLayer('bulgaria-map/{z}/{x}/{y}.png', {
     maxZoom: 7.5,
     bounds: [L.latLng(44.36154924249707, 22.31375477857506), L.latLng(41.26098447009191, 28.608968191159093)]
 });
+var Stamen_TerrainBackground = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain-background/{z}/{x}/{y}{r}.{ext}', {
+	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+	subdomains: 'abcd',
+	minZoom: 0,
+	maxZoom: 18,
+	ext: 'png'
+});
 
 var map = L.map('map', {
     center: [42.748126776142875, 25.327709216730058],
     zoom: 6.2,
-    layers: [streets],
-    zoomSnap: 0,
-    zoomDelta: 0.5,
-    wheelPxPerZoomLevel: 150,
+    layers: [USGS_USImagery, bulgar],
+    
     zoomControl: false,
     maxZoom: 16.9,
     minZoom: 6.2
