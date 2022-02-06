@@ -55,13 +55,13 @@ var bulgariaMap = L.imageOverlay(imageUrl, imageBounds);
 var bulgar = L.tileLayer('bulgaria-map/{z}/{x}/{y}.png', {
     minZoom: 6,
     maxZoom: 7.5,
-    bounds: [L.latLng(44.36154924249707, 22.31375477857506), L.latLng(41.26098447009191, 28.608968191159093)]
+    bounds: [L.latLng(44.36154924249707,22.31375477857506), L.latLng(41.26098447009191, 28.608968191159093)]
 });
 
 var map = L.map('map', {
     center: [42.748126776142875, 25.327709216730058],
     zoom: 6.2,
-    layers: [streets, bulgariaMap],
+    layers: [USGS_USImagery, balkansBoundaries, bulgariaMap],
     zoomSnap: 0,
     zoomDelta: 0.5,
     wheelPxPerZoomLevel: 150,
@@ -80,7 +80,7 @@ L.control.zoom({
 
 var geojsons = L.geoJSON(gojsons, {
     pointToLayer: generateLayer
-}).addTo(map);
+});
 
 function generateLayer(feature, latlng) {
     let icon = {
@@ -113,14 +113,15 @@ function generateLayer(feature, latlng) {
 
 var geojsonsText = L.geoJSON(gojsons, {
     pointToLayer: generateTextLayer
-})
+});
 
 var geojsonBulgariaText = L.geoJSON(bulgariaGeoJson, {
     pointToLayer: generateTextLayer
-})
+}).addTo(map);
+
 var geojsonBulgaria = L.geoJSON(bulgariaPointGeoJson, {
     pointToLayer: generateLayer
-})
+}).addTo(map);
 
 geojsonBulgaria.on('popupopen', onPopupOpen);
 geojsonBulgaria.on('popupclose', onPopupClose);
@@ -153,7 +154,7 @@ function generateTextLayer(feature, latlng) {
 
 var geojsonCountries = L.geoJSON(countriesGeoJson, {
     pointToLayer: generateTextLayer
-})
+}).addTo(map);
 
 map.on('popupopen', function () {
     closeNav();
@@ -224,7 +225,7 @@ geojsontowns.on('popupclose', function (e) {
 
 var geojsonPoints = L.geoJSON(pointsGeoJson, {
     pointToLayer: generateLayer
-});
+}).addTo(map);
 
 geojsonPoints.on('popupopen', onPopupOpen);
 geojsonPoints.on('popupclose', onPopupClose);
@@ -287,11 +288,11 @@ map.on('click', function (e) {
     closeNav();
     closeSearchInput();
 })
-// map.on('zoomend zoomlevelschange', zoom);
+map.on('zoomend zoomlevelschange', zoom);
 
-// map.on('zoomstart zoomlevelschange', function() {
-//     map.closePopup();
-// })
+map.on('zoomstart zoomlevelschange', function() {
+    map.closePopup();
+})
 
 function displayBulgariaTooltip(flag = true) {
     const bulgariaElements = Array.from(document.getElementsByClassName('bulgaria'));
@@ -302,14 +303,14 @@ function displayBulgariaTooltip(flag = true) {
 function zoom() {
     console.log(map.getZoom())
     if (map.getZoom() >= 7 && map.getZoom() <= 7.49) {
-        displayLayer([geojsons, geojsonsText, geojsonPoints, geojsonCountries]);
-        displayLayer([geojsonMonuments, geojsontowns, geojsonBulgaria, geojsonBulgariaText,], false);
+        displayLayer([geojsons, geojsonsText, USGS_USImagery, bulgariaMap, balkansBoundaries, geojsonPoints, geojsonCountries ]);
+        displayLayer([streets, geojsonMonuments, geojsontowns, geojsonBulgaria, geojsonBulgariaText, ], false);
     } else if (map.getZoom() > 7.49) {
-        displayLayer([geojsons, geojsonsText, geojsonBulgaria, geojsonBulgariaText, geojsonPoints, geojsonCountries], false);
-        displayLayer([geojsontowns]);
+        displayLayer([geojsons, geojsonsText, USGS_USImagery, balkansBoundaries, geojsonBulgaria, geojsonBulgariaText, geojsonPoints, geojsonCountries, bulgariaMap], false);
+        displayLayer([streets, geojsontowns]);
     } else if (map.getZoom() < 7) {
-        displayLayer([geojsonPoints, geojsonBulgaria, geojsonBulgariaText, geojsonPoints, geojsonCountries]);
-        displayLayer([geojsonMonuments, geojsons, geojsonsText, geojsontowns], false);
+        displayLayer([ USGS_USImagery, bulgariaMap, balkansBoundaries, geojsonPoints, geojsonBulgaria, geojsonBulgariaText, geojsonPoints, geojsonCountries]);
+        displayLayer([streets, geojsonMonuments, geojsons, geojsonsText, geojsontowns], false);
     }
 
     if (map.getZoom() >= 13) {
