@@ -52,24 +52,21 @@ var imageUrl = 'http://vlevskimuseum-bg.org/wp-content/uploads/2022/02/bulgaria-
     imageBounds = [[45.25444353681564, 19.844982149279534], [40.16525805505217, 31.921737689954174]];
 var bulgariaMap = L.imageOverlay(imageUrl, imageBounds);
 
-var bulgar = L.tileLayer('bulgaria-map/{z}/{x}/{y}.png', {
+var bulgar = L.tileLayer('http://vlevskimuseum-bg.org/wp-content/uploads/2022/02/map-{z}-{x}-{y}.png', {
+    // var bulgar = L.tileLayer('map/{z}/{x}/{y}.png', {
     minZoom: 6,
-    maxZoom: 7.5,
-    bounds: [L.latLng(44.36154924249707, 22.31375477857506), L.latLng(41.26098447009191, 28.608968191159093)]
-});
-var Stamen_TerrainBackground = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain-background/{z}/{x}/{y}{r}.{ext}', {
-	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-	subdomains: 'abcd',
-	minZoom: 0,
-	maxZoom: 18,
-	ext: 'png'
+    maxZoom: 7.49,
+    bounds: [L.latLng(48.36220187357865, 9.768120068760378), L.latLng(36.819775824857466, 40.30455230465974)]
+    //  48.36220187357865, 9.768120068760378 36.819775824857466, 40.30455230465974, 
 });
 
 var map = L.map('map', {
     center: [42.748126776142875, 25.327709216730058],
     zoom: 6.2,
-    layers: [USGS_USImagery, bulgar],
-    
+    layers: [bulgar],
+    zoomSnap: 0,
+    zoomDelta: 0.5,
+    wheelPxPerZoomLevel: 150,
     zoomControl: false,
     maxZoom: 16.9,
     minZoom: 6.2
@@ -86,7 +83,7 @@ L.control.zoom({
 var geojsons = L.geoJSON(gojsons, {
     pointToLayer: generateLayer,
     style: function () {
-        return { weight: 1.5, color: 'gray' }
+        return { weight: 1.5, color: 'grey' }
     }
 }).addTo(map);
 
@@ -112,7 +109,7 @@ function generateLayer(feature, latlng) {
     if (feature.properties.text) {
         icon.html = provData[feature.properties.pathName].name;
         icon.iconSize = feature.properties?.type === 'country' ? [40, 40] : [20, 20];
-        icon.className = 'map-custom-text-divIcon-' + feature.properties.type
+        // icon.className = 'map-custom-text-divIcon-' + feature.properties.type
     }
 
     return L.marker(latlng, {
