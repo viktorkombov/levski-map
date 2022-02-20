@@ -64,9 +64,9 @@ var map = L.map('map', {
     center: [42.748126776142875, 25.327709216730058],
     zoom: 6.2,
     layers: [bulgar],
-    zoomSnap: 0,
-    zoomDelta: 0.5,
-    wheelPxPerZoomLevel: 150,
+    // zoomSnap: 0,
+    // zoomDelta: 0.5,
+    // wheelPxPerZoomLevel: 150,
     zoomControl: false,
     maxZoom: 16.9,
     minZoom: 6.2
