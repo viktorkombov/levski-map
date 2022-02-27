@@ -88,7 +88,7 @@ var geojsons = L.geoJSON(gojsons, {
     }
 }).addTo(map);
 
-var asd = L.geoJSON(geo).addTo(map);
+// var asd = L.geoJSON(geo).addTo(map);
 
 function generateLayer(feature, latlng) {
     if (feature.properties.type.includes('Text')) {
