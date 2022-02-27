@@ -63,7 +63,7 @@ var bulgar = L.tileLayer('http://vlevskimuseum-bg.org/wp-content/uploads/2022/02
 var map = L.map('map', {
     center: [42.748126776142875, 25.327709216730058],
     zoom: 6.2,
-    layers: [bulgar],
+    layers: [],
     // zoomSnap: 0,
     // zoomDelta: 0.5,
     // wheelPxPerZoomLevel: 150,
@@ -86,6 +86,8 @@ var geojsons = L.geoJSON(gojsons, {
         return { weight: 1.5, color: 'grey' }
     }
 }).addTo(map);
+
+var asd = L.geoJSON(geo).addTo(map);
 
 function generateLayer(feature, latlng) {
     if (feature.properties.type.includes('Text')) {
