@@ -126,7 +126,7 @@ body {
   background: rgba(255, 0, 0, 0.4);
   border: 3.2px solid rgb(255, 0, 0);
   color: blue;
-  display: none;
+  /* display: none; */
 }
 
 .map-custom-divIcon--province:hover {
@@ -135,13 +135,13 @@ body {
   opacity: 1;
 }
 
-.map-custom-text-divIcon--provinceText {
+/* .map-custom-text-divIcon--provinceText {
   display: none;
 }
 
 .map-custom-divIcon-country {
   display: none;
-}
+} */
 
 .map-custom-text-divIcon {
   margin: -27px !important;
