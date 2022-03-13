@@ -73,8 +73,6 @@ var map = L.map('map', {
     minZoom: 6.2
 });
 
-
-
 // sets the zoom control to be positioned in the bottom left corner
 L.control.zoom({
     position: 'bottomright'
@@ -88,7 +86,7 @@ var geojsons = L.geoJSON(gojsons, {
     }
 }).addTo(map);
 
-var asd = L.geoJSON(geo).addTo(map);
+// var asd = L.geoJSON(geo).addTo(map);
 
 function generateLayer(feature, latlng) {
     if (feature.properties.type.includes('Text')) {
@@ -146,13 +144,13 @@ function generateLayer(feature, latlng) {
 // geojsonBulgaria.on('popupopen', onPopupOpen);
 // geojsonBulgaria.on('popupclose', onPopupClose);
 
-geojsons.on('click', function () {
+geojsons.on('click', function(){
     map.closePopup();
 });
 
 function onPopupOpen(popup) {
     console.log(popup)
-    if (popup.layer.feature.properties.type !== 'province') {
+    if(popup.layer.feature.properties.type !== 'province') {
         map.closePopup();
     }
     appMap.currPopup = popup;
@@ -170,12 +168,11 @@ function onPopupClose() {
 
 
 function generateTextLayer(feature, latlng) {
-    const type = feature.properties.type;
-    console.log(type)
+    const type = feature.properties.type !== 'town' ? feature.properties.type : 'province';
     return L.marker(latlng, {
         icon: L.divIcon({
             html: feature.properties.name,
-            className: 'map-custom-text-divIcon map-custom-text-divIcon--' + type,
+            className: 'map-custom-text-divIcon map-custom-text-divIcon--' + type
         })
     })
 }
@@ -322,18 +319,6 @@ map.on('click', function (e) {
 // map.on('zoomstart zoomlevelschange', function() {
 //     map.closePopup();
 // })
-
-map.on('zoomend zoomlevelschange', function() {
-    if ($('.bulgaria').is(":hidden")) {
-        $('.bulgaria').show();
-        $('.map-custom-divIcon--province').hide();
-        $('.map-custom-text-divIcon--provinceText').hide();
-    } else {
-        $('.bulgaria').hide();
-        $('.map-custom-divIcon--province').show();
-        $('.map-custom-text-divIcon--provinceText').show();
-    }
-});
 
 function displayBulgariaTooltip(flag = true) {
     const bulgariaElements = Array.from(document.getElementsByClassName('bulgaria'));
