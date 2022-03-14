@@ -9,13 +9,13 @@ var appMap = {
 var zoomToCertainPlaceTemplate = '<button class="map-zoom-to-button" onclick="zoomToCertainPlace()">Виж отблизо</button>';
 function zoomToCertainPlace() {
     const coordinates = appMap.currPopup.layer.feature.geometry.coordinates.slice().reverse();
-    let zoomLevel = 7.5;
+    let zoomLevel = 7.49;
     let duration = 0.5;
     const typeOfLayer = appMap.currPopup.layer.feature.properties.type;
 
     switch (typeOfLayer) {
         case 'province': zoomLevel = 10; duration = 1; break;
-        case 'point bulgaria': zoomLevel = 7.5; break;
+        case 'point bulgaria': zoomLevel = 7.49; break;
         case 'point': zoomLevel = 8; duration = 0.6; break;
         case 'city': zoomLevel = 16; duration = 1; break;
         case 'village': zoomLevel = 16; duration = 1; break;
@@ -64,9 +64,9 @@ var map = L.map('map', {
     center: [42.748126776142875, 25.327709216730058],
     zoom: 6.2,
     layers: [bulgar, balkansBoundaries],
-    zoomSnap: 0,
-    zoomDelta: 0.5,
-    wheelPxPerZoomLevel: 150,
+    // zoomSnap: 0,
+    // zoomDelta: 0.5,
+    // wheelPxPerZoomLevel: 150,
     zoomControl: false,
     maxZoom: 17,
     minZoom: 6.2
