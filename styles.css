@@ -104,18 +104,14 @@ body {
   background: rgba(182, 0, 91, 0.4);
   border: 3.2px solid rgb(182, 0, 91);
   color: blue;
-  -webkit-box-shadow: 0 0 0 0 rgb(182, 0, 91);
-  box-shadow: 0 0 0 0 rgb(182, 0, 91);
-  -webkit-animation: pulse-black 2s infinite;
-  animation: pulse-black 2s infinite;
+
 }
 
 .map-custom-divIcon--point:hover {
   border: 3.2px solid rgb(182, 0, 91);
   background: rgba(182, 0, 91, 0.8);
   opacity: 1;
-  -webkit-animation: none;
-  animation: none;
+
 }
 
 .map-custom-divIcon--point--legend {
@@ -126,7 +122,7 @@ body {
   background: rgba(255, 0, 0, 0.4);
   border: 3.2px solid rgb(255, 0, 0);
   color: blue;
-  /* display: none; */
+  display: none;
 }
 
 .map-custom-divIcon--province:hover {
@@ -135,13 +131,13 @@ body {
   opacity: 1;
 }
 
-/* .map-custom-text-divIcon--provinceText {
+.map-custom-text-divIcon--provinceText {
   display: none;
 }
 
 .map-custom-divIcon-country {
   display: none;
-} */
+}
 
 .map-custom-text-divIcon {
   margin: -27px !important;

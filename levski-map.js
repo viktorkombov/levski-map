@@ -149,8 +149,8 @@ geojsons.on('click', function () {
 });
 
 function onPopupOpen(popup) {
-    console.log(popup)
-    if (popup.layer.feature.properties.type !== 'province') {
+    console.log(popup.layer.feature.properties.type )
+    if (popup.layer.feature.properties.type !== 'province' && !popup.layer.feature.properties.type.includes('point')) {
         map.closePopup();
     }
     appMap.currPopup = popup;
@@ -200,7 +200,7 @@ geojsons.bindPopup(function (layer) {
     if (layer.feature.properties.type.includes('Text')) {
         return '<div></div>'
     }
-    let featureData = provData[layer.feature.properties.pathName];
+    let featureData = layer.feature.properties;
     var popupContent = featureData.type === 'province' ? '<p>' + featureData.content + '</p>' : 'Повече информация за Левски в област ' + featureData.name + ' ще бъде налична скоро!';
     return `<h1 class="popup-heading">${featureData.name}</h1>${popupContent}${zoomToCertainPlaceTemplate}`;
 }, { maxHeight: 300, maxWidth: 200, });
@@ -321,17 +321,17 @@ map.on('click', function (e) {
 //     map.closePopup();
 // })
 
-// map.on('zoomend zoomlevelschange', function() {
-//     if ($('.bulgaria').is(":hidden")) {
-//         $('.bulgaria').show();
-//         $('.map-custom-divIcon--province').hide();
-//         $('.map-custom-text-divIcon--provinceText').hide();
-//     } else {
-//         $('.bulgaria').hide();
-//         $('.map-custom-divIcon--province').show();
-//         $('.map-custom-text-divIcon--provinceText').show();
-//     }
-// });
+map.on('zoomend zoomlevelschange', function() {
+    if ($('.bulgaria').is(":hidden")) {
+        $('.bulgaria').show();
+        $('.map-custom-divIcon--province').hide();
+        $('.map-custom-text-divIcon--provinceText').hide();
+    } else {
+        $('.bulgaria').hide();
+        $('.map-custom-divIcon--province').show();
+        $('.map-custom-text-divIcon--provinceText').show();
+    }
+});
 
 function displayBulgariaTooltip(flag = true) {
     const bulgariaElements = Array.from(document.getElementsByClassName('bulgaria'));
