@@ -29,7 +29,7 @@ function autocomplete(inp, towns) {
                         animate: true,
                         duration: 1.5
                     })
-                    displayLayer([geojsons, geojsonsText, bulgariaMap, USGS_USImagery, balkansBoundaries], false);
+                    displayLayer([geojsons, geojsonsText, bulgar, balkansBoundaries], false);
                     displayLayer([streets, geojsonCities]);
                     var currLayer = geojsonCities.getLayers().filter(rec => JSON.stringify(rec.feature.geometry.coordinates) === JSON.stringify(coordinates));
                     setTimeout(() => {
