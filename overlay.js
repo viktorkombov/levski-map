@@ -23,7 +23,7 @@ function openOverlayImg(length) {
 
     for (let i = 0; i < length; i++) {
         if (i === 0) {
-            carouselIndicators.append($.el('li', { 'data-target': '#carouselExampleIndicators', 'data-wrap': 'false', 'class': 'active' }));
+            carouselIndicators.append($.el('li', { 'data-target': '#carouselExampleFade', 'data-wrap': 'false', 'class': 'active' }));
             carouselSlides.append($.el('div', { 'class': 'carousel-item active' })
                 .append(
                     $.el('img', { 'class': 'd-block w-100', 'src': link(pathName, i + 1) })
@@ -36,7 +36,7 @@ function openOverlayImg(length) {
                 )
             );
         } else {
-            carouselIndicators.append($.el('li', { 'data-target': '#carouselExampleIndicators' }));
+            carouselIndicators.append($.el('li', { 'data-target': '#carouselExampleFade' }));
             carouselSlides.append($.el('div', { 'class': 'carousel-item' })
                 .append(
                     $.el('img', { 'class': 'd-block w-100', 'src': link(pathName, i + 1) })
@@ -53,36 +53,36 @@ function openOverlayImg(length) {
 
     elem.append(
         $.el('div', {
-            'id': 'carouselExampleIndicators', 'style': 'max-height: 90%; max-width: 90%; overflow: hidden;',
-            'class': 'carousel slide', 'data-ride': 'carousel'
+            'id': 'carouselExampleFade', 'style': 'max-height: 90%; max-width: 90%; overflow: hidden;',
+            'class': 'carousel slide carousel-fade', 'data-ride': 'carousel'
         }).append(carouselIndicators)
             .append(carouselSlides)
             .append(
-                $.el('а', { 'class': 'carousel-control-prev', 'href': '#carouselExampleIndicators', 'role': 'button', 'data-slide': 'prev' })
+                $.el('а', { 'class': 'carousel-control-prev', 'href': '#carouselExampleFade', 'role': 'button', 'data-slide': 'prev' })
                     .append($.el('span', { 'class': 'carousel-control-prev-icon', 'aria-hidden': 'true' }))
                     .append($.el('span', { 'class': 'sr-only' }).text('Previous'))
             )
             .append(
-                $.el('а', { 'class': 'carousel-control-next', 'href': '#carouselExampleIndicators', 'role': 'button', 'data-slide': 'next' })
+                $.el('а', { 'class': 'carousel-control-next', 'href': '#carouselExampleFade', 'role': 'button', 'data-slide': 'next' })
                     .append($.el('span', { 'class': 'carousel-control-next-icon', 'aria-hidden': 'true' }))
                     .append($.el('span', { 'class': 'sr-only' }).text('Next'))
             )
 
     );
-    // <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    // <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
     // //         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     // //         <span class="sr-only">Previous</span>
     // //     </a>
-    //     <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    //     <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
     //         <span class="carousel-control-next-icon" aria-hidden="true"></span>
     //         <span class="sr-only">Next</span>
     //     </a>
-    // <div id="carouselExampleIndicators" style="max-height: 90%; max-width: 90%; overflow: hidden;"
+    // <div id="carouselExampleFade" style="max-height: 90%; max-width: 90%; overflow: hidden;"
     //     class="carousel slide" data-ride="carousel">
     //     <ol class="carousel-indicators">
-    //         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    //         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    //         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    //         <li data-target="#carouselExampleFade" data-slide-to="0" class="active"></li>
+    //         <li data-target="#carouselExampleFade" data-slide-to="1"></li>
+    //         <li data-target="#carouselExampleFade" data-slide-to="2"></li>
     //     </ol>
     //     <div class="carousel-inner">
     //         <div class="carousel-item active">
@@ -104,11 +104,11 @@ function openOverlayImg(length) {
     //             <img class="d-block w-100" src="/images/asd2.jpg" alt="Third slide">
     //         </div>
     //     </div>
-    //     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    //     <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
     //         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     //         <span class="sr-only">Previous</span>
     //     </a>
-    //     <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    //     <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
     //         <span class="carousel-control-next-icon" aria-hidden="true"></span>
     //         <span class="sr-only">Next</span>
     //     </a>
