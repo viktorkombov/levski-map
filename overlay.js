@@ -1,41 +1,42 @@
-function openOverlayImg() {
+function openOverlayImg(length) {
     // console.log(appMap.currPopup);
     // document.getElementById("map-overlay-img").src = 'http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/' + appMap.currPopup.layer.feature.properties.pathName + '.png';
     document.getElementById("map-overlay").style.display = "block";
     // createSlideshowContent('asd', 'АСД', 3);
     // showSlides(1);
+    var pathName = 'lovech';
+    function link(pathName, i) {
+        return 'http://vlevskimuseum-bg.org/wp-content/uploads/2022/03/' + pathName + i + '.jpg'
+    }
     $.extend({
         el: function (el, props) {
             var $el = $(document.createElement(el));
             $el.attr(props);
             return $el;
         }
-    }); 
+    });
 
     var elem = $("#map-overlay-wrapper");
 
+    var carouselIndicators = $.el('ol', { 'class': 'carousel-indicators' });
+    var carouselSlides = $.el('div', { 'class': 'carousel-inner' });
+
+    for (let i = 0; i < length; i++) {
+        if (i === 0) {
+            carouselIndicators.append($.el('li', { 'data-target': '#carouselExampleIndicators', 'class': 'active' }));
+            carouselSlides.append($.el('div', { 'class': 'carousel-item active' }).append($.el('img', { 'class': 'd-block w-100', 'src': link(pathName, i + 1) })));
+        } else {
+            carouselIndicators.append($.el('li', { 'data-target': '#carouselExampleIndicators' }));
+            carouselSlides.append($.el('div', { 'class': 'carousel-item' }).append($.el('img', { 'class': 'd-block w-100', 'src': link(pathName, i + 1) })));
+        }
+    }
 
     elem.append(
         $.el('div', {
             'id': 'carouselExampleIndicators', 'style': 'max-height: 90%; max-width: 90%; overflow: hidden;',
             'class': 'carousel slide', 'data-ride': 'carousel'
-        }).append(
-            $.el('ol', { 'class': 'carousel-indicators' }).append(
-                $.el('li', { 'data-target': '#carouselExampleIndicators', 'class': 'active' })
-            ).append($.el('li', { 'data-target': '#carouselExampleIndicators' })).append($.el('li', { 'data-target': '#carouselExampleIndicators' }))
-        )
-            .append(
-                $.el('div', { 'class': 'carousel-inner' })
-                    .append(
-                        $.el('div', { 'class': 'carousel-item active' }).append($.el('img', { 'class': 'd-block w-100', 'src': '/images/asd0.jpg' }))
-                    )
-                    .append(
-                        $.el('div', { 'class': 'carousel-item' }).append($.el('img', { 'class': 'd-block w-100', 'src': '/images/asd0.jpg' }))
-                    )
-                    .append(
-                        $.el('div', { 'class': 'carousel-item' }).append($.el('img', { 'class': 'd-block w-100', 'src': '/images/asd0.jpg' }))
-                    )
-            )
+        }).append(carouselIndicators)
+            .append(carouselSlides)
             .append(
                 $.el('а', { 'class': 'carousel-control-prev', 'href': '#carouselExampleIndicators', 'role': 'button', 'data-slide': 'prev' })
                     .append($.el('span', { 'class': 'carousel-control-prev-icon', 'aria-hidden': 'true' }))
