@@ -1,13 +1,25 @@
 <html>
 
 <head>
-
-  <title>Layers Control Tutorial Leaflet</title>
+ 
+  <title>ПЪТЕВОДИТЕЛ - По стъпките на Апостола</title>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -25,112 +37,94 @@
       class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
       tabindex="0" style="position: relative; outline: none;">
     </div>
-    <div id="mySidenav" class="sidenav"> 
-      <div class="accordion-wrapper">
-        <button class="accordion">Легенда</button>
-        <div class="panel">
-          <article class="map-legend-wrapper">
-            <div class="location-divicon-point legend" style="width: 20px; height: 20px;"></div>
+    <div id="mySidenav" class="map-sidenav">
+      <div class="map-sidenav-accordion-wrapper">
+        <button class="map-sidenav-accordion">Легенда</button>
+        <div class="map-sidenav-accordion-panel">
+          <article class="map-sidenav-legend-wrapper">
+            <div class="map-custom-divIcon map-custom-divIcon--point map-custom-divIcon--point--legend"
+              style="width: 20px; height: 20px;"></div>
             <p>- държава</p>
           </article>
-          <article class="map-legend-wrapper">
-            <div class="location-divicon-province" style="width: 20px; height: 20px;"></div>
+          <article class="map-sidenav-legend-wrapper">
+            <div class="map-custom-divIcon map-custom-divIcon--province" style="width: 20px; height: 20px;"></div>
             <p>- oбласт</p>
           </article>
-          <article class="map-legend-wrapper">
-            <div class="location-divicon-city" style="width: 20px; height: 20px;"></div>
+          <article class="map-sidenav-legend-wrapper">
+            <div class="map-custom-divIcon map-custom-divIcon--town" style="width: 20px; height: 20px;"></div>
             <p>- град</p>
           </article>
-          <article class="map-legend-wrapper">
-            <div class="location-divicon-village" style="width: 20px; height: 20px;"></div>
+          <article class="map-sidenav-legend-wrapper">
+            <div class="map-custom-divIcon map-custom-divIcon--village" style="width: 20px; height: 20px;"></div>
             <p>- село</p>
           </article>
-          <article class="map-legend-wrapper">
+          <article class="map-sidenav-legend-wrapper">
             <img src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/museum4.png" alt="м"
               style="width: 25px; height: 25px;">
             <p>- музей</p>
           </article>
-          <article class="map-legend-wrapper">
+          <article class="map-sidenav-legend-wrapper">
             <img src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/obelisk4.png" alt="м"
               style="width: 25px; height: 25px;">
             <p>- паметник</p>
           </article>
-          <article class="map-legend-wrapper">
+          <article class="map-sidenav-legend-wrapper">
             <img src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/church4.png" alt="м"
               style="width: 25px; height: 25px;">
             <p>- църква/манастир</p>
           </article>
-          <article class="map-legend-wrapper">
+          <article class="map-sidenav-legend-wrapper">
             <img src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/house4.png" alt="м"
               style="width: 25px; height: 25px;">
             <p>- паметно място</p>
           </article>
-          <article class="map-legend-wrapper">
+          <article class="map-sidenav-legend-wrapper">
             <img src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/hut4.png" alt="м"
               style="width: 25px; height: 25px;">
             <p>- хижа</p>
           </article>
-          <article class="map-legend-wrapper">
+          <article class="map-sidenav-legend-wrapper">
             <img src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/mountain4.png" alt="м"
               style="width: 25px; height: 25px;">
             <p>- връх</p>
           </article>
         </div>
 
-        <!-- <button class="accordion">Маршрути</button>
-        <div class="panel">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-            labore et
-            dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-            ex ea
-            commodo
-            consequat.</p>
-        </div> -->
+        <a class="map-sidenav-accordion" target="_blank" rel="noopener noreferrer" href="http://spatium.bg/levski.html"
+          onclick="closeNav()" style="text-decoration: none;">Обиколките на Левски</a>
 
-        <a class="accordion" target="_blank" rel="noopener noreferrer" href="http://spatium.bg/levski.html" onclick="closeNav()" style="text-decoration: none;">Обиколките на Левски</a>
-        <!-- <div class="panel">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-            labore et
-            dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-            ex ea
-            commodo
-            consequat.</p>
-        </div> -->
       </div>
     </div>
-    <span id="openbtn" class="leaflet-control-zoom leaflet-bar leaflet-control" onclick="openNav()">&#9776;</span>
+    <span id="map-sidenav-openbtn" class="leaflet-control-zoom leaflet-bar leaflet-control"
+      onclick="openNav()">&#9776;</span>
 
-    <form autocomplete="off" id="search-map" action="/action_page.php">
-      <input id="search-input" type="text" name="myCountry" placeholder="Населено място">
-      <svg class="svg-icon search-icon leaflet-control-zoom leaflet-bar leaflet-control" id="search-icon"
+    <form autocomplete="off" id="map-search" action="/action_page.php">
+      <input id="map-search-input" type="text" name="myCountry" placeholder="Населено място">
+      <svg class="svg-icon map-search-icon leaflet-control-zoom leaflet-bar leaflet-control" id="map-search-icon"
         aria-labelledby="title desc" role="img" viewBox="0 0 19.9 19.7" onclick="onSearchClick(event)">
         <title id="title">Search Icon</title>
         <desc id="desc">A magnifying glass icon.</desc>
-        <g class="search-path" fill="none" stroke="black">
+        <g class="map-search-path" fill="none" stroke="black">
           <path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4" />
           <circle cx="8" cy="8" r="7" />
         </g>
       </svg>
     </form>
-    <div id="map-overlay" onclick="closeOverlayImg()">
+
+
+    <div id="map-overlay" style="display: none;" onclick="closeOverlayImg(event)">
       <div id="map-overlay-wrapper">
-        <img id="map-overlay-img" style="position: relative; max-width: 100%; height: auto;"
-          src="http://vlevskimuseum-bg.org/wp-content/themes/wp-simple/assets/images/logo-01.png"
-          alt="Снимка на обекта">
+       
       </div>
     </div>
 
-  </div>
-
-
-  <script src="./data.js"></script>
-  <script src="./autocomplete.js"></script>
-  <script src="./geojson.js"></script>
-  <script src="./sidebar.js"></script>
-  <script src="./levski-map.js"></script>
-  <script src="./overlay.js"></script>
+    <script src="./data.js"></script>
+    <script src="./autocomplete.js"></script>
+    <script src="./geojson.js"></script>
+    <script src="./sidebar.js"></script>
+    <script src="./levski-map.js"></script>
+    <script src="./overlay.js"></script>
+    <script src="./slideshow.js"></script>
 
 
 

@@ -7,7 +7,7 @@ function plusSlides(n) {
 
 function currentSlide(n) {
   showSlides(slideIndex = n);
-}
+} 
 
 function showSlides(n) {
   var i;
@@ -31,14 +31,15 @@ function createElementFromHTML(htmlString, className) {
     div.className = className;
   }
   div.innerHTML = htmlString.trim();
-  return div.firstChild;
+  console.log(div)
+  return div;
 }
 
 function createSlideshowContent(pathName, name, galleryLength) {
   const slidesWrapperClassName = 'map-slides-slideshow-container'
   let slideShowElements = '';
   const slidesImagesWrapper = (images) => '<div class="map-slides map-slides-fade">' + images + '</div>';
-  const slidesImage = (pathName, index, name) => '<img src="http://vlevskimuseum-bg.org/wp-content/uploads/2022/02/' + pathName + index + '.jpg" alt="' + name + '" style="width:100%">';
+  const slidesImage = (pathName, index, name) => '<img src="images/' + pathName + index + '.jpg" alt="' + name + '" style="width:100%">';
 
   if (galleryLength > 1) {
     const slidesNumber = (num) => '<div class="map-slides-numbertext">' + num + ' / ' + galleryLength + '</div>';
@@ -48,14 +49,19 @@ function createSlideshowContent(pathName, name, galleryLength) {
       '<a class="map-slides-next" onclick="plusSlides(1)">&#10095;</a>';
 
     for (let i = 0; i < galleryLength; i++) {
-      slideShowElements += slideImagesWrapper(slidesNumber(i) + slidesImage(pathName, i, name));
-      slidesDotes.splice(slidesDotes.length - 2, slidesDot(i + 1)); // debug!!!
+      slideShowElements += slidesImagesWrapper(slidesNumber(i) + slidesImage(pathName, i, name));
+      slidesDotes.splice(slidesDotes.length - 1, 0, slidesDot(i + 1)); // debug!!!
     }
 
     slideShowElements += slidesDotes.join('') + slidesArrows;
+    console.log(slideShowElements);
   } else {
     slideShowElements = slidesImagesWrapper(slidesImage(pathName, 0, name));
   }
 
-  return createElementFromHTML(slideShowElements, slidesWrapperClassName);
+
+  var mapOverlay = document.getElementById('map-overlay-wrapper');
+  mapOverlay.innerHTML = '';
+  mapOverlay.appendChild(createElementFromHTML(slideShowElements, slidesWrapperClassName));
+  // return createElementFromHTML(slideShowElements, slidesWrapperClassName);
 }
