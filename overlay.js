@@ -23,11 +23,31 @@ function openOverlayImg(length) {
 
     for (let i = 0; i < length; i++) {
         if (i === 0) {
-            carouselIndicators.append($.el('li', { 'data-target': '#carouselExampleIndicators', 'class': 'active' }));
-            carouselSlides.append($.el('div', { 'class': 'carousel-item active' }).append($.el('img', { 'class': 'd-block w-100', 'src': link(pathName, i + 1) })));
+            carouselIndicators.append($.el('li', { 'data-target': '#carouselExampleIndicators', 'data-wrap': 'false', 'class': 'active' }));
+            carouselSlides.append($.el('div', { 'class': 'carousel-item active' })
+                .append(
+                    $.el('img', { 'class': 'd-block w-100', 'src': link(pathName, i + 1) })
+                )
+                .append(
+                    $.el('div', { 'class': 'carousel-caption d-none d-md-block' })
+                        .append(
+                            $.el('h5', { 'class': '' }).text('Ловеч' + (i + 1))
+                        )
+                )
+            );
         } else {
             carouselIndicators.append($.el('li', { 'data-target': '#carouselExampleIndicators' }));
-            carouselSlides.append($.el('div', { 'class': 'carousel-item' }).append($.el('img', { 'class': 'd-block w-100', 'src': link(pathName, i + 1) })));
+            carouselSlides.append($.el('div', { 'class': 'carousel-item' })
+                .append(
+                    $.el('img', { 'class': 'd-block w-100', 'src': link(pathName, i + 1) })
+                )
+                .append(
+                    $.el('div', { 'class': 'carousel-caption d-none d-md-block' })
+                        .append(
+                            $.el('h5', { 'class': '' }).text('Ловеч' + (i + 1))
+                        )
+                )
+            );
         }
     }
 
