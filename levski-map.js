@@ -141,7 +141,7 @@ geojsonBulgaria.bindPopup(function (layer) {
     let featureData = layer.feature.properties;
     let ltlng = layer.feature.geometry.coordinates;
     var popupContent = '<p class="popup-content">' + featureData.content + '</p>' + '<div class="popup-divider"></div>'; // '<img class="popup-img" src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/' + featureData.pathName + '.png"/>';
-    return `<h4 class="popup-heading">${featureData.name}</h4>${popupContent}${zoomToCertainPlaceTemplate}`;
+    return `<h3 class="popup-heading">${featureData.name}</h3>${popupContent}${zoomToCertainPlaceTemplate}`;
 }, { maxHeight: 300, maxWidth: 200, });
 
 
@@ -177,8 +177,8 @@ var geojsonCities = L.geoJSON(citiesGeoJson, {
 
 geojsons.bindPopup(function (layer) {
     let featureData = layer.feature.properties;
-    var popupContent = featureData.type === 'province' ? '<p>' + featureData.content + '</p>' : 'Повече информация за Левски в област ' + featureData.name + ' ще бъде налична скоро!';
-    return '<img class="popup-img" onclick="openOverlayImg(' + 9 + ')" src="http://vlevskimuseum-bg.org/wp-content/uploads/2022/03/' + featureData.pathName + '1' + '.jpg"/>' + `<h4 class="popup-heading">${featureData.name}</h4>${popupContent}`;
+    var popupContent = featureData.type === 'province' ? '<p class="popup-content">' + featureData.content + '</p>' : 'Повече информация за Левски в област ' + featureData.name + ' ще бъде налична скоро!';
+    return '<img class="popup-img" onclick="openOverlayImg(' + 9 + ')" src="http://vlevskimuseum-bg.org/wp-content/uploads/2022/03/' + featureData.pathName + '1' + '.jpg"/>' + `<h3 class="popup-heading">${featureData.name}</h3>${popupContent}`;
 }, { maxHeight: 300, maxWidth: 200, });
 // http://vlevskimuseum-bg.org/wp-content/uploads/2022/03/lovech1.jpg
 geojsons.on('popupopen', onPopupOpen);
@@ -187,7 +187,7 @@ geojsons.on('popupclose', onPopupClose);
 geojsonMonuments.bindPopup(function (layer) {
     let featureData = sofiaProvince[layer.feature.properties.pathName];
     var popupContent = '<p class="popup-content">' + featureData.content + '</p>' + '<div class="popup-divider"></div>';
-    return '<img class="popup-img" onclick="openOverlayImg()" src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/' + featureData.pathName + '.png"/>' + `<h4 class="popup-heading">${featureData.name}</h4>${popupContent}`;
+    return '<img class="popup-img" onclick="openOverlayImg()" src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/' + featureData.pathName + '.png"/>' + `<h3 class="popup-heading">${featureData.name}</h3>${popupContent}`;
 }, { maxHeight: 300, maxWidth: 200, });
 
 geojsonMonuments.bindTooltip(function (layer) {
@@ -213,7 +213,7 @@ geojsonCities.bindTooltip(function (layer) {
 geojsonCities.bindPopup(function (layer) {
     let featureData = layer.feature.properties;
     var popupContent = '<p class="popup-content">' + featureData.content + '</p>' + '<div class="popup-divider"></div>'; // '<img class="popup-img" src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/' + featureData.pathName + '.png"/>';
-    return `<h4 class="popup-heading">${featureData.name}</h4>${popupContent}${zoomToCertainPlaceTemplate}`;
+    return `<h3 class="popup-heading">${featureData.name}</h3>${popupContent}${zoomToCertainPlaceTemplate}`;
 }, { maxHeight: 300, maxWidth: 200, });
 
 geojsonCities.on('popupopen', function (e) {
@@ -236,7 +236,8 @@ geojsonPoints.on('popupclose', onPopupClose);
 geojsonPoints.bindPopup(function (layer) {
     let featureData = layer.feature.properties;
     var popupContent = '<p class="popup-content">' + featureData.content + '</p>' + '<div class="popup-divider"></div>'; // '<img class="popup-img" src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/' + featureData.pathName + '.png"/>';
-    return `<h4 class="popup-heading">${featureData.name}</h4>${popupContent}${zoomToCertainPlaceTemplate}`;
+    return `<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large
+    modal</button><h3 class="popup-heading">${featureData.name}</h3>${popupContent}${zoomToCertainPlaceTemplate}`;
 }, { maxHeight: 300, maxWidth: 200, });
 
 // let towns = citiesGeoJson.features.slice().map((rec) => {
