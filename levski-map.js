@@ -48,7 +48,7 @@ var streets = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
     attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
 });
 
-var bulgar = L.tileLayer('http://vlevskimuseum-bg.org/wp-content/uploads/2022/02/map-{z}-{x}-{y}.png', {
+var bulgar = L.tileLayer('https://vlevskimuseum-bg.org/wp-content/uploads/2022/02/map-{z}-{x}-{y}.png', {
     // var bulgar = L.tileLayer('map/{z}/{x}/{y}.png', {
     minZoom: 6,
     maxZoom: 7.49,
