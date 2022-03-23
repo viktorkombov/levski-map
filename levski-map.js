@@ -178,7 +178,7 @@ var geojsonCities = L.geoJSON(citiesGeoJson, {
 geojsons.bindPopup(function (layer) {
     let featureData = layer.feature.properties;
     var popupContent = featureData.type === 'province' ? '<p class="popup-content">' + featureData.content + '</p>' : 'Повече информация за Левски в област ' + featureData.name + ' ще бъде налична скоро!';
-    return '<img class="popup-img" onclick="openOverlayImg(' + 9 + ')" src="http://vlevskimuseum-bg.org/wp-content/uploads/2022/03/' + featureData.pathName + '1' + '.jpg"/>' + `<h3 class="popup-heading">${featureData.name}</h3>${popupContent}`;
+    return `<h3 class="popup-heading">${featureData.name}</h3>${popupContent}` + '<img class="popup-img" onclick="openOverlayImg(' + 9 + ')" src="http://vlevskimuseum-bg.org/wp-content/uploads/2022/03/' + featureData.pathName + '1' + '.jpg"/>';
 }, { maxHeight: 300, maxWidth: 200, });
 // http://vlevskimuseum-bg.org/wp-content/uploads/2022/03/lovech1.jpg
 geojsons.on('popupopen', onPopupOpen);
