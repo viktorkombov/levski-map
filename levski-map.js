@@ -6,8 +6,9 @@ var appMap = {
     currCoordinates: null
 }
  
-var zoomToCertainPlaceTemplate = '<button class="map-zoom-to-button" onclick="zoomToCertainPlace()">Виж отблизо</button>';
-function zoomToCertainPlace() {
+var zoomToCertainPlaceTemplate = '<button class="btn btn-primary" onclick="zoomToCertainPlace(event)">Виж отблизо</button>';
+function zoomToCertainPlace(evt) {
+    evt.preventDefault();
     const coordinates = appMap.currPopup.layer.feature.geometry.coordinates.slice().reverse();
     let zoomLevel = 7.49;
     let duration = 0.5;
@@ -177,8 +178,8 @@ var geojsonCities = L.geoJSON(citiesGeoJson, {
 
 geojsons.bindPopup(function (layer) {
     let featureData = layer.feature.properties;
-    var popupContent = featureData.type === 'province' ? '<p class="popup-content">' + featureData.content + '</p>' : 'Повече информация за Левски в област ' + featureData.name + ' ще бъде налична скоро!';
-    return `<h3 class="popup-heading">${featureData.name}</h3>${popupContent}` + '<img class="popup-img" onclick="openOverlayImg(' + 9 + ')" src="http://vlevskimuseum-bg.org/wp-content/uploads/2022/03/' + featureData.pathName + '1' + '.jpg"/>';
+    var popupContent = featureData.type === 'province' ? '<p class="popup-content">' + featureData.content + '</p>' + '<div class="popup-divider"></div>' : 'Повече информация за Левски в област ' + featureData.name + ' ще бъде налична скоро!';
+    return `<h3 class="popup-heading">${featureData.name}</h3>${popupContent}${zoomToCertainPlaceTemplate}`;
 }, { maxHeight: 300, maxWidth: 200, });
 // http://vlevskimuseum-bg.org/wp-content/uploads/2022/03/lovech1.jpg
 geojsons.on('popupopen', onPopupOpen);
