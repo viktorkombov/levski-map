@@ -1,12 +1,8 @@
-function openOverlayImg(length) {
-    // console.log(appMap.currPopup);
-    // document.getElementById("map-overlay-img").src = 'http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/' + appMap.currPopup.layer.feature.properties.pathName + '.png';
-    // document.getElementById("map-overlay").style.display = "block";
-    // createSlideshowContent('asd', 'АСД', 3);
-    // showSlides(1);
-    var pathName = 'lovech';
+function openOverlayImg(pathName, name, gallery) {
+    console.log(gallery)
+    
     function link(pathName, i) {
-        return 'http://vlevskimuseum-bg.org/wp-content/uploads/2022/03/' + pathName + i + '.jpg'
+        return './images/' + pathName + i + '.jpg'
     }
     $.extend({
         el: function (el, props) {
@@ -29,22 +25,23 @@ function openOverlayImg(length) {
 
     var elem = $('.modal-body');
     elem.empty();
-    $('#exampleModal').modal('show')
+    $('#exampleModal').modal('show');
+    $('.modal-title').text(name)
 
     var carouselIndicators = $.el('ol', { 'class': 'carousel-indicators' });
     var carouselSlides = $.el('div', { 'class': 'carousel-inner' });
 
-    for (let i = 0; i < length; i++) {
+    for (let i = 0; i < gallery.length; i++) {
         if (i === 0) {
             carouselIndicators.append($.el('li', { 'data-target': '#carouselExampleFade', 'data-wrap': 'false', 'class': 'active' }));
-            carouselSlides.append($.el('div', { 'class': 'item active' })
+            carouselSlides.append($.el('div', { 'class': 'item active', 'style': "background-color: red"})
                 .append(
-                    $.el('img', { 'class': 'd-block w-100', 'src': link(pathName, i + 1) })
+                    $.el('img', { 'class': 'd-block w-100', 'src': link(pathName, i) })
                 )
                 .append(
                     $.el('div', { 'class': 'carousel-caption d-none d-md-block' })
                         .append(
-                            $.el('h5', { 'class': '' }).text('Ловеч' + (i + 1))
+                            $.el('p', { 'class': 'map-gallery-caption' }).text(gallery[i])
                         )
                 )
             );
@@ -52,12 +49,12 @@ function openOverlayImg(length) {
             carouselIndicators.append($.el('li', { 'data-target': '#carouselExampleFade' }));
             carouselSlides.append($.el('div', { 'class': 'item' })
                 .append(
-                    $.el('img', { 'class': 'd-block w-100', 'src': link(pathName, i + 1) })
+                    $.el('img', { 'class': 'd-block w-100', 'src': link(pathName, i) })
                 )
                 .append(
                     $.el('div', { 'class': 'carousel-caption d-none d-md-block' })
                         .append(
-                            $.el('h5', { 'class': '' }).text('Ловеч' + (i + 1))
+                            $.el('p', { 'class': 'map-gallery-caption' }).text(gallery[i])
                         )
                 )
             );

@@ -11,7 +11,7 @@ function onSearchClick(e) {
         searchIcon.style.borderBottomLeftRadius = '0px';
         searchIcon.style.boxShadow = 'none'
         searchWrapper.style.boxShadow = '0 1px 5px rgba(0,0,0,0.65)'
-        autocomplete(document.getElementById("map-search-input"), citiesGeoJson.features, geojsonCities);
+        autocomplete(document.getElementById("map-search-input"), townsGeoJson.features, geojsontowns);
         setTimeout(() => {
             searchInput.focus();
         }, 200);
@@ -35,6 +35,7 @@ function closeSearchInput() {
 
 }
 
+
 function autocomplete(inp, townsData, townsLayers) {
     var currentFocus;
     inp.addEventListener("input", function (e) {
@@ -56,7 +57,7 @@ function autocomplete(inp, townsData, townsLayers) {
             var townName = townsData[i].properties.name;
             if (townName.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
                 b = document.createElement("DIV");
-                b.innerHTML = '<img style="width: 12px; height: 12px; margin-right: 5px" src="http://vlevskimuseum-bg.org/wp-content/uploads/2021/12/location.png"/>'
+                b.innerHTML = '<img style="width: 12px; height: 12px; margin-right: 5px" src="https://vlevskimuseum-bg.org/wp-content/uploads/2021/12/location.png"/>'
                 b.innerHTML += "<strong>" + townName.substr(0, val.length) + "</strong>";
                 b.innerHTML += townName.substr(val.length);
                 b.innerHTML += "<input type='hidden' value='" + townName + "'>";

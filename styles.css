@@ -216,6 +216,10 @@ h2 {
   margin-bottom: 0;
 }
 
+.leaflet-popup-content img {
+  margin-bottom: 5px;
+}
+
 .leaflet-popup-content .btn {
   width: 100%;
   margin-bottom: 5px;
@@ -314,6 +318,16 @@ h2 {
 .map-sidenav-accordion--active,
 .map-sidenav-accordion:hover {
   background-color: #e2e2e2;
+}
+
+.map-gallery-caption {
+  text-shadow: 
+  1px 0px 8px #110101, 0px 1px 8px #1d1b1b, 
+  2px 1px 8px #110101, 1px 2px 8px #1d1b1b,
+  3px 2px 8px #110101, 2px 3px 8px #1d1b1b;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 26px;
 }
 
 .map-sidenav-accordion-wrapper {
@@ -568,12 +582,8 @@ input[type="submit"] {
   overflow: hidden;
 }
 
-.carousel-item img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
+.carousel-inner img {
+  width: 100%;
 }
 
 .map-slides {
