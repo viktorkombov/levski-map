@@ -6,7 +6,7 @@ var appMap = {
     currCoordinates: null
 }
  
-var zoomToCertainPlaceTemplate = '<button class="btn btn-primary" onclick="zoomToCertainPlace(event)">Виж отблизо</button>';
+var zoomToCertainPlaceTemplate = '<button class="btn btn-primary btn-map-zoom" onclick="zoomToCertainPlace(event)">Виж отблизо</button>';
 function zoomToCertainPlace(evt) {
     evt.preventDefault();
     const coordinates = appMap.currPopup.layer.feature.geometry.coordinates.slice().reverse();
@@ -27,8 +27,9 @@ function zoomToCertainPlace(evt) {
         duration: duration
     })
 }
-var route = L.control();
 
+
+var route = L.control();
 // function refreshPopup()
 // var towns = L.layerGroup();
 
@@ -214,7 +215,7 @@ geojsontowns.bindTooltip(function (layer) {
 geojsontowns.bindPopup(function (layer) {
     const featureData = layer.feature.properties;
     const gallery = featureData.gallery.map(rec => "'" + rec.replace(/"/g, '“') + "'").join(', ');
-    const image = featureData.gallery.length ? `<img class="popup-img" onclick="openOverlayImg('${featureData.pathName}', '${featureData.name}', [${gallery}])" src="./images/${featureData.pathName}0.jpg"/>` : ''
+    const image = featureData.gallery.length ? `<img class="popup-img" onclick="openOverlayImg('${featureData.pathName}', '${featureData.name}', [${gallery}])" src="http://vlevskimuseum-bg.org/wp-content/uploads/2022/04/${featureData.pathName}.jpg"/>` : ''
     var popupContent = '<p class="popup-content">' + featureData.content + '</p>' + '<div class="popup-divider"></div>'; 
     return `${image}<h3 class="popup-heading">${featureData.name}</h3>${popupContent}${zoomToCertainPlaceTemplate}`;
 }, { maxHeight: 300, maxWidth: 200, });
@@ -318,8 +319,10 @@ function zoom() {
 
     if (map.getZoom() >= 13) {
         displayLayer(geojsonMonuments);
+        displayZoomButton(false);
     } else if (map.getZoom() < 13) {
         displayLayer(geojsonMonuments, false);
+        displayZoomButton(true);
     }
 }
 
@@ -334,5 +337,15 @@ function displayLayer(layers, flag = true) {
             map.removeLayer(layer);
         }
     })
+}
+
+function displayZoomButton(flag) {
+    const zoomButtons = $('.btn-map-zoom'); 
+    const isHidden = $('.btn-map-zoom').is(":hidden");;
+    if (!flag && !isHidden) {
+        zoomButtons.hide();
+    } else if (flag && isHidden) {
+        zoomButtons.show();
+    }
 }
 

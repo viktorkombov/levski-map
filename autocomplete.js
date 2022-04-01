@@ -74,12 +74,14 @@ function autocomplete(inp, townsData, townsLayers) {
 
                     displayLayer([geojsons, geojsonsText, bulgar, USGS_USImagery, balkansBoundaries], false);
                     displayLayer([streets, townsLayers]);
+                    displayZoomButton(false);
 
                     var currLayer = townsLayers.getLayers().filter(rec => JSON.stringify(rec.feature.geometry.coordinates) === JSON.stringify(coordinates));
 
                     setTimeout(() => {
                         console.log(currLayer)
                         townsLayers.openPopup(currLayer[0], coordinates.slice().reverse());
+                        displayZoomButton(false);
                     }, 1700);
 
                     closeAllLists();

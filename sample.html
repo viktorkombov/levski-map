@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <!-- Ignite UI Required Combined CSS Files -->
+    <link href="http://cdn-na.infragistics.com/igniteui/2016.1/latest/css/themes/infragistics/infragistics.theme.css" rel="stylesheet" />
+    <link href="http://cdn-na.infragistics.com/igniteui/2016.1/latest/css/structure/infragistics.css" rel="stylesheet" />
+
+    <!-- Used to style the API Viewer and Explorer UI -->
+    <link href="http://www.igniteui.com/css/apiviewer.css" rel="stylesheet" type="text/css" />
+
+    <script src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.8.3.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+
+    <!-- Ignite UI Required Combined JavaScript Files -->
+    <script src="http://cdn-na.infragistics.com/igniteui/2016.1/latest/js/infragistics.core.js"></script>
+    <script src="http://cdn-na.infragistics.com/igniteui/2016.1/latest/js/infragistics.lob.js"></script>
+
+
+</head>
+<body>
+
+    <!-- Target element for the igGrid -->
+    <table id="grid">
+    </table>
+    <script type="text/javascript">
+        $(function () {
+            $("#grid").igGrid({
+                virtualization: false,
+                autoGenerateColumns: false,
+                renderCheckboxes: true,
+                primaryKey: "ID",
+                columns: [{
+                    headerText: "ID", key: "ID", dataType: "number", hidden:true
+                },
+                {
+                    headerText: "Month", key: "Month", dataType: "string"
+                },
+                {
+                    headerText: "2015", key: "2015", dataType: "string"
+                }
+                               
+                ],
+                dataSource: [
+		{ID:0, Month: "January", 2015: 0, 2016: 0},
+		{ID:1, Month: "February", 2015: 0, 2016: 0},
+		{ID:2, Month: "March", 2015: 0, 2016: 0},
+		{ID:3, Month: "April", 2015: 0, 2016: 0},
+		{ID:4, Month: "Total", 2015: 0, 2016: 0}
+		],
+                dataSourceType: "json",		
+                height: "350px",
+                width:"100%",
+                features: [                   
+                    {
+                        name: "Updating",
+                        enableAddRow: true,
+                        editMode: "row",
+			columnSettings: [
+					{
+					    columnKey : "2015",
+					    editorOptions: {
+						 validatorOptions : {
+							onchange: true,
+						        notificationOptions: {
+								mode: "popover"							
+							},
+						        custom: function(value, fieldOptions){
+								  return false;
+							},
+							errorShowing: function (evt, ui) {
+								//show notifier on last row
+								var lastCell = $("#grid > tbody > tr:last").find("td").eq(1);
+								if(lastCell.data("igNotifier")){
+									lastCell.data("igNotifier").show();
+								}else{
+									lastCell.igNotifier({										
+									mode:"popover", 
+									 state: "error",
+									messages: {
+									    error: "Total Volume not matched!"
+									}
+									});
+								}
+								
+								return false;
+							}							
+						    }
+					    }
+					}
+				    ]			
+                    }]
+            });
+
+   
+        });
+    </script>
+</body>
+</html>
