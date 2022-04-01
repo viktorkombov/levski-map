@@ -215,7 +215,7 @@ geojsontowns.bindTooltip(function (layer) {
 geojsontowns.bindPopup(function (layer) {
     const featureData = layer.feature.properties;
     const gallery = featureData.gallery.map(rec => "'" + rec.replace(/"/g, '“') + "'").join(', ');
-    const image = featureData.gallery.length ? `<img class="popup-img" onclick="openOverlayImg('${featureData.pathName}', '${featureData.name}', [${gallery}])" src="http://vlevskimuseum-bg.org/wp-content/uploads/2022/04/${featureData.pathName}.jpg"/>` : ''
+    const image = featureData.gallery.length ? `<img class="popup-img" onclick="openOverlayImg('${featureData.pathName}', '${featureData.name}', [${gallery}])" src="https://vlevskimuseum-bg.org/wp-content/uploads/2022/04/${featureData.pathName}.jpg"/>` : ''
     var popupContent = '<p class="popup-content">' + featureData.content + '</p>' + '<div class="popup-divider"></div>'; 
     return `${image}<h3 class="popup-heading">${featureData.name}</h3>${popupContent}${zoomToCertainPlaceTemplate}`;
 }, { maxHeight: 300, maxWidth: 200, });
