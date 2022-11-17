@@ -1,5 +1,3 @@
-// var region;
-
 var appMap = {
     currProvinceImageOverlay: null,
     currPopup: null,
@@ -7,6 +5,7 @@ var appMap = {
 }
  
 var zoomToCertainPlaceTemplate = '<button class="btn btn-primary btn-map-zoom" onclick="zoomToCertainPlace(event)">Виж отблизо</button>';
+
 function zoomToCertainPlace(evt) {
     evt.preventDefault();
     const coordinates = appMap.currPopup.layer.feature.geometry.coordinates.slice().reverse();
@@ -28,10 +27,7 @@ function zoomToCertainPlace(evt) {
     })
 }
 
-
 var route = L.control();
-// function refreshPopup()
-// var towns = L.layerGroup();
 
 var balkansBoundaries = L.geoJSON(balkans, {
     style: function () {
@@ -49,32 +45,19 @@ var streets = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
     attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
 });
 
-var bulgar = L.tileLayer('https://vlevskimuseum-bg.org/wp-content/uploads/2022/02/map-{z}-{x}-{y}.png', {
-    // var bulgar = L.tileLayer('map/{z}/{x}/{y}.png', {
+var balkansMap = L.tileLayer('https://vlevskimuseum-bg.org/wp-content/uploads/2022/02/map-{z}-{x}-{y}.png', {
     minZoom: 6,
     maxZoom: 7.49,
     bounds: [L.latLng(48.36220187357865, 9.768120068760378), L.latLng(36.819775824857466, 40.30455230465974)]
-    //  48.36220187357865, 9.768120068760378 36.819775824857466, 40.30455230465974, 
 });
-
-// sets a custom map of Bulgaria
-// var imageUrl = 'https://vlevskimuseum-bg.org/wp-content/uploads/2021/11/bulgaria.png',
-//     imageBounds = [[45.25444353681564, 19.844982149279534], [40.16525805505217, 31.921737689954174]];
-// var bulgariaMap = L.imageOverlay(imageUrl, imageBounds);
-
 var map = L.map('map', {
     center: [42.748126776142875, 25.327709216730058],
     zoom: 6.2,
-    layers: [bulgar, balkansBoundaries],
-    // zoomSnap: 0,
-    // zoomDelta: 0.5,
-    // wheelPxPerZoomLevel: 150,
+    layers: [balkansMap, balkansBoundaries],
     zoomControl: false,
     maxZoom: 17,
     minZoom: 6.2
 });
-
-
 
 // sets the zoom control to be positioned in the bottom left corner
 L.control.zoom({
@@ -187,15 +170,33 @@ geojsons.on('popupopen', onPopupOpen);
 geojsons.on('popupclose', onPopupClose);
 
 geojsonMonuments.bindPopup(function (layer) {
-    let featureData = sofiaProvince[layer.feature.properties.pathName];
-    var popupContent = '<p class="popup-content">' + featureData.content + '</p>' + '<div class="popup-divider"></div>';
-    return '<img class="popup-img" onclick="openOverlayImg()" src="https://vlevskimuseum-bg.org/wp-content/uploads/2021/12/' + featureData.pathName + '.png"/>' + `<h3 class="popup-heading">${featureData.name}</h3>${popupContent}`;
+    const featureData = layer.feature.properties;
+    console.log(layer.feature)
+    const gallery = featureData.gallery.map(rec => "'" + rec.replace(/"/g, '“') + "'").join(', ');
+    const image = featureData.gallery.length ? `<img class="popup-img" onclick="openOverlayImg('${featureData.pathName}', '${featureData.name}', [${gallery}])" src="images/th/${featureData.pathName}.jpg"/>` : ''
+    var popupContent = '<p class="popup-content">' + featureData.content + '</p>' + '<div class="popup-divider"></div>'; 
+    return `${image}<h3 class="popup-heading">${featureData.name}</h3>${popupContent}${zoomToCertainPlaceTemplate}`;
 }, { maxHeight: 300, maxWidth: 200, });
 
 geojsonMonuments.bindTooltip(function (layer) {
-    let featureData = sofiaProvince[layer.feature.properties.pathName];
+    let featureData = layer.feature.properties;
     return featureData.name;
 });
+
+// map.locate({setView: true,   enableHighAccuracy: true,
+//     maximumAge: 60000,
+//       timeout           : 1000});
+// function onLocationFound(e) {
+//     var radius = e.accuracy;
+//     console.log(e)
+
+//     L.marker(e.latlng).addTo(map)
+//         .bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+//     // L.circle(e.latlng, radius).addTo(map);
+// }
+
+// map.on('locationfound', onLocationFound);
 
 geojsonMonuments.on('popupopen', function (e) {
     appMap.currPopup = e;
@@ -243,24 +244,7 @@ geojsonPoints.bindPopup(function (layer) {
     return `<h3 class="popup-heading">${featureData.name}</h3>${popupContent}${zoomToCertainPlaceTemplate}`;
 }, { maxHeight: 300, maxWidth: 200, });
 
-// let towns = townsGeoJson.features.slice().map((rec) => {
-//     if (rec.properties.name.includes('с.')) {
-//         rec.properties.name = rec.properties.name.slice(3);
-//         console.log(rec.properties.name)
-//         rec.properties.type = 'village'
-//     }
-//     return rec;
-// });
-
-// console.log(JSON.stringify(towns))
 let towns = townsGeoJson.features.slice().filter((rec) => {
-    // if (rec.properties.name.includes('манастир')) {
-    //     rec.properties.name = rec.properties.name.slice(3);
-    //     console.log(rec.properties.name)
-    //     rec.properties.type = 'church'
-    //     Object.assign(rec.properties, {iconUrl: true})
-    //     return rec;
-    // }
 
     if (!rec.properties.name.includes('манастир')) {
         return rec;
@@ -268,23 +252,14 @@ let towns = townsGeoJson.features.slice().filter((rec) => {
 
 });
 
-// gojsons.features.forEach(rec => {
-//     const dataRec = provincesData.find(e => e.pathName === rec.properties.pathName);
-//     Object.assign(rec.properties, {name: dataRec.name, content: dataRec.content, type: dataRec.type})
-// })
 
-// console.log(JSON.stringify(gojsons))
-
-// L.geoJSON(karlovoRoute).addTo(map);
-
-
-console.log(`
-    [${countries.map(rec => {
-    // rec.coordinates[0] += 0.2;
-    return `{"type":"Feature","properties":{"type": "${rec.type}","name": "${rec.name}"},"geometry":{"type":"Point","coordinates": [${rec.coordinates.slice().reverse()}]}}`
-})}
-]
-`);
+// console.log(`
+//     [${countries.map(rec => {
+//     // rec.coordinates[0] += 0.2;
+//     return `{"type":"Feature","properties":{"type": "${rec.type}","name": "${rec.name}"},"geometry":{"type":"Point","coordinates": [${rec.coordinates.slice().reverse()}]}}`
+// })}
+// ]
+// `);
 
 map.on('click', function (e) {
     console.log(`${e.latlng.lng}, ${e.latlng.lat}`);
@@ -307,13 +282,13 @@ function displayBulgariaTooltip(flag = true) {
 
 function zoom() {
     if (map.getZoom() >= 7 && map.getZoom() <= 7.49) {
-        displayLayer([geojsons, geojsonsText, bulgar, balkansBoundaries, geojsonPoints, geojsonCountries]);
+        displayLayer([geojsons, geojsonsText, balkansMap, balkansBoundaries, geojsonPoints, geojsonCountries]);
         displayLayer([streets, geojsonMonuments, geojsontowns, geojsonBulgaria, geojsonBulgariaText], false);
     } else if (map.getZoom() > 7.49) {
-        displayLayer([geojsons, geojsonsText, bulgar, balkansBoundaries, geojsonBulgaria, geojsonBulgariaText, geojsonPoints, geojsonCountries], false);
+        displayLayer([geojsons, geojsonsText, balkansMap, balkansBoundaries, geojsonBulgaria, geojsonBulgariaText, geojsonPoints, geojsonCountries], false);
         displayLayer([streets, geojsontowns, geojsonMonuments]);
     } else if (map.getZoom() < 7) {
-        displayLayer([bulgar, balkansBoundaries, geojsonPoints, geojsonBulgaria, geojsonBulgariaText, geojsonPoints, geojsonCountries]);
+        displayLayer([balkansMap, balkansBoundaries, geojsonPoints, geojsonBulgaria, geojsonBulgariaText, geojsonPoints, geojsonCountries]);
         displayLayer([streets, geojsonMonuments, geojsons, geojsonsText, geojsontowns], false);
     }
 

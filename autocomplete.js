@@ -1,85 +1,94 @@
 function onSearchClick(e) {
-    map.closePopup();
-    closeNav();
-    const searchWrapper = document.getElementById('map-search');
-    const searchInput = document.getElementById('map-search-input');
-    const searchIcon = document.getElementById('map-search-icon');
-    if (searchInput.style.visibility !== 'visible') {
-        searchInput.style.visibility = 'visible';
-        searchInput.style.width = '150px';
-        searchIcon.style.borderTopLeftRadius = '0px';
-        searchIcon.style.borderBottomLeftRadius = '0px';
-        searchIcon.style.boxShadow = 'none'
-        searchWrapper.style.boxShadow = '0 1px 5px rgba(0,0,0,0.65)'
-        autocomplete(document.getElementById("map-search-input"), townsGeoJson.features, geojsontowns);
+    if (map) {
+        map.closePopup();
+    }
+    if (closeNav) {
+        closeNav();
+    }
+    const searchWrapper = document.querySelector('.map-search');
+    const searchInput = document.querySelector('.map-search__input');
+    const searchIcon = document.querySelector('.map-search__icon');
+    if (!searchInput.classList.contains('map-search__input--open')) {
+        searchWrapper.classList.add('map-search--open')
+        searchInput.classList.add('map-search__input--open');
+        searchIcon.classList.add('map-search__icon--open');
+        autocomplete(searchInput, townsGeoJson.features, geojsontowns);
         setTimeout(() => {
             searchInput.focus();
         }, 200);
     } else {
-        const activeElement = document.getElementsByClassName('map-search-autocomplete-active')[0];
+        // if the autocomplete is opened and click is performed
+        const activeElement = document.querySelector('.map-search__autocomplete--active');
         if (activeElement) activeElement.click();
     }
-} 
+}
 
 function closeSearchInput() {
-    const searchInput = document.getElementById('map-search-input');
-    const searchIcon = document.getElementById('map-search-icon');
-    const searchWrapper = document.getElementById('map-search');
-    searchInput.style.width = '0';
-    searchInput.style.visibility = 'hidden';
-    searchInput.value = '';
-    searchIcon.style.borderTopLeftRadius = '4px';
-    searchIcon.style.borderBottomLeftRadius = '4px';
-    searchWrapper.style.boxShadow = 'none'
-    searchIcon.style.boxShadow = '0 1px 5px rgba(0,0,0,0.65)'
+    const searchWrapper = document.querySelector('.map-search');
+    const searchInput = document.querySelector('.map-search__input');
+    const searchIcon = document.querySelector('.map-search__icon');
 
+    searchWrapper.classList.remove('map-search--open')
+    searchInput.classList.remove('map-search__input--open');
+    searchIcon.classList.remove('map-search__icon--open');
+
+    searchInput.value = '';
 }
 
 
-function autocomplete(inp, townsData, townsLayers) {
+function autocomplete(searchInput, townsData, townsLayers) {
     var currentFocus;
-    inp.addEventListener("input", function (e) {
-        var a, b, i, val = this.value;
+    searchInput.addEventListener("input", function (e) {
+        var dropdownList, dropDownItem, index, inputValue = this.value;
         closeAllLists();
 
-        if (!val) { return false; }
+        if (!inputValue) { return false; }
 
         currentFocus = -1;
 
-        a = document.createElement("DIV");
-        a.setAttribute("id", this.id + "map-search-autocomplete-list");
-        a.setAttribute("class", "map-search-autocomplete-items");
-        this.parentNode.appendChild(a);
+        dropdownList = document.createElement("DIV");
+        dropdownList.classList.add("map-search__autocomplete-items");
+        // appends the dropdown list in the container where is the searchInput
+        this.parentNode.appendChild(dropdownList);
 
+        // TODO think to implement the sorting somewhere else and to get towns data in different way
         townsData = townsData.sort((a, b) => a.properties.name.localeCompare(b.properties.name));
 
-        for (i = 0; i < townsData.length; i++) {
-            var townName = townsData[i].properties.name;
-            if (townName.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-                b = document.createElement("DIV");
-                b.innerHTML = '<img style="width: 12px; height: 12px; margin-right: 5px" src="https://vlevskimuseum-bg.org/wp-content/uploads/2021/12/location.png"/>'
-                b.innerHTML += "<strong>" + townName.substr(0, val.length) + "</strong>";
-                b.innerHTML += townName.substr(val.length);
-                b.innerHTML += "<input type='hidden' value='" + townName + "'>";
-                b.addEventListener("click", function (event) {
-                    map.closePopup();
-                    closeSearchInput();
-                    inp.value = this.getElementsByTagName("input")[0].value;
+        for (index = 0; index < townsData.length; index++) {
+            var townName = townsData[index].properties.name;
+            if (townName.substr(0, inputValue.length).toUpperCase() == inputValue.toUpperCase()) {
+                dropDownItem = document.createElement("DIV");
+                dropDownItem.innerHTML = '<img style="width: 12px; height: 12px; margin-right: 5px" src="https://vlevskimuseum-bg.org/wp-content/uploads/2021/12/location.png"/>'
+                dropDownItem.innerHTML += "<strong>" + townName.substr(0, inputValue.length) + "</strong>";
+                dropDownItem.innerHTML += townName.substr(inputValue.length);
+                dropDownItem.innerHTML += "<input type='hidden' value='" + townName + "'>";
+                dropDownItem.addEventListener("click", function (event) {
+                    // TODO think to remove these or to change the logic with creating of events
+                    if (map) {
+                        map.closePopup();
+                    }
+
+                    if (closeSearchInput) {
+                        closeSearchInput();
+                    }
+
+                    searchInput.value = this.getElementsByTagName("input")[0].value;
                     var selectedElement = event.target.tagName === 'DIV' ? event.target.children[2] : event.target.parentElement.children[2];
+
+                    // TODO think to remove these or to change the logic with creating of events
                     var coordinates = townsData.find(rec => rec.properties.name === selectedElement.value).geometry.coordinates;
                     map.flyTo(coordinates.slice().reverse(), 15.1, {
                         animate: true,
                         duration: 1.5
                     });
 
-                    displayLayer([geojsons, geojsonsText, bulgar, USGS_USImagery, balkansBoundaries], false);
+                    displayLayer([geojsons, geojsonsText, balkansMap, balkansBoundaries], false);
                     displayLayer([streets, townsLayers]);
-                    displayZoomButton(false);
 
                     var currLayer = townsLayers.getLayers().filter(rec => JSON.stringify(rec.feature.geometry.coordinates) === JSON.stringify(coordinates));
 
                     setTimeout(() => {
-                        console.log(currLayer)
+                        console.log(currLayer);
                         townsLayers.openPopup(currLayer[0], coordinates.slice().reverse());
                         displayZoomButton(false);
                     }, 1700);
@@ -87,67 +96,71 @@ function autocomplete(inp, townsData, townsLayers) {
                     closeAllLists();
                     closeSearchInput();
                 });
-                a.appendChild(b);
+                dropdownList.appendChild(dropDownItem);
             }
 
-            if (a.children[0] && currentFocus === -1) {
+            if (dropdownList.children[0] && currentFocus === -1) {
                 currentFocus = 0;
-                a.children[currentFocus].classList.add("map-search-autocomplete-active")
+                dropdownList.children[currentFocus].classList.add("map-search__autocomplete--active");
             }
         }
 
     });
-    inp.addEventListener("keydown", function (e) {
-        var x = document.getElementById(this.id + "map-search-autocomplete-list");
-        if (x) {
-            x = x.getElementsByTagName("div");
+
+    searchInput.addEventListener("keydown", function (e) {
+        var dropDownList = document.querySelector(".map-search__autocomplete-items");
+        if (dropDownList) {
+            dropDownList = dropDownList.getElementsByTagName("div");
             if (e.keyCode == 40) {
                 currentFocus++;
-                addActive(x);
-                const currItem = x[currentFocus];
+                addActive(dropDownList);
+                const currItem = dropDownList[currentFocus];
                 const itemsContainer = currItem.parentElement;
                 const diff = getElementBottomPosition(currItem) - getElementBottomPosition(itemsContainer);
-                if (diff > 0) x[currentFocus].parentElement.scrollBy(0, diff);
-                if (currentFocus === 0) x[currentFocus].parentElement.scrollTo(0, 0);
+                if (diff > 0) dropDownList[currentFocus].parentElement.scrollBy(0, diff);
+                if (currentFocus === 0) dropDownList[currentFocus].parentElement.scrollTo(0, 0);
             } else if (e.keyCode == 38) {
                 currentFocus--;
-                addActive(x);
-                const currItem = x[currentFocus];
+                addActive(dropDownList);
+                const currItem = dropDownList[currentFocus];
                 const itemsContainer = currItem.parentElement;
                 const diff = getElementTopPosition(currItem) - getElementTopPosition(itemsContainer);
-                if (diff < 0) x[currentFocus].parentElement.scrollBy(0, diff)
-                if (currentFocus === x[currentFocus].parentElement.children.length - 1) x[currentFocus].parentElement.scrollBy(0, x[currentFocus].parentElement.scrollHeight);
+                if (diff < 0) dropDownList[currentFocus].parentElement.scrollBy(0, diff)
+                if (currentFocus === dropDownList[currentFocus].parentElement.children.length - 1) dropDownList[currentFocus].parentElement.scrollBy(0, dropDownList[currentFocus].parentElement.scrollHeight);
             } else if (e.keyCode == 13) {
                 e.preventDefault();
                 if (currentFocus > -1) {
-                    if (x) x[currentFocus].click();
+                    if (dropDownList) dropDownList[currentFocus].click();
                 }
             }
         } else if (e.keyCode == 13) {
             e.preventDefault();
         }
     });
-    function addActive(x) {
-        if (!x) return false;
-        removeActive(x);
-        if (currentFocus >= x.length) currentFocus = 0;
-        if (currentFocus < 0) currentFocus = (x.length - 1);
-        x[currentFocus].classList.add("map-search-autocomplete-active");
+
+    function addActive(dropDownList) {
+        if (!dropDownList) return false;
+        removeActive(dropDownList);
+        if (currentFocus >= dropDownList.length) currentFocus = 0;
+        if (currentFocus < 0) currentFocus = (dropDownList.length - 1);
+        dropDownList[currentFocus].classList.add("map-search__autocomplete--active");
     }
-    function removeActive(x) {
-        for (var i = 0; i < x.length; i++) {
-            x[i].classList.remove("map-search-autocomplete-active");
+
+    function removeActive(dropDownList) {
+        for (var i = 0; i < dropDownList.length; i++) {
+            dropDownList[i].classList.remove("map-search__autocomplete--active");
         }
     }
 
     function closeAllLists(elmnt) {
-        var x = document.getElementsByClassName("map-search-autocomplete-items");
-        for (var i = 0; i < x.length; i++) {
-            if (elmnt != x[i] && elmnt != inp) {
-                x[i].parentNode.removeChild(x[i]);
+        var dropDownList = document.getElementsByClassName("map-search__autocomplete-items");
+        for (var i = 0; i < dropDownList.length; i++) {
+            if (elmnt != dropDownList[i] && elmnt != searchInput) {
+                dropDownList[i].parentNode.removeChild(dropDownList[i]);
             }
         }
     }
+
     document.addEventListener("click", function (e) {
         closeAllLists(e.target);
     });

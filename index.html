@@ -10,10 +10,7 @@
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
     integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-
-
   <!-- Latest compiled and minified JavaScript -->
-
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"
     integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
@@ -22,15 +19,15 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
     integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
     crossorigin="anonymous"></script>
-
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin="">
-
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
   <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./sidenav.css">
+  <link rel="stylesheet" href="./autocomplete.css">
 </head>
 
 <body>
@@ -39,71 +36,82 @@
       class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
       tabindex="0" style="position: relative; outline: none;">
     </div>
-    <div id="mySidenav" class="map-sidenav">
-      <div class="map-sidenav-accordion-wrapper">
-        <button class="map-sidenav-accordion">Легенда</button>
-        <div class="map-sidenav-accordion-panel">
-          <article class="map-sidenav-legend-wrapper">
+
+    <div class="map-sidenav">
+      <div class="map-sidenav__accordion-wrapper">
+        <button class="map-sidenav__accordion">Легенда</button>
+        <div class="map-sidenav__accordion-panel">
+          <article class="map-sidenav__legend-wrapper">
             <div class="map-custom-divIcon map-custom-divIcon--point map-custom-divIcon--point--legend"
               style="width: 20px; height: 20px;"></div>
             <p>- държава</p>
           </article>
-          <article class="map-sidenav-legend-wrapper">
+          <article class="map-sidenav__legend-wrapper">
             <div class="map-custom-divIcon map-custom-divIcon--province" style="width: 20px; height: 20px;"></div>
             <p>- oбласт</p>
           </article>
-          <article class="map-sidenav-legend-wrapper">
+          <article class="map-sidenav__legend-wrapper">
             <div class="map-custom-divIcon map-custom-divIcon--town" style="width: 20px; height: 20px;"></div>
             <p>- град</p>
           </article>
-          <article class="map-sidenav-legend-wrapper">
+          <article class="map-sidenav__legend-wrapper">
             <div class="map-custom-divIcon map-custom-divIcon--village" style="width: 20px; height: 20px;"></div>
             <p>- село</p>
           </article>
-          <article class="map-sidenav-legend-wrapper">
+          <article class="map-sidenav__legend-wrapper">
             <img src="https://vlevskimuseum-bg.org/wp-content/uploads/2021/12/museum4.png" alt="м"
               style="width: 25px; height: 25px;">
             <p>- музей</p>
           </article>
-          <article class="map-sidenav-legend-wrapper">
+          <article class="map-sidenav__legend-wrapper">
             <img src="https://vlevskimuseum-bg.org/wp-content/uploads/2021/12/obelisk4.png" alt="м"
               style="width: 25px; height: 25px;">
             <p>- паметник</p>
           </article>
-          <article class="map-sidenav-legend-wrapper">
+          <article class="map-sidenav__legend-wrapper">
             <img src="https://vlevskimuseum-bg.org/wp-content/uploads/2021/12/church4.png" alt="м"
               style="width: 25px; height: 25px;">
             <p>- църква/манастир</p>
           </article>
-          <article class="map-sidenav-legend-wrapper">
+          <article class="map-sidenav__legend-wrapper">
             <img src="https://vlevskimuseum-bg.org/wp-content/uploads/2021/12/house4.png" alt="м"
               style="width: 25px; height: 25px;">
             <p>- паметно място</p>
           </article>
-          <article class="map-sidenav-legend-wrapper">
+          <article class="map-sidenav__legend-wrapper">
             <img src="https://vlevskimuseum-bg.org/wp-content/uploads/2021/12/hut4.png" alt="м"
               style="width: 25px; height: 25px;">
             <p>- хижа</p>
           </article>
-          <article class="map-sidenav-legend-wrapper">
+          <article class="map-sidenav__legend-wrapper">
             <img src="https://vlevskimuseum-bg.org/wp-content/uploads/2021/12/mountain4.png" alt="м"
               style="width: 25px; height: 25px;">
             <p>- връх</p>
           </article>
         </div>
 
-        <a class="map-sidenav-accordion" target="_blank" rel="noopener noreferrer" href="http://spatium.bg/levski.html"
+        <a class="map-sidenav__accordion" target="_blank" rel="noopener noreferrer" href="http://spatium.bg/levski.html"
           onclick="closeNav()" style="text-decoration: none;">Обиколките на Левски</a>
 
       </div>
     </div>
-    <span id="map-sidenav-openbtn" class="leaflet-control-zoom leaflet-bar leaflet-control"
-      onclick="openNav()">&#9776;</span>
 
-    <form autocomplete="off" id="map-search" action="/action_page.php">
-      <input id="map-search-input" type="text" name="myCountry" placeholder="Населено място">
-      <svg class="svg-icon map-search-icon leaflet-control-zoom leaflet-bar leaflet-control" id="map-search-icon"
-        aria-labelledby="title desc" role="img" viewBox="0 0 19.9 19.7" onclick="onSearchClick(event)">
+    <span class="map-sidenav__openbtn leaflet-control-zoom leaflet-bar leaflet-control"
+      onclick="openNav()">&#9776;</span>
+    <div class="map-toggle-full-screen-btn leaflet-control-zoom leaflet-bar leaflet-control"
+      onclick="toggleFullScreen()">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" class="open">
+        <path d="M5 19v-5h1.5v3.5H10V19Zm0-9V5h5v1.5H6.5V10Zm9 9v-1.5h3.5V14H19v5Zm3.5-9V6.5H14V5h5v5Z" />
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24">
+        <path d="M8.5 19v-3.5H5V14h5v5Zm5.5 0v-5h5v1.5h-3.5V19Zm-9-9V8.5h3.5V5H10v5Zm9 0V5h1.5v3.5H19V10Z" />
+      </svg>
+    </div>
+
+    <form class="map-search" autocomplete="off">
+      <input class="map-search__input" type="text" name="myCountry" placeholder="Населено място">
+      <svg class="map-search__icon leaflet-control-zoom leaflet-bar leaflet-control" aria-labelledby="title desc"
+        role="img" viewBox="0 0 19.9 19.7" onclick="onSearchClick(event)">
         <title id="title">Search Icon</title>
         <desc id="desc">A magnifying glass icon.</desc>
         <g class="map-search-path" fill="none" stroke="black">
@@ -119,7 +127,8 @@
       <div class="modal-dialog modal-md">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="gridSystemModalLabel">Галерия</h4>
           </div>
           <div class="modal-body">
@@ -133,13 +142,24 @@
     </div>
   </div>
 
-  <script src="./data.js"></script>
+  <template id="fullScreen">
+    <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="2 7.1 20 10">
+      <path d="M5 19v-5h1.5v3.5H10V19Zm0-9V5h5v1.5H6.5V10Zm9 9v-1.5h3.5V14H19v5Zm3.5-9V6.5H14V5h5v5Z" />
+    </svg>
+  </template>
+
+  <template id="exitFullScreen">
+    <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="2 7.1 20 10">
+      <path d="M8.5 19v-3.5H5V14h5v5Zm5.5 0v-5h5v1.5h-3.5V19Zm-9-9V8.5h3.5V5H10v5Zm9 0V5h1.5v3.5H19V10Z" />
+    </svg>
+  </template>
+
   <script src="./autocomplete.js"></script>
   <script src="./geojson.js"></script>
   <script src="./sidebar.js"></script>
   <script src="./levski-map.js"></script>
   <script src="./overlay.js"></script>
-  <script src="./slideshow.js"></script>
+  <script src="./toggleFullScreen.js"></script>
 
 
 
