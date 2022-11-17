@@ -39,7 +39,7 @@ function createSlideshowContent(pathName, name, galleryLength) {
   const slidesWrapperClassName = 'map-slides-slideshow-container'
   let slideShowElements = '';
   const slidesImagesWrapper = (images) => '<div class="map-slides map-slides-fade">' + images + '</div>';
-  const slidesImage = (pathName, index, name) => '<img src="images/' + pathName + index + '.jpg" alt="' + name + '" style="width:100%">';
+  const slidesImage = (pathName, index, name) => '<img src="http://vlevskimuseum-bg.org/wp-content/uploads/2022/02/' + pathName + index + '.jpg" alt="' + name + '" style="width:100%">';
 
   if (galleryLength > 1) {
     const slidesNumber = (num) => '<div class="map-slides-numbertext">' + num + ' / ' + galleryLength + '</div>';

@@ -1,6 +1,6 @@
 function openOverlayImg(pathName, name, gallery) {
     function link(pathName, i) {
-        return 'images/images/' + pathName + i + '.jpg';
+        return 'http://vlevskimuseum-bg.org/wp-content/uploads/2022/03/' + pathName + i + '.jpg'
     }
 
     $.extend({
