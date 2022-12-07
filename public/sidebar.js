@@ -19,7 +19,7 @@ function openNav() {
     closeSearchInput();
     document.querySelector('.map-sidenav').style.width = '220px';
     document.querySelector('.map-sidenav__openbtn').style.display = 'none';
-    // document.querySelector('.map-toggle-full-screen-btn').style.display = 'none';
+    document.querySelector('.map-toggle-full-screen-btn').style.display = 'none';
 }
 
 function closeNav() {
@@ -28,7 +28,7 @@ function closeNav() {
     sideNav.style.left = '0';
     setTimeout(() => {
         document.querySelector('.map-sidenav__openbtn').style.display = 'block';
-        // document.querySelector('.map-toggle-full-screen-btn').style.display = 'block';
+        document.querySelector('.map-toggle-full-screen-btn').style.display = 'block';
         sideNav.style.left = '10px';
     }, 400);
     Array.from(document.getElementsByClassName('map-sidenav__accordion-panel')).forEach((panel) => {
