@@ -65,9 +65,6 @@ L.control.zoom({
     position: 'bottomright'
 }).addTo(map);
 
-map.addControl(new L.Control.Fullscreen({position: 'bottomleft'}));
-
-
 var geojsons = L.geoJSON(gojsons, {
     pointToLayer: generateLayer
 });

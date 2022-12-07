@@ -1,7 +1,13 @@
 const icons = document.querySelectorAll('.map-toggle-full-screen-btn svg')
 document.addEventListener('fullscreenchange', () => {
     icons.forEach(icon => icon.classList.toggle('open'));
-})
+    if (!document.fullscreenElement &&    // alternative standard method
+        !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
+        map.gestureHandling.enable();
+    } else {
+        map.gestureHandling.disable();
+    }
+});
 function toggleFullScreen(e) {
     if (!document.fullscreenElement &&    // alternative standard method
         !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {  // current working methods
