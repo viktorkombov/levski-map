@@ -25,6 +25,12 @@
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
+  <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+  <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css'
+    rel='stylesheet' />
+  <link rel="stylesheet" href="//unpkg.com/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.css"
+    type="text/css">
+  <script src="//unpkg.com/leaflet-gesture-handling"></script>
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./sidenav.css">
   <link rel="stylesheet" href="./autocomplete.css">
@@ -98,7 +104,7 @@
 
     <span class="map-sidenav__openbtn leaflet-control-zoom leaflet-bar leaflet-control"
       onclick="openNav()">&#9776;</span>
-    <div class="map-toggle-full-screen-btn leaflet-control-zoom leaflet-bar leaflet-control"
+    <!-- <div class="map-toggle-full-screen-btn leaflet-control-zoom leaflet-bar leaflet-control"
       onclick="toggleFullScreen()">
       <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" class="open">
         <path d="M5 19v-5h1.5v3.5H10V19Zm0-9V5h5v1.5H6.5V10Zm9 9v-1.5h3.5V14H19v5Zm3.5-9V6.5H14V5h5v5Z" />
@@ -106,7 +112,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24">
         <path d="M8.5 19v-3.5H5V14h5v5Zm5.5 0v-5h5v1.5h-3.5V19Zm-9-9V8.5h3.5V5H10v5Zm9 0V5h1.5v3.5H19V10Z" />
       </svg>
-    </div>
+    </div> -->
 
     <form class="map-search" autocomplete="off">
       <input class="map-search__input" type="text" name="myCountry" placeholder="Населено място">
@@ -142,7 +148,7 @@
     </div>
   </div>
 
-  <template id="fullScreen">
+  <!-- <template id="fullScreen">
     <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="2 7.1 20 10">
       <path d="M5 19v-5h1.5v3.5H10V19Zm0-9V5h5v1.5H6.5V10Zm9 9v-1.5h3.5V14H19v5Zm3.5-9V6.5H14V5h5v5Z" />
     </svg>
@@ -152,18 +158,14 @@
     <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="2 7.1 20 10">
       <path d="M8.5 19v-3.5H5V14h5v5Zm5.5 0v-5h5v1.5h-3.5V19Zm-9-9V8.5h3.5V5H10v5Zm9 0V5h1.5v3.5H19V10Z" />
     </svg>
-  </template>
+  </template> -->
 
   <script src="./autocomplete.js"></script>
   <script src="./geojson.js"></script>
   <script src="./sidebar.js"></script>
   <script src="./levski-map.js"></script>
   <script src="./overlay.js"></script>
-  <script src="./toggleFullScreen.js"></script>
-
-
-
-
+  <!-- <script src="./toggleFullScreen.js"></script> -->
 
 </body>
 

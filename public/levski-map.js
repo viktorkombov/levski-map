@@ -56,13 +56,16 @@ var map = L.map('map', {
     layers: [balkansMap, balkansBoundaries],
     zoomControl: false,
     maxZoom: 17,
-    minZoom: 6.2
+    minZoom: 6.2,
+    gestureHandling: true,
 });
 
 // sets the zoom control to be positioned in the bottom left corner
 L.control.zoom({
     position: 'bottomright'
 }).addTo(map);
+
+map.addControl(new L.Control.Fullscreen({position: 'bottomleft'}));
 
 
 var geojsons = L.geoJSON(gojsons, {
@@ -147,8 +150,15 @@ var geojsonCountries = L.geoJSON(countriesGeoJson, {
 map.on('popupopen', function () {
     closeNav();
     closeSearchInput();
-})
+});
 
+map.on('fullscreenchange', (e) => {
+    if (map.isFullscreen()) {
+        map.gestureHandling.disable();
+    } else {
+        map.gestureHandling.enable();
+    }
+});
 
 var geojsonMonuments = L.geoJSON(monumentsGeoJSON, {
     pointToLayer: generateLayer
